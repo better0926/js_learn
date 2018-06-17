@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //计算5月1号距离现在还有多长时间
+
+
+  //思路： 1. 当前的时间    2. 指定的时间
+
+
+  //当前时间
+  var now = new Date();
+  var future = new Date("2018-05-01 00:00:00");
+
+
+  //获取到时间差, 秒数
+  var time = parseInt((future - now) / 1000);
+  console.log(time);
+
+  //需要把描述转换成天
+  var d = parseInt(time / 60 / 60 / 24);
+  console.log(d);
+
+
+  //转换成小时,只需要不满24小时
+  var h = parseInt(time / 60 / 60) % 24;
+  console.log(h);
+
+
+  //转换分钟  不满60的那部分
+  var m = parseInt(time / 60) % 60;
+  console.log(m);
+
+  //转换秒数 不满60的秒
+  var s = time % 60;
+  console.log(s);
+  console.log(d + "天" + h + "小时" + m + "分钟" + s + "秒钟");
+
+</script>
+
+</body>
+</html>

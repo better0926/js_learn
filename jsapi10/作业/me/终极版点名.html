@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		table {
+			margin: 50px auto;
+		}
+
+		td {
+			padding: 15px;
+			text-align: center;
+
+			/*border: 1px solid #000;*/
+		}
+
+		input {
+			width: 100px;
+			height: 40px;
+			margin: 0 auto;
+		}
+	</style>
+
+</head>
+
+<body>
+<input type="button" value="开始" id="btn1">
+<input type="button" value="结束" id="btn2">
+<div class="box">
+
+</div>
+</body>
+
+<script>
+	var list = [
+		["@", "@", "@", "@", "@", "讲师", "@", "徐红影", "马玉婉", "楚宁宁", "周忠琴", "张瑞", "@"],
+		["王书琴", "徐蕊", "潘鑫杰", "孟腾腾", "田芳", "高萍萍", "@", "刘欢欢", "李日军", "吴娟娟", "刘星", "陈洋", "丁双"],
+		["刘韵", "杨千丽", "张文昭", "刘诗覃", "庄翠", "邓海霞", "@", "王凤", "陈玲钰", "李珍", "吴程", "张媛媛", "胡豪杰"],
+		["李辉", "严小伟", "王宽", "张璐", "李威", "石皖军", "@", "苏恩梅", "张瑞雪", "张梦黎", "聂男男", "季大伟", "马金哲"],
+		["杨凯", "程松伟", "张丽", "谢民成", "张龙", "余佳宁", "@", "程岳飞", "张建山", "汪洋", "侯孔生", "郭海华", "莫龙"],
+		["张学文", "蒋鲲", "吴凌云 ", "伏文东", "孙玉", "尹健楠", "@", "朱铮", "范景阁", "干滨昭", "陈城", "张怡怡", "施佳尧"],
+		["黄先伟", "王俊豪", "郭尧峰", "程晨", "郑锦彬", "汪丽", "@", "李廷", "郭栋", "张运", "莫彪", "陈九松", "熊亮"],
+		["张亚楠", "黄磊", "章华杰", "杨佳", "叶新民", "马黎明", "@", "彭万健", "张志阳", "周为华", "@", "@", "@"],
+	];
+	var box = document.querySelector(".box");
+	var stuName = [];
+	//1 创建table tr td
+	var table = document.createElement("table");
+	box.appendChild(table);
+	//box.appendChild(document.createElement("table"));
+	//var table = box.querySelector("table");
+	//创建tr
+	for (var i = 0; i < list.length; i++) {
+		var tr = document.createElement("tr");
+		table.appendChild(tr);
+		//获取list中每个元素的长度
+		var datas = list[i];
+		//创建td
+		//创建td并添加数据
+		for (var j = 0; j < datas.length; j++) {
+			var td = document.createElement("td");
+			tr.appendChild(td);
+			//将数组中不是@的单独设置颜色
+			if (datas[j] !== "@"){
+			 td.innerText = datas[j];
+			 td.style.backgroundColor = "green";
+			 td.style.color = "white";
+			 stuName.push(td);
+			 }
+			/*if (datas[j] === "@") {
+				td.style.backgroundColor = "white";
+			} else {
+				td.innerText = datas[j];
+				td.style.backgroundColor = "green";
+				td.style.color = "white";
+				stuName.push(td);
+			}*/
+		}
+	}
+	//
+	//给btn1绑定时间
+	var btn1 = document.querySelector("#btn1");
+	var btn2 = document.querySelector("#btn2");
+	var timeId;
+	btn1.onclick = function () {
+		timeId = setInterval(function () {
+			//给随机到的stuName添加样式
+			for (var i = 0; i < stuName.length; i++) {
+				var random = parseInt(Math.random() * stuName.length);
+				console.log(random);
+				for (var j = 0; j < stuName.length; j++) {
+					stuName[j].style.backgroundColor = "green";
+				}
+				stuName[random].style.backgroundColor = "pink";
+			}
+		}, 1000);
+	}
+	btn2.onclick = function () {
+		clearInterval(timeId);
+	}
+
+</script>
+</html>

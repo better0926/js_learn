@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+
+<button>生成</button>
+<div>
+
+</div>
+<script>
+
+  var arr = [
+    '习近平主持中共中央政治局会议1',
+    '习近平：建设好生态宜居的美丽乡村1',
+    '习近平对中国游客在朝鲜发生重大交通事故作出指示',
+    '习近平的最大爱好  习近平会见俄罗斯外长拉夫罗夫',
+    '习近平会见上合组织外方代表	 成员国国防部长',
+    '人民日报：筑牢国家网络安全屏障  网信新气象',
+    '人民日报：筑牢国家网络安全屏障  网信新气象',
+    '人民日报：筑牢国家网络安全屏障  网信新气象',
+    '人民日报：筑牢国家网络安全屏障  网信新气象',
+  ];
+
+  var button = document.querySelector("button");
+  var div = document.querySelector("div");
+
+  button.onclick = function () {
+    //思路：
+    //1. 生成一个ul，添加到div中
+    //2. 根据arr.length，生成多个li，设置li的内容，并且添加到ul中
+
+
+    //先判断有没有ul
+    if (div.children.length > 0) {
+      div.removeChild(div.firstElementChild);
+    }
+
+    var ul = document.createElement("ul");
+    div.appendChild(ul);
+
+    for (var i = 0; i < arr.length; i++) {
+      //创建li
+      var li = document.createElement("li");
+      //设置li的内容
+      li.innerText = arr[i];
+      //把li添加到ul中
+      ul.appendChild(li);
+    }
+
+
+    //在这里，你想干嘛就干嘛
+    var lis = div.querySelectorAll("li");
+    for (var i = 0; i < lis.length; i++) {
+      if (i % 2 == 0) {
+        lis[i].style.backgroundColor = "#ccc";
+      } else {
+        lis[i].style.backgroundColor = "#666";
+      }
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

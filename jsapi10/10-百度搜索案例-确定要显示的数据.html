@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    fieldset, img, input, button {
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline-style: none;
+    }
+
+    ul, ol {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #box {
+      width: 405px;
+      margin: 200px auto;
+      position: relative;
+    }
+
+    #txtSearch {
+      float: left;
+      width: 300px;
+      height: 32px;
+      padding-left: 4px;
+      border: 1px solid #b6b6b6;
+      border-right: 0;
+    }
+
+    #btnSearch {
+      float: left;
+      width: 100px;
+      height: 34px;
+      font: 400 14px/34px "microsoft yahei";
+      color: white;
+      background: #3385ff;
+      cursor: pointer;
+    }
+
+    #btnSearch:hover {
+      background: #317ef3;
+    }
+
+    #pop {
+      width: 303px;
+      border: 1px solid #ccc;
+      padding: 0px;
+      position: absolute;
+      top: 34px;
+    }
+
+    #pop ul li {
+      padding-left: 5px;
+    }
+
+    #pop ul li:hover {
+      background-color: #CCC;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <input type="text" id="txtSearch">
+  <input type="button" value="百度一下" id="btnSearch">
+</div>
+<script>
+
+
+  //模拟了百度的数据库
+  var datas = ["a", "abc", "abbbb", "abxxxx", "xyz", "abcdef", "abzzzz", "axxx", "aaabbb", "中", "中国", "中国人", "我是中国人"];
+
+  //根据用户输入的内容，帅选需要显示的数据
+  var str = "ab";
+
+  //把所有包含ab的字符串存储到新数组中
+  var newArr = [];
+  // date:日期  data:数据
+  //遍历datas，判断哪些字符串包含str，如果包含，放到新数组
+  for (var i = 0; i < datas.length; i++) {
+    //判断datas[i]是否包含str
+    if (datas[i].indexOf(str) != -1) {
+      newArr.push(datas[i]);
+    }
+  }
+
+  console.log(newArr);
+
+
+</script>
+
+
+</body>
+</html>

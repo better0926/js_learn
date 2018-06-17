@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="点击发送短信">
+
+<script>
+
+
+  //1. 给按钮注册点击事件
+  //2. 禁用按钮
+  //3. 开始定时器，一秒钟修改一次按钮的内容
+
+  //4. 当时间变成0了，清除定时器， 启用按钮，  恢复按钮的内容
+
+  var btn = document.querySelector("input");
+  btn.onclick = function () {
+    var count = 5;
+    //禁用按钮
+    btn.disabled = true;
+
+    //开启定时器
+    var timeId = setInterval(function () {
+      //修改按钮的内容  5秒后在次发送
+      count--;
+      btn.value = count+"秒后在次发送";
+
+      //判断count是否是0
+      if(count == 0) {
+        //清除定时器
+        clearInterval(timeId);
+        //恢复按钮
+        btn.disabled = false;
+        btn.value = "点击发送短信";
+      }
+    }, 1000);
+
+  };
+
+
+
+
+
+</script>
+
+</body>
+</html>

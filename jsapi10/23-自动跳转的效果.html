@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<a href="http://www.baidu.com">注册成功，3秒后跳转到首页</a>
+
+
+<script>
+
+  //location.href:页面跳转
+  var count = 3;
+  var link = document.querySelector("a");
+
+  //使用定时器，修改a标签的内容
+  var timeId = setInterval(function () {
+
+    count--;
+    link.innerText = "注册成功，" + count + "秒后跳转到首页";
+    if(count == 0) {
+      //清除定时器
+      clearInterval(timeId);
+      location.href = link.href;
+    }
+
+  }, 1000);
+
+</script>
+</body>
+</html>

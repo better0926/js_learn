@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            position: absolute;
+            left: 50%;
+            width: 100px;
+            margin-left: -20px;
+            top: 10px;
+        }
+
+        ul {
+            width: 816px;
+            list-style: none;
+            margin: 40px auto;
+        }
+
+        ul li {
+            width: 100px;
+            height: 40px;
+            border: 1px solid #cc9258;
+            float: left;
+        }
+        
+        .current {
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="随机点名" id="btn">
+<ul id="four">
+
+</ul>
+<script>
+    var arr = ["张三", "李四", "王五", "赵六", "田七", "王八",
+        "张三", "李四", "王五", "赵六", "田七", "王八",
+        "张三", "李四", "王五", "赵六", "田七", "王八",
+        "张三", "李四", "王五", "赵六", "田七", "王八",
+        "张三", "李四", "王五", "赵六", "田七", "王八",
+        "张三","李四","王五","赵六","田七","王八",
+        "张三","李四","王五","赵六","田七","王八",
+        "张三","李四","王五","赵六","田七","王八",
+        "张三","李四","王五","赵六","田七","王八",
+        "张三","李四","王五","赵六","田七","王八",
+        "张三","李四","王五","赵六","田七","王八"];
+
+
+    var ul = document.getElementById("four");
+    var btn = document.getElementById("btn");
+    //根据每一个名字生成一个li，添加到ul里面即可
+    for(var i = 0; i < arr.length; i++) {
+        var li = document.createElement("li");
+        li.innerHTML = arr[i];
+        ul.appendChild(li);
+    }
+    
+    //获取到所有的li
+    var lis = ul.children;
+    
+    btn.onclick = function () {
+        //确定一个随机数
+        var random = parseInt(Math.random() * lis.length);
+        //干掉所有人
+        for(var i = 0; i < lis.length; i++) {
+            lis[i].className = "";
+        }
+        lis[random].className = "current";
+    }
+</script>
+</body>
+</html>

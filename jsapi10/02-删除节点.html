@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+</ul>
+
+<script>
+
+  //单击事件：   onclick
+  //双击事件：   ondblclick
+
+  //parent.removeChild(child);
+
+  var lis = document.querySelectorAll("li");
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].ondblclick = function () {
+      //双击删除当前li
+      //需要使用ul去删除当前的li
+      this.parentNode.removeChild(this);
+    }
+  }
+</script>
+
+</body>
+</html>

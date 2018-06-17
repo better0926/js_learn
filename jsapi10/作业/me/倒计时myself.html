@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.content {
+			width: 500px;
+			height: 200px;
+			text-align: center;
+			border: 3px solid deeppink;
+			background-color: lightcoral;
+		}
+
+		.content-title {
+			line-height: 4;
+			font-size: 24px;
+			font-weight: 700;
+		}
+		.timer {
+			color: #fff;
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+<div class="content">
+	<div class="content-title">五一倒计时</div>
+	<div class="timeDate">
+		<b id="day"></b><span class="d-info">&nbsp;&nbsp;天&nbsp;&nbsp;</span>
+		<b id="hour"></b><span class="h-info">：</span>
+		<b id="minute"></b><span class="m-info">：</span>
+		<b id="second"></b>
+	</div>
+</div>
+
+<script>
+	//计算5月1号距离现在还有多长时间
+	var content = document.querySelector(".content");
+	var day = document.querySelector("#day");
+	var hour = document.querySelector("#hour");
+	var minute = document.querySelector("#minute");
+	var second = document.querySelector("#second");
+	var timeDate = document.querySelector(".timeDate");
+	var kid = timeDate.children;
+	console.log(kid);
+	//判断当前数字是不是一个位数
+	function getNum(num) {
+	    if(num < 10){
+		    num = "0"+num;
+	    }
+		return num;
+	};
+	var timer ;
+	function renderDate() {
+		//获取当前时间
+		var now = new Date();
+		//指定时间
+		var future = new Date("2018-04-26 10:03:00");
+		//获取时间差 秒
+		var time = parseInt((future - now) / 1000);
+		if ( time <= 0){
+			timer = 0;
+			clearInterval(timer);
+			content.removeChild(timeDate);
+			var div = document.createElement("div");
+			div.className = "timeEnd";
+			div.innerText = "倒计时结束";
+			content.appendChild(div);
+			return ;
+		}
+		//把获取的时间差转换成天
+		var d = parseInt(time / 60 / 60 / 24);
+		//转换成时
+		var h = parseInt(time / 60 / 60) % 24;
+		//转换成分
+		var m = parseInt(time / 60) % 60;
+		//转换成秒
+		//var s = time % 60;
+		var s = time % 60;
+		day.innerText = getNum(d);
+		hour.innerText = getNum(h);
+		minute.innerText = getNum(m);
+		second.innerText = getNum(s);
+		//console.log(d + "天" + h + "小时" + m + "分钟" + s + "秒钟");
+
+	}
+	function setTime() {
+		timer = setInterval(renderDate,1000);
+	}
+	renderDate();
+	setTime();
+	//思路： 1. 当前的时间    2. 指定的时间
+	/*function setTime() {
+		//获取当前时间
+		var now = new Date();
+		//指定时间
+		var future = new Date("2018-05-01 00:00:00");
+		//获取时间差 秒
+		var time = parseInt((future - now) / 1000);
+		//把获取的时间差转换成天
+		var d = parseInt(time / 60 / 60 / 24);
+		//转换成时
+		var h = parseInt(time / 60 / 60) % 24;
+		//转换成分
+		var m = parseInt(time / 60) % 60;
+		//转换成秒
+		//var s = time % 60;
+		var s = time % 60;
+		day.innerText = getNum(d);
+		hour.innerText = getNum(h);
+		minute.innerText = getNum(m);
+		second.innerText = getNum(s);
+		//console.log(d + "天" + h + "小时" + m + "分钟" + s + "秒钟");s
+	}
+	setTime();
+	setInterval(setTime,1000);*/
+</script>
+
+</body>
+</html>
+

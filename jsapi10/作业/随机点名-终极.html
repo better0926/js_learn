@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      margin: 50px auto;
+    }
+
+    td {
+      padding: 15px;
+      text-align: center;
+
+      /*border: 1px solid #000;*/
+    }
+
+    input {
+      width: 100px;
+      height: 40px;
+      margin: 0 auto;
+    }
+  </style>
+
+</head>
+
+<body>
+<input type="button" value="开始" id="btn1">
+<input type="button" value="结束" id="btn2">
+</body>  
+
+<script>
+  var list = [
+        ["@", "@",  "@", "@", "@","讲师",            		         	"@", "徐红影", "马玉婉", "楚宁宁", "周忠琴", "张瑞","@"],
+        ["王书琴",  "徐蕊", "潘鑫杰",  "孟腾腾", "田芳", "高萍萍",   "@", "刘欢欢", "李日军", "吴娟娟", "刘星", "陈洋","丁双"], 
+        ["刘韵",  "杨千丽",  "张文昭",  "刘诗覃", "庄翠", "邓海霞",  "@", "王凤", "陈玲钰",   "李珍", "吴程", "张媛媛","胡豪杰"],
+				["李辉", "严小伟", "王宽","张璐", "李威", "石皖军",          "@", "苏恩梅", "张瑞雪","张梦黎", "聂男男", "季大伟","马金哲"],
+				["杨凯", "程松伟",  "张丽","谢民成", "张龙", "余佳宁",        "@","程岳飞", "张建山",  "汪洋", "侯孔生", "郭海华","莫龙"],
+				["张学文",  "蒋鲲",  "吴凌云 ",  "伏文东", "孙玉", "尹健楠",  "@", "朱铮", "范景阁",  "干滨昭", "陈城", "张怡怡","施佳尧"],
+				["黄先伟",  "王俊豪", "郭尧峰",  "程晨", "郑锦彬", "汪丽",   		"@","李廷", "郭栋","张运", "莫彪", "陈九松","熊亮"],
+				["张亚楠",  "黄磊", "章华杰",  "杨佳", "叶新民", "马黎明",      "@","彭万健", "张志阳","周为华", "@","@","@"],
+    ];
+    
+    
+    
+    
+//    var list = [
+//      ["余佳宁", "张龙",  "刘欢欢", "@", "@","讲师",            		  "李日军", "孙玉", "尹健楠", "范景阁", "朱铮","@"],
+//      ["李珍",  "周忠琴", "李威",  "田芳", "张怡怡", "王俊豪",    "陈九松", "莫彪", "朱姣姣", "程松伟", "杨凯","汪丽"],
+//      ["庄翠",  "张璐",  "刘星",  "吴娟娟", "张瑞雪", "张梦黎",   "张瑞", "张丽",   "邓海霞", "苏恩梅", "张亚楠","李廷"],
+//				["程岳飞", "季大伟", "严小伟","刘韵", "郑锦彬", "徐红影",   "刘诗谭", "谢民成","张文昭", "楚宁宁", "梦腾腾","聂男男"],
+//				["胡豪杰", "徐蕊",  "张媛媛","王书琴", "杨千丽", "丁双",    "马黎明", "陈洋",  "马金哲", "张建山", "侯孔生","黄磊"],
+//				["王凤",  "王宽",  "程陈 ",  "石皖军", "吴程", "余磊",    	"潘鑫杰", "莫龙",  "黄先伟", "郭海华", "陈玲钰","彭万健"],
+//				["张运",  "伏文东", "郭栋",  "叶新民", "吴凌云", "高萍萍",  "马玉婉", "施佳尧","干滨昭", "张志阳", "郭晓峰","李灰"],
+//				["汪洋",  "张学问", "@",  "熊亮", "解圆圆", "杜成志",    "杨佳", "陈城",      "杨芝", "蒋琨","@","@"],
+//  ];
+
+
+  //1. 创建table，添加到body
+  //2. 根据list的长度，创建tr，添加到table
+  //3. 根据list[i]的长度，创建td，添加到tr中
+  var table = document.createElement("table");
+  document.body.appendChild(table);
+
+  //定义了一个空的数组，我把所有要点名的人放到数组里面去，随机这个数组就行了
+  var tds = [];
+  var current;
+  var showTime;
+  var target;
+
+  for (var i = 0; i < list.length; i++) {
+    //创建tr
+    var tr = document.createElement("tr");
+    table.appendChild(tr);
+
+    for (var j = 0; j < list[i].length; j++) {
+      //创建tr
+      var td = document.createElement("td");
+      tr.appendChild(td);
+
+      //如果内容不是@,就可以设置内容，可以设置背景颜色
+      if (list[i][j] !== "@") {
+        td.innerText = list[i][j];
+        td.style.backgroundColor = "yellowgreen";
+        if (list[i][j] === "讲师") {
+          continue;
+        }
+        tds.push(td);
+      }
+
+
+      //开启指定点名
+      /*td.onclick = function () {
+        current = this;
+        showTime = true;
+      }*/
+
+      td.onmouseover = function (e) {
+        if(e.ctrlKey) {
+          console.log("按住了ctrl");
+          current = this;
+          showTime = true;
+        }
+      }
+
+    }
+  }
+
+
+  //随机点名
+  //1. 给btn注册点击事件
+  //2. 随机排他
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+
+  var timer = null;
+  btn1.onclick = function () {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      //随机排他
+      for (var i = 0; i < tds.length; i++) {
+        tds[i].style.backgroundColor = "yellowgreen";
+      }
+      //复活随机
+      var random = parseInt(Math.random() * tds.length);
+      tds[random].style.backgroundColor = "hotpink";
+    }, 100);
+
+  }
+
+  btn2.onclick = function () {
+    clearInterval(timer);
+
+    if (showTime) {
+      for (var i = 0; i < tds.length; i++) {
+        tds[i].style.backgroundColor = "yellowgreen";
+      }
+      current.style.backgroundColor = "hotpink";
+      showTime = false;
+      current = null;
+    }
+
+  }
+
+</script>
+</html>

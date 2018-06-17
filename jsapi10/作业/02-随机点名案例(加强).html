@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            margin: 50px auto;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            /*border: 1px solid #000;*/
+        }
+
+        input {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+<input type="button" value="点名" id="btn">
+</body>
+
+<script>
+    //名单，@为空位，中间的@为过道。以@开头的为不随机的座位
+    var list = [
+        ["@","@","@","@","@","@","@","@","讲师","@","@","@","@"],
+        ["汪高祥","陆小威","梁凯凯","宋怀生","吕俊涛","胡尧","@","陶新星","兰磊","王莉莉","冯相梦","张强","杨沈蒙"],
+        ["陈斌","唐 婷","顾峰华","马晓钰","卢慧","杨志江","@","朱礼亮","张绍杰","欧雅利","蔡华荣","马洋洋","曹智伟"],
+        ["任俊科","姚飞飞","刘宇翔","胡钰","陈金桥","李凤丽","@","王云飞","汪浩","许环珍","唐小艺","陈定献","林建国"],
+        ["王乃坤","李玲","韩波","孙霖霖","汤逸群","李汶橦","@","高淑倩","肖秋雄","吴小飞","赵井书","张林涛","陈富"],
+        ["@","@","@","@","@","@","@","宋娟","张宝晨","方成","王雪瑾","孙宇林","杨欢"],
+        ["王明悦","汪晓晓","王平","庞媚月","陈宇","黄海霞","@","徐嘉晗","王敬宇","鲍杨","王畅","张占锋","@"],
+        ["张杰","周飞","韦小侠","曾玉洁","丁亮","杜从龙","@","徐婉琪","朱筱岩","简万","徐雪","肖李","刘万禄"],
+        ["李翱翔","孙晨","卢杰","杨可","盛道普","戴林波","@","@","@","@","@","@","@"]
+    ];
+    //获取名单
+    var table = document.createElement("table");
+    document.body.appendChild(table);
+
+    var names = [];
+    for(var i = 0; i < list.length; i++) {
+      
+        var datas = list[i];
+        var tr = document.createElement("tr");
+        table.appendChild(tr);
+        console.log(tr);
+
+
+        for(var j = 0; j < datas.length; j++) {
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            
+            if(datas[j] === "@"){
+                td.style.backgroundColor = "white";
+            }else {
+                td.innerHTML = datas[j];
+                td.style.backgroundColor = "yellowgreen";
+                names.push(td);
+            }
+        }
+    }
+
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        var random = parseInt(Math.random() * names.length);
+        //干掉所有人
+        for(var i =0 ; i < names.length; i++) {
+            names[i].style.backgroundColor = "yellowgreen";
+        }
+
+        names[random].style.backgroundColor = "hotpink";
+    }
+
+ 
+
+</script>
+</html>

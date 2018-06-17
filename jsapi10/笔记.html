@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">节点操作</h1>
+<h2 id="-">克隆节点</h2>
+<p>语法：var newNode = node.cloneNode(deep)</p>
+<p>功能：在内存中克隆一份节点</p>
+<p>参数：deep</p>
+<ul>
+<li>false：默认值：是浅复制，只会复制标签，节点本身，不会复制节点的孩子。</li>
+<li>true:深度复制，会复制标签，还会复制标签的所有内容 <strong><em>常用</em></strong> </li>
+</ul>
+<blockquote>
+<ol>
+<li>克隆出来的节点跟原来的节点没有关系了，修改了也不会相互影响。</li>
+<li>如果克隆的节点带了id，我们需要给id重新设置一个值，不让id冲突</li>
+</ol>
+</blockquote>
+<h2 id="-">添加节点</h2>
+<h3 id="appendchild">appendChild</h3>
+<p>语法：parent.appendChild(newChild)</p>
+<p>parent:调用者，父节点来调用</p>
+<p>newChild:需要添加的那个孩子。</p>
+<p>作用：把newChild添加到parent的孩子的最后面。</p>
+<pre><code class="lang-javascript">var demo = document.getElementById(&quot;demo&quot;);
+var box = document.getElementById(&quot;box&quot;);
+box.appendChild(demo);
+</code></pre>
+<h3 id="insertbefore">insertBefore</h3>
+<p>语法：parent.insertBefore(newChild, refChild);</p>
+<p>parent:必须要父节点来调用</p>
+<p>newChild：需要添加的那个节点</p>
+<p>refChild:添加到哪一个节点的前面。</p>
+<pre><code class="lang-javascript">var ul = document.getElementById(&quot;list&quot;);
+var li = document.createElement(&quot;li&quot;);
+li.innerHTML = &quot;骥骥&quot;;
+//就是添加到子节点的最前面。
+ul.insertBefore(li, ul.children[0]);
+</code></pre>
+<h3 id="-">双击事件</h3>
+<p>ondblclick:双击的时候触发</p>
+<h2 id="-3-">创建节点（3种方式）</h2>
+<h3 id="document-write-">document.write（基本不用）</h3>
+<p>可以生成新的节点，但是不推荐使用。<strong><em>如果页面已经加载完成了，你还是用document.write写内容的话，会把之前的页面给覆盖掉</em></strong> </p>
+<p>原理：页面从上往下加载的时候，会开启一个文档流，当页面加载完，文档流就会关闭。</p>
+<p>document.write的本意就是在文档流上写入内容。如果页面没加载完成，文档流还是开着的，document.write直接在这个文档流上写东西</p>
+<p>如果页面加载完成了，还是用document.write写东西，会重新开启一个新的文档流，往新的文档流上写东西，旧的文档流就被新的文档流覆盖了。</p>
+<h3 id="innerhtml">innerHTML</h3>
+<p>innerHTML也可以创建节点</p>
+<blockquote>
+<p>innerHTML创建节点的时候有一个特点，如果原来有内容的话，使用innerHTML会把原先的内容给干掉。</p>
+<p>慎用：很容易出现效率问题。</p>
+</blockquote>
+<h3 id="createelement">createElement</h3>
+<p>语法：var element = document.createElement(&quot;tagName&quot;);</p>
+<p>作用：在内存里面创建了一个节点</p>
+<p>返回：一个元素</p>
+<p>用途非常的广泛。</p>
+<h2 id="-">删除节点</h2>
+<p>语法：parent.removeChild(child);</p>
+<p>功能：有父盒子调用，删除里面的一个子元素。</p>
+<h2 id="-">替换节点</h2>
+<p>语法：parentNode.replaceChild(newChild, oldChild);</p>
+<ul>
+<li><code>newChild</code>用来替换 <code>oldChild</code>的新节点，如果<code>newChild</code>已经存在于DOM树中，则它会被从原始位置删除。</li>
+</ul>
+<p>【案例：根据数组创建新闻列表.html】</p>
+<p>【案例：微博发布】</p>
+<p>【案例：随机点名案例】</p>
+<p>【案例：百度搜索案例】</p>
+<h1 id="bom">BOM</h1>
+<blockquote>
+<p>BOM（Browser Object Model）：浏览器对象模型，提供了一套操作浏览器功能的工具。</p>
+</blockquote>
+<p> <img src="images\1.png" alt="1"></p>
+<p>BOM包含的内容很多，但是很多东西都不太常用，在BOM中需要大家掌握的就一个东西，那就是<strong><em>定时器</em></strong> 。</p>
+<h2 id="window-">window对象</h2>
+<ol>
+<li>window对象是一个全局对象，也可以说是JavaScript中的顶级对象</li>
+<li>像document、alert()、console.log()这些都是window的属性，其实BOM中基本所有的属性和方法都是属性window的。</li>
+<li>所有定义在全局作用域中的变量、函数都会变成window对象的属性和方法</li>
+<li>window对象下的属性和方法调用的时候可以省略window</li>
+</ol>
+<h3 id="window-onload-">window.onload（掌握）</h3>
+<blockquote>
+<p>window.onload事件会在窗体加载完成后执行，通常我们称之为入口函数。</p>
+</blockquote>
+<pre><code class="lang-javascript">window.onload = function(){
+    //里面的代码会在窗体加载完成后执行。
+    //窗体加载完成包括文档树的加载、还有图片、文件的加载完成。
+}
+</code></pre>
+<p>如果有图片加载，那么代码一定要写到window.onload里面，否则会出现图片没有加载完成，获取到的宽度和高度不对的情况。</p>
+<p>浏览器会对页面的加载做优化，在加载图片的时候，图片的引入会延迟。</p>
+<p>思考：一个页面能不能写两个window.onload?</p>
+<h3 id="window-open-window-close-">window.open与window.close(了解)</h3>
+<blockquote>
+<p>window.open() 打开一个窗口</p>
+</blockquote>
+<pre><code class="lang-javascript">//语法：window.open(url, [name], [features]);
+//参数1：需要载入的url地址
+//参数2：新窗口的名称
+    //_blank:如果指定为_blank,表示在新的窗口打开
+//参数3：窗口的属性，指定窗口的大小
+//返回值：会返回刚刚创建的那个窗口，用于关闭
+//示例：
+var newWin = window.open(&quot;http://www.baidu.com&quot;,&quot;_blank&quot;, &quot;width=300,height=300&quot;);
+
+//参数配置：https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open
+</code></pre>
+<blockquote>
+<p>window.close 关闭窗口</p>
+</blockquote>
+<pre><code class="lang-javascript">newWin.close()；//newWin是刚刚创建的那个窗口
+window.close();//把当前窗口给关闭了
+</code></pre>
+<h2 id="-">延时器与定时器</h2>
+<h3 id="settimeout">setTimeout</h3>
+<blockquote>
+<p>setTimeout延时器可以在延迟时间到期后执行一个指定的函数。</p>
+</blockquote>
+<p>设置延时器</p>
+<pre><code class="lang-javascript">//语法：setTimeOut(callback, time);
+//参数1：回调函数，时间到了就会执行。
+//参数2：延时的时间
+//返回：定时器的id，用于清除
+//示例：
+var timer = setTimeOut(function(){
+    //1秒后将执行的代码。
+}, 1000);
+</code></pre>
+<p>清除延时器</p>
+<pre><code class="lang-javascript">//语法：clearTimeOut(timerId)
+//参数：定时器id
+//示例：
+clearTimeOut(timer);//清除上面定义的定时器
+</code></pre>
+<h3 id="setinterval">setInterval</h3>
+<blockquote>
+<p>setInterval,方法重复调用一个函数或执行一个代码段，在每次调用之间具有固定的时间延迟。定时器除非清除，否则会一直执行下去。</p>
+</blockquote>
+<p>设置定时器</p>
+<pre><code class="lang-javascript">//语法：var intervalID = setInterval(func, delay);
+//参数1：重复执行的函数
+//参数2：每次延迟的毫秒数
+//返回：定时器的id，用于清除
+//示例：
+var timer = setInterval(function(){
+    //重复执行的代码。
+}, 1000);
+</code></pre>
+<p>清除定时器</p>
+<pre><code class="lang-javascript">//语法：clearInterval(intervalID)
+//参数：定时器id
+//示例：
+clearInterval(timer);//清除上面定义的定时器
+</code></pre>
+<h3 id="-">案例</h3>
+<p>【短信验证码案例.html】</p>
+<p>【机械表案例.html】</p>
+<p>【随机点名案例】</p>
+<h2 id="location-">location对象</h2>
+<blockquote>
+<p>location对象也是window的一个属性，location其实对应的就是浏览器中的地址栏。</p>
+</blockquote>
+<h3 id="-">常用属性和方法</h3>
+<blockquote>
+<p>location.href:控制地址栏中的地址</p>
+</blockquote>
+<pre><code class="lang-javascript">location.href = “http://www.baidu.com”;//让页面跳转到百度首页
+</code></pre>
+<blockquote>
+<p>location.reload()：让页面重新加载</p>
+</blockquote>
+<pre><code class="lang-javascript">location.reload(true);//强制刷新，相当于ctrl+F5
+location.reload(false);//刷新，相当于F5
+</code></pre>
+<blockquote>
+<p>location的其他属性</p>
+</blockquote>
+<pre><code class="lang-javascript">console.log(window.location.hash);//哈希值 其实就是锚点
+console.log(window.location.host);//服务器 服务器名+端口号
+console.log(window.location.hostname);//服务器名
+console.log(window.location.pathname);//路径名
+console.log(window.location.port);//端口
+console.log(window.location.protocol);//协议
+console.log(window.location.search);//参数
+</code></pre>
+<p>【案例：定时跳转.html】</p>
+<h2 id="-">其他对象</h2>
+<blockquote>
+<p>window.navigator的一些属性可以获取客户端的一些信息</p>
+</blockquote>
+<pre><code class="lang-javascript">//navigator.userAgent：浏览器版本
+</code></pre>
+<blockquote>
+<p>history对象表示页面的历史</p>
+</blockquote>
+<pre><code class="lang-javascript">//后退：
+history.back();
+history.go(-1);
+//前进：
+history.forward();
+history.go(1);
+</code></pre>
+<blockquote>
+<p>screen对象</p>
+</blockquote>
+<pre><code class="lang-javascript">console.log(screen.width);//屏幕的宽度 
+console.log(screen.height);//屏幕的高度
+console.log(screen.availWidth);//浏览器可占用的宽度
+console.log(screen.availHeight);//浏览器可占用的高度
+</code></pre>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

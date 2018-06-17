@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    fieldset, img, input, button {
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline-style: none;
+    }
+
+    ul, ol {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #box {
+      width: 405px;
+      margin: 200px auto;
+      position: relative;
+    }
+
+    #txtSearch {
+      float: left;
+      width: 300px;
+      height: 32px;
+      padding-left: 4px;
+      border: 1px solid #b6b6b6;
+      border-right: 0;
+    }
+
+    #btnSearch {
+      float: left;
+      width: 100px;
+      height: 34px;
+      font: 400 14px/34px "microsoft yahei";
+      color: white;
+      background: #3385ff;
+      cursor: pointer;
+    }
+
+    #btnSearch:hover {
+      background: #317ef3;
+    }
+
+    #pop {
+      width: 303px;
+      border: 1px solid #ccc;
+      padding: 0px;
+      position: absolute;
+      top: 34px;
+    }
+
+    #pop ul li {
+      padding-left: 5px;
+    }
+
+    #pop ul li:hover {
+      background-color: #CCC;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <input type="text" id="txtSearch">
+  <input type="button" value="百度一下" id="btnSearch">
+  <!--<div id="pop">-->
+  <!--<ul>-->
+  <!--<li>哈哈</li>-->
+  <!--<li>哈哈</li>-->
+  <!--<li>哈哈</li>-->
+  <!--<li>哈哈</li>-->
+  <!--</ul>-->
+  <!--</div>-->
+</div>
+<script>
+
+
+  //模拟了百度的数据库
+  var datas = ["a", "abc", "abbbb", "abxxxx", "xyz", "abcdef", "abzzzz", "axxx", "aaabbb", "中", "中国", "中国人", "我是中国人"];
+
+
+  //1. 根据输入的内容，去datas数组中进行筛选，得到一个数组，所有包含了输入内容的字符串。
+  //2. 根据筛选出来的数组，动态的创建结构
+  // 2.1 创建div
+  // 2.2 创建ul
+  // 2.3 创建li（多个）
+
+
+  //1. 数据筛选
+  //1.1 给input框注册keyup事件
+  //1.2 获取到用户输入的内容
+  //1.3 遍历datas，把所有包含用户输入的字符串存储到一个新的数组
+  var txtSearch = document.querySelector("#txtSearch"); //获取输入框
+  var box = document.querySelector("#box");//获取box
+  txtSearch.onkeyup = function () {
+    //一进来，判断pop是否存在，如果存在，删除即可。
+    var pop = document.querySelector("#pop");
+    if (pop) {
+      //如果pop存在，删除pop即可
+      box.removeChild(pop);
+    }
+
+
+    var arr = [];
+    var content = txtSearch.value;//用户输入的内容
+    for (var i = 0; i < datas.length; i++) {
+      if (datas[i].indexOf(content) != -1) {
+        arr.push(datas[i]);
+      }
+    }
+
+    //得到了最终需要显示的数据
+    //console.log(arr);
+    //如果arr中没有数据，说明没有需要显示的，不需要生成div和ul
+    if (arr.length == 0 || content == "") {
+      return;
+    }
+
+
+    //2. 根据筛选出来的数组，动态的创建结构
+    // 2.1 创建div，设置一个id，添加到box
+    // 2.2 创建ul,添加到div
+    // 2.3 创建li（多个）,设置内容，添加到ul
+    var div = document.createElement("div");
+    div.id = "pop";
+    box.appendChild(div);
+
+    var ul = document.createElement("ul");
+    div.appendChild(ul);
+
+    //创建li
+    for (var i = 0; i < arr.length; i++) {
+      var li = document.createElement("li");
+      li.innerText = arr[i];
+      ul.appendChild(li);
+    }
+  }
+
+</script>
+
+
+</body>
+</html>

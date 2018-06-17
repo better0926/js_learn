@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //往body中增加100个按钮
+
+
+  //禁止在一个for循环中大量的使用innerHTML,以为innerHTML会把之前的内容覆盖
+  var start = new Date();
+
+  for(var i = 0 ; i < 5000; i++) {
+    var button = document.createElement("button");
+    button.innerText = "哈哈啊哈";
+    document.body.appendChild(button);
+  }
+
+  var end = new Date();
+  console.log(end - start);
+
+
+</script>
+
+</body>
+</html>

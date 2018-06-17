@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    fieldset, img, input, button {
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline-style: none;
+    }
+
+    ul, ol {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #box {
+      width: 405px;
+      margin: 200px auto;
+      position: relative;
+    }
+
+    #txtSearch {
+      float: left;
+      width: 300px;
+      height: 32px;
+      padding-left: 4px;
+      border: 1px solid #b6b6b6;
+      border-right: 0;
+    }
+
+    #btnSearch {
+      float: left;
+      width: 100px;
+      height: 34px;
+      font: 400 14px/34px "microsoft yahei";
+      color: white;
+      background: #3385ff;
+      cursor: pointer;
+    }
+
+    #btnSearch:hover {
+      background: #317ef3;
+    }
+
+    #pop {
+      width: 303px;
+      border: 1px solid #ccc;
+      padding: 0px;
+      position: absolute;
+      top: 34px;
+    }
+
+    #pop ul li {
+      padding-left: 5px;
+    }
+
+    #pop ul li:hover {
+      background-color: #CCC;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <input type="text" id="txtSearch">
+  <input type="button" value="百度一下" id="btnSearch">
+
+
+  <!--<div id="pop">-->
+    <!--<ul>-->
+      <!--<li>百度</li>-->
+      <!--<li>百度</li>-->
+      <!--<li>百度</li>-->
+      <!--<li>百度</li>-->
+      <!--<li>百度</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+
+
+</div>
+<script>
+
+
+  //模拟了百度的数据库
+  var datas = ["a", "abc", "abbbb", "abxxxx", "xyz", "abcdef", "abzzzz", "axxx", "aaabbb", "中", "中国", "中国人", "我是中国人", "abccccc"];
+
+
+  //思路：
+  //1. 给txtSearch注册keyupu事件
+  //2. 根据内容得到一个新的数组
+  var txtSearch = document.querySelector("#txtSearch");
+  var box = document.querySelector("#box");
+
+  txtSearch.onkeyup = function () {
+    var newArr = [];
+    var content = txtSearch.value;
+    //判断数组的字符串是否包含content
+    for (var i = 0; i < datas.length; i++) {
+      if (datas[i].indexOf(content) != -1) {
+        newArr.push(datas[i]);
+      }
+    }
+
+    console.log(newArr);
+
+    //根据newArr动态创建结果  div ul li
+    //1. 先创建div，给div添加id属性，把div添加到box中
+    //2. 创建ul，添加到div
+    //3. 遍历newArr, 创建li，给li设置内容，把li添加到ul中
+
+    var div = document.createElement("div");
+    div.id = "pop";//设置id
+    box.appendChild(div);
+
+    var ul = document.createElement("ul");
+    div.appendChild(ul);
+
+    for(var i = 0; i < newArr.length; i++) {
+      //创建li
+      var li = document.createElement("li");
+      li.innerText = newArr[i];
+      ul.appendChild(li);
+    }
+
+  }
+
+</script>
+
+
+</body>
+</html>

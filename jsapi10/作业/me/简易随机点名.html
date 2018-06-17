@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		input {
+			position: absolute;
+			left: 50%;
+			width: 100px;
+			margin-left: -20px;
+			top: 10px;
+		}
+
+		ul {
+			width: 816px;
+			list-style: none;
+			margin: 40px auto;
+		}
+
+		ul li {
+			width: 100px;
+			height: 40px;
+			border: 1px solid #cc9258;
+			text-align: center;
+			line-height: 42px;
+			float: left;
+		}
+
+		.current {
+			background-color: hotpink;
+		}
+	</style>
+</head>
+<body>
+<input type="button" value="随机点名" id="btn">
+<ul id="four">
+
+</ul>
+<script>
+	var arr = ["张三", "李四", "王五", "赵六", "田七", "王八",
+		"张三", "李四", "王五", "赵六", "田七", "王八",
+		"张三", "李四", "王五", "赵六", "田七", "王八",
+		"张三", "李四", "王五", "赵六", "田七", "王八",
+		"张三", "李四", "王五", "赵六", "田七", "王八",
+		"张三","李四","王五","赵六","田七","王八",
+		"张三","李四","王五","赵六","田七","王八",
+		"张三","李四","王五","赵六","田七","王八",
+		"张三","李四","王五","赵六","田七","王八",
+		"张三","李四","王五","赵六","田七","王八",
+		"张三","李四","王五","赵六","田七","王八"];
+	var btn = document.querySelector("#btn");
+	var four = document.querySelector("#four");
+	//创建li插入到ul中
+	//把arr每一个数据添加到li中
+	for (var i = 0; i < arr.length; i++){
+		var li = document.createElement("li");
+		//console.log(li);
+		li.innerText = arr[i];
+		four.appendChild(li);
+	}
+	btn.onclick = function () {
+		//循环lis。并且给当前的lis添加一个类，其他的移除类；
+		var lis = four.children;
+		//console.log(lis);
+		for (var j =0; j < lis.length; j++){
+			//生成一个随机数
+			var random = parseInt(Math.random() * lis.length);
+			//console.log(random);
+			for (var i = 0 ; i < lis.length; i++){
+				lis[i].className = "";
+			}
+			lis[random].className = "current";
+		}
+	}
+</script>
+</body>
+</html>

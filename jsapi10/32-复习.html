@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //查找节点：  父节点：parentNode  子节点：children firstElementChild lastElementChild
+  //兄弟：previousElementSibling  nextElementSibling
+
+
+  //节点的操作
+  //克隆节点：
+  // node.cloneNode(false):浅复制，只会复制标签
+  // cloneNode(true):深复制
+  // 克隆出来的节点在内存中，还需要添加到某个元素上。
+
+  //添加节点
+  //parent.appendChild(child):  把child添加到parent的子元素的最后面
+  //parent.insertBefore(newChild, refChild): 把newChild添加到refChild的前面
+    //添加到最后面：  parent.insertBefore(newChild, null)
+    //添加到最前面   parent.insertBefore(newChild, parent.firstElementChild)
+
+  //创建节点
+    //document.write
+    //innerHTML
+    //document.createElement("div");
+
+  //删除节点
+    //parent.removeChild(child): parent删除child节点
+
+  //替换节点:
+    //parent.replaceChild(newChild, oldChild): 把oldChild删除，增加newChild
+
+  //练习： 祝愿墙   百度新闻  微博发布  百度搜索
+
+
+  //BOM
+  // window对象：
+      //1. window是顶级对象，我们常用的东西其实都是window的
+      //2. 定义的全局变量，函数也是window的
+      //3. window可以省略不写。
+      //4. 在函数内部的this是window
+  //window.onload = function(){}   当页面加载完成，包括图片和文件都加载完成。
+
+  //window.open()  window.close()
+
+  //延时器  定时器
+  //var timeId = setTimeout(function(){}, 1000);  设置延时器，，让function延迟一段时间才执行
+  //clearTimeout(timeId):清除
+
+  //setInterval(function(){}. 1000)；
+  //clearInterval(timeId)
+
+  //1. 电子表  2. 机械表  3. 短信注册 4. 页面跳转
+
+
+  //其他对象
+  //location: 地址栏   location.href  location.reload(true)  location.search
+
+
+  //navigator:  navigator.userAgent
+
+  //history:   history.go(1)  == history.forward()  history.go(-1) = hisotry.back()
+
+  //screen：获取屏幕的分辨率 screen.width  screen.height
+
+
+</script>
+
+</body>
+</html>

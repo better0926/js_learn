@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .clock {
+      width: 600px;
+      height: 600px;
+      margin: 100px auto;
+      background: url(images/clock.jpg) no-repeat;
+      position: relative;
+    }
+    
+    .clock div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(images/hour.png) no-repeat center center;
+    }
+    
+    #m {
+      background-image: url(images/minute.png);
+    }
+    
+    #s {
+      background-image: url(images/second.png);
+    }
+  
+  
+  </style>
+</head>
+<body>
+<div class="clock">
+  <div id="h"></div>
+  <div id="m"></div>
+  <div id="s"></div>
+</div>
+
+<script>
+
+  //获取到当前的时间的时，分，秒
+  var h = document.getElementById("h");
+  var m = document.getElementById("m");
+  var s = document.getElementById("s");
+
+  function setTime() {
+    var date = new Date();
+
+    var milliSecond = date.getMilliseconds();
+    var second = date.getSeconds() + milliSecond/1000;
+    var minute = date.getMinutes() + second/60;
+    var hour = date.getHours() + minute/60;
+    console.log(hour, minute, second)
+
+    //console.log(hour, minute, second);
+
+    //12小时 = 360deg   1小时 = 30deg
+    //让时针旋转  hour * 30,
+    h.style.transform = "rotate("+ hour * 30 +"deg)";
+
+    //设置分钟  60分钟 = 360deg   1分钟 = 6度
+    m.style.transform = "rotate("+ minute * 6 +"deg)";
+
+    //设置秒钟  60秒 = 360deg  1秒钟 = 6度
+    s.style.transform = "rotate("+ second * 6 +"deg)";
+  }
+  setTime();
+
+  //开启一个定时器，每1秒钟执行一次setTime
+
+  //动画效果：1秒钟分成25份，会有动画效果，，，，，如果60次以上，眼睛就分辨不出来了
+  setInterval(setTime, 15);
+</script>
+
+
+</body>
+</html>

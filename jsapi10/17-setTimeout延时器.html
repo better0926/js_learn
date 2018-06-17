@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>开启</button>
+<button>关闭</button>
+<script>
+
+
+  var btn1 = document.querySelectorAll("button")[0];
+  var btn2 = document.querySelectorAll("button")[1];
+
+  var timeId;
+
+  btn1.onclick = function () {
+
+    //设置了延时器，能让一个函数延迟一段时间才执行。
+    //第一个参数：函数的名字
+    //第二个参数：延迟的时间,单位毫秒
+    //返回一个唯一的number类型的数值，定时器的id
+    timeId = setTimeout(function() {
+      console.log("boom shakalaka")
+    }, 5000);
+    console.log(timeId)
+  }
+
+  btn2.onclick = function () {
+    //清除延时器
+    clearTimeout(timeId);
+  }
+
+
+</script>
+
+</body>
+</html>

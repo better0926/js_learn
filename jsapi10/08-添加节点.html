@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul>
+  <li>张三</li>
+  <li>李四</li>
+  <li>王五</li>
+  <li>赵六</li>
+</ul>
+
+<script>
+
+  //替换节点
+  var li = document.createElement("li");
+  li.innerText = "田七";
+  var ul = document.querySelector("ul");
+
+  //parent.replaceChild(newChild, oldChild);
+  //把李四删除，在把li添加到原先李四的位置
+  ul.replaceChild(li, ul.children[1]);
+
+
+
+
+
+//  //需求：创建一个 田七的元素，添加到赵六的后面
+//  var li = document.createElement("li");
+//  li.innerText = "田七";
+//
+//  var ul = document.querySelector("ul");
+//  var ww = document.getElementById("ww");
+//
+//  //把li添加到ul的最后面
+//  //ul.appendChild(li);
+//
+//  //把newChild添加到refChild的前面
+//  //parent.inserBefore(newChild, refChild);
+//  //如果refchild,传递了一个null
+//  ul.insertBefore(li, ul.firstElementChild);
+
+</script>
+
+</body>
+</html>

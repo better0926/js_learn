@@ -1,0 +1,47 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #box {
+      width: 400px;
+      height: 50px;
+      background-color: #acffc2;
+      border: 5px solid black;
+      margin: 100px auto;
+      font: bold 24px/50px 楷体;
+      text-align: center;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+
+
+  //把时间显示到box中
+  var box = document.querySelector("#box");
+
+  function setTime() {
+    var date = new Date();
+    box.innerText = date.toLocaleString();
+  }
+
+  setTime();//手动调用一次
+
+  setInterval(setTime, 1000);
+
+
+
+  //倒计时案例
+
+
+</script>
+</body>
+</html>

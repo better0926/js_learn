@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+
+
+    //作用：等待页面加载完成后，才会开始执行。会等待页面所有的资源都加载完成，才会执行。
+    //    window.onload = function () {
+    //      var box = document.querySelector("#box");
+    //      console.log(box);
+    //    }
+
+  </script>
+</head>
+<body>
+
+<div id="box"></div>
+<img id="img" src="15.jpg" alt="">
+
+<script>
+
+  //on:当..时候  load:加载
+  //加载完成的时候，会触发这个onload事件
+  //  window.onload = function () {
+  //    console.log("哈哈");
+  //  }
+
+
+  //等页面加载完成，所有的资源都加载完成
+  window.onload = function () {
+    var img = document.querySelector("#img");
+    console.log(img.width);
+    console.log(img.height);
+  }
+
+
+
+</script>
+
+</body>
+</html>

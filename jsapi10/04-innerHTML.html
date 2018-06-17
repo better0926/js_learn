@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<button>按钮</button>
+<div></div>
+
+<script>
+
+
+  //点击按钮的时候，往div中增加一个  按钮
+  var btn = document.querySelector("button");
+  var div = document.querySelector("div");
+
+
+  //innerHTML的实质  div.innerHTML = "<button>哈哈哈</button>";
+  //    div.innerHTML = "<button>哈哈哈</button><button>哈哈哈</button>"
+  btn.onclick = function () {
+    div.innerHTML = div.innerHTML +  "<button>哈哈哈</button>";
+  }
+
+</script>
+
+</body>
+</html>
