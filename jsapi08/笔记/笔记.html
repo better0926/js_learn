@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">设置活动模版</h1>
+<blockquote>
+<p>活动模版类似于快捷键，对于常用的操作，可以设置活动模板加快书写代码的速度。</p>
+</blockquote>
+<pre><code class="lang-javascript">文件==&gt;设置==&gt;编辑器==&gt;活动模版==&gt;JavaScript==&gt;绿色的加号
+$END$ 表示结束时光标的位置。
+</code></pre>
+<h1 id="-">属性操作</h1>
+<blockquote>
+<p>学习目标：学会如果操作DOM对象的属性。</p>
+</blockquote>
+<h2 id="-">普通标签属性</h2>
+<blockquote>
+<p>我们知道，在标签中存在的属性，在DOM对象中同样存在着对应的属性，只要修改了标签的属性或者DOM对象的属性，两边都会变化。常见的属性有：src、title、src、href、className、id等</p>
+</blockquote>
+<p>【案例：二维码案例】</p>
+<p>鼠标经过事件与鼠标离开事件</p>
+<pre><code class="lang-javascript">onmouseover:当鼠标经过时触发
+onmouseout:当鼠标离开时触发    
+</code></pre>
+<h2 id="-">表单属性操作</h2>
+<blockquote>
+<p>常见的表单属性有：disabled、type、value、checked、selected</p>
+</blockquote>
+<p>对于disabled、checked、selected三个属性来说，比较特殊。</p>
+<pre><code class="lang-javascript">在标签中，只要指定了disabled属性，无论有值没值，都代表这个input是被禁用的。注意，标签的disabled仅仅是默认值。
+在DOM对象中，disabled的属性是一个布尔类型的属性，值只有true或者false
+</code></pre>
+<p>获得焦点与失去焦点案例</p>
+<pre><code class="lang-javascript">onfocus:获得焦点时触发
+onblur:失去焦点时触发    
+</code></pre>
+<p>【案例：禁用文本框.html】</p>
+<p>【案例：禁用多个文本框.html】</p>
+<p>【案例：仿京东搜索文本框案例.html】</p>
+<p>【案例：设置下拉框选中.html】</p>
+<p>【案例：表格全选案例.html】</p>
+<h2 id="-">标签的自定义属性</h2>
+<blockquote>
+<p>我们之前讨论的属性，都是HTML规范中，标签本来就有的属性，对于标签自定义的一些属性，比较特殊。</p>
+</blockquote>
+<p>在html页面中，定义一个自定义属性</p>
+<pre><code class="lang-html">&lt;div id=&quot;box&quot; aa=&quot;bb&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>在对应的DOM对象中是不存在的，在DOM对象中只会存在固定的那些属性。</p>
+<pre><code class="lang-javascript">var box = document.getElementById(&quot;box&quot;);
+console.log(box.aa);//undefined
+</code></pre>
+<h3 id="attribute-">attribute方法</h3>
+<blockquote>
+<p>attribute系列方法用于设置标签的属性，不管是自定义的还是固有的属性。</p>
+</blockquote>
+<pre><code>//获取标签的属性
+box.getAttribute(name);
+//设置标签的属性
+box.setAttribute(name, value);
+//移除标签的属性
+box.removeAttribute(name);
+</code></pre><h2 id="tab-">tab栏案例</h2>
+<blockquote>
+<p>排他思想：干掉所有人，复活我自己</p>
+</blockquote>
+<p>【案例：排他思想.html】</p>
+<p>【案例：获取当前元素的索引.html】</p>
+<p>【案例：tab栏切换.html】</p>
+<h2 id="-">标签的内容属性</h2>
+<blockquote>
+<p>innerText和innerHTML属性都是用来获取和设置标签的内容的。但是二者还是有区别的。</p>
+</blockquote>
+<blockquote>
+<p>innerHTML可以用于获取和设置标签的所有内容，包括标签和文本内容</p>
+</blockquote>
+<pre><code>//innerHTML:内部的HTML
+//  获取标签内容的时候，不管标签还是文本，都能获取到
+//  innerHTML设置内容的时候，覆盖原来内容，标签也能生效，浏览器能解析这个标签。
+</code></pre><blockquote>
+<p>innerText可以用于获取和设置标签的文本内容，会丢弃掉标签</p>
+</blockquote>
+<pre><code>//innerText:内部 文本
+//  获取标签内容的时候，只会获取文本，标签扔掉了
+//  设置标签内容的时候，覆盖原来内容，对标签进行转义（目的：把标签直接当文本来用）
+</code></pre><p>二者的区别：</p>
+<ul>
+<li>innerHTML能够识别标签，标签能够生效</li>
+<li>innerText只识别文本，标签会被转义。（可以防止xss攻击）</li>
+</ul>
+<blockquote>
+<p>浏览器兼容性：指网页在各种浏览器上的显示效果不一致。或者是一些属性和方法在低版本的浏览器中不支持。</p>
+</blockquote>
+<pre><code>//1. innerText是IE提出来的属性，因此低版本的火狐浏览器不支持这个属性。
+//2. 火狐有一个textContent属性，效果跟innerText一样，但是IE678不支持这个属性
+</code></pre><p>书写innerText的兼容性代码</p>
+<pre><code class="lang-javascript">function getInnerText(element){
+  if(typeof element.innerText === &quot;string&quot;){
+    return element.innerText;
+  } else {
+    return element.textContent;
+  }
+}
+</code></pre>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

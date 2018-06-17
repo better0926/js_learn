@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--attribute:属性-->
+<!--
+
+  //这三个方法，只要是标签的属性，不管是固有的还是自定义的，只要是写在标签上的，都可以获取
+  getAttribute(name)//获取标签的属性
+  setAttribute(name, value)//设置标签的属性
+  removeAttribute(name)//移除标签的属性
+ -->
+
+<div id="box" class="demo" title="哈哈" aa="bb"></div>
+
+<script>
+
+  var box = document.getElementById("box");
+  //参数：属性名
+  //返回值：属性值
+  //var result = box.getAttribute("class");
+  //console.log(result);
+
+  //参数1：属性名
+  //参数2：属性值
+  //box.setAttribute("aa", "cc");
+
+
+  box.removeAttribute("aa");
+
+</script>
+
+</body>
+</html>

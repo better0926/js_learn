@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--
+  onclick:点击的时候
+  onmouseover:鼠标经过的时候
+  onmouseout:鼠标离开的时候
+
+  onfocus: 当获得焦点的时候。
+  onblur:  当失去焦点的时候
+-->
+
+<input type="text" id="txt" value="蚕丝被">
+
+
+<script>
+  var txt = document.getElementById("txt");
+  //onfocus
+  //获得焦点的时候，要干什么?
+  //判断，如果value值是默认值，清空内容
+  txt.onfocus = function() {
+    if(txt.value == "蚕丝被") {
+      txt.value = "";
+    }
+  }
+
+  //失去焦点，判断如果此时value没有值，恢复成默认值
+  txt.onblur = function () {
+    if(txt.value == "") {
+      txt.value = "蚕丝被";
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

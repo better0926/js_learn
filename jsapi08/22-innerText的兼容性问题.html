@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--兼容性问题： 有些浏览器支持，有些浏览器不支持-->
+
+<div id="box">哈哈</div>
+
+<script>
+
+  //innerHTML:所有浏览器都支持
+  //innerText:是IE提出来，IE浏览器是支持这个属性,  低版本的火狐不支持
+  //textContent: 火狐推出来，低版本的IE678不支持
+
+  //所有的浏览器基本都支持innerText和textContent
+  var box = document.getElementById("box");
+  //console.log(box.innerHTML);
+  //console.log(box.innerText);
+  //console.log(box.textContent);
+
+  //思路：以前的时候，怎么办？
+  //如何处理兼容性问题？ you can you up
+  //先使用innerText去获取值，如果能获取到，直接用，如果获取不到，换成textContent
+
+  function getInnerText(element) {
+    if(typeof element.innerText === 'string'){
+      return element.innerText;
+    }else {
+      return element.textContent;
+    }
+  }
+
+  console.log(getInnerText(box));
+
+  //  var result;
+//  if (typeof box.innerText == 'string') {
+//    result = box.innerText;
+//  } else {
+//    result = box.textContent;
+//  }
+//  console.log(result);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+<script>
+  //第一种方式
+  var btns = document.getElementsByTagName("button");
+  //给所有的按钮注册事件，并且设置一个下标
+  for(var i = 0; i < btns.length; i++) {
+    //存下标
+    btns[i].aa = i;
+    btns[i].onclick = function () {
+      console.log(this.aa);
+    }
+  }
+
+
+  //第二种
+  //点击按钮，打印当前按钮的索引
+  //  var btns = document.getElementsByTagName("button");
+    //  for(var i = 0; i < btns.length; i++) {
+    //    //给每一个btn设置一个index属性
+    //    //存一个下标
+    //    btns[i].setAttribute("index", i);
+    //    //循环btns，给每一个btn注册事件
+    //    btns[i].onclick = function () {
+    //      //点击的时候执行
+    //      console.log(this.getAttribute("index"));
+    //    }
+    //  }
+
+</script>
+
+</body>
+</html>

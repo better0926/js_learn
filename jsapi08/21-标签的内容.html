@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="box">
+</div>
+
+<script>
+
+  //innerText:内部的文本
+  //innerHTML:内部的html
+
+
+  //获取的时候，innerHTML会获取到内部的标签和内容，，，innerText：只会获取文本
+  //var box = document.getElementById("box");
+  //console.log(box.innerHTML);
+  //console.log(box.innerText);
+
+
+  //设置的时候：如果是innerHTML,标签会生效，，如果使用innerText:标签不会生效，innerText对标签转义了。
+  //innerText和innerHTML设置的额时候，都会覆盖原来的内容
+  //box.innerHTML = "<h3>呵呵</h3>";
+  //box.innerText = "<h3>呵呵</h3>";
+
+
+  //innerHTML和innerText用哪个？
+  //innerHTML:能够识别html标签，标签能生效
+  //innerText:不识别标签，对标签转义，当成文本
+
+  //设置标签的内容，推荐使用 innerText，  防止xss攻击，保证标签不生效
+
+  var box = document.getElementById("box");
+  box.innerText = "<a href='http://www.cc9258.com'>点击此处，观看大片</a>";
+
+
+</script>
+
+</body>
+</html>

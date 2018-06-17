@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="翻牌子" id="btn">
+<select>
+  <option value="娟娟">娟娟</option>
+  <option value="琴琴">琴琴</option>
+  <option value="琴琴2">琴琴2</option>
+  <option value="陈玲钰">陈玲钰</option>
+  <option value="张瑞雪">张瑞雪</option>
+  <option value="孟腾腾" id="tt">孟腾腾</option>
+</select>
+
+<script>
+
+  //思路：
+  //1. 找到按钮，注册点击事件
+  //2. 找到所有的option，随机一个option,设置他的selected的值为true
+
+
+  var btn = document.getElementById("btn");
+  var options = document.getElementsByTagName("option");
+
+  //给btn注册点击事件
+  btn.onclick = function () {
+    //随机一个option
+    var random = parseInt(Math.random() * options.length);
+    options[random].selected = true;
+  }
+
+
+</script>
+
+</body>
+</html>

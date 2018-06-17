@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--标签中，使用disabled属性就能禁用文本框, disalbed只要有，就表示禁用-->
+<!--在js中，怎么禁用这个文本框-->
+<input type="button" value="禁用" id="btn">
+<input type="text" id="txt">
+
+<script>
+
+  var btn = document.getElementById("btn");
+  var txt = document.getElementById("txt");
+
+
+  //布尔类型的属性：  disabled selected checked: 因为在js中，他们的值只有true或者是false
+  btn.onclick = function () {
+    //禁用txt
+    txt.disabled = true;
+    //禁用按钮
+    this.disabled = true;
+  }
+
+</script>
+</body>
+</html>
