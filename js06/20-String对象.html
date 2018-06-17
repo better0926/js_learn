@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  var str = "abcdefg";
+  //字符串可以遍历
+  //  for(var i = 0; i < str.length; i++) {
+  //    console.log(str[i]);
+  //  }
+
+  //1. 字符串可以遍历   字符串可以通过下标操作
+  //console.log(str[1]);
+
+
+  //2. 字符串的方法
+  //indexOf和lastIndexOf
+  //var str = "abcdefgaaa";
+  //console.log(str.indexOf("x"));
+
+  //trim(): 可以把字符串两边的空格去掉
+  //所有的字符串操作，原来的字符串都不会发生改变，都需要返回值
+  //var str = "  aa bb  bb ccc   ";
+  //console.log("---"+str.trim());
+
+
+  //toUpperCase:将所有的字符串变成大写
+  //toLowerCase():变成小写
+  //  var str = "Hello World";
+  //  console.log(str.toUpperCase());
+  //  console.log(str.toLowerCase());
+
+
+  //字符串拼接
+  //concat,没用
+  //var str = "abc";
+  //var str2 = "def";
+  //console.log(str + str2);
+
+  //字符串截取
+  //slice
+  //  var str = "abcdefg";
+  //  //slice()
+  //  //slice(2);
+  //  //slice(2, 4)
+  //  console.log(str.slice(2, 4));
+  //  //substring
+  //  console.log( str.substring(2, 4) );
+  //  //substr
+  //  console.log( str.substr(2, 2) );
+
+
+  //  //join  [a,b,c,d]
+  //  var str = "a-b-c-d";
+  //  //split:把一个字符串切割成一个数组
+  //  //join:把数组拼接成字符串
+  //  //参数：分割符
+  //
+  //  var arr = str.split("-");
+  //  console.log(arr);
+
+
+  //replace() 替换
+  //只会查找第一个进行替换
+  var str = "aa bb cc dd bb";
+  //bb换成ee
+  str = str.replace("aa", "ee");
+  console.log(str);
+
+
+
+
+  //indexOf
+  //lastIndexOf
+  //trim
+  //toUpperCase
+  //toLowerCase
+  //concat
+  //slice
+  //substring
+  //substr
+  //split
+  //replace
+
+
+
+</script>
+
+</body>
+</html>

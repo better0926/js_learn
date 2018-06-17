@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 截取字符串"我爱中华人民共和国"，中的"中华"
+  //var str = "我爱中华人民共和国";
+  //var newStr = str.slice(2, 4);
+  //console.log(newStr);,
+
+
+  //2. "abcoefoxyozzopp"查找字符串中所有o出现的位置
+  //  var str = "abcoefoxyozzopp";
+  //  for(var i = 0; i < str.length; i++) {
+  //    if(str[i] == "o"){
+  //      console.log(i);
+  //    }
+  //  }
+
+
+  //3. 把字符串中所有的o替换成!
+  var str = "abcoefoxyozzopp";
+  //console.log(str.replace(/o/g, "!"));
+  //var arr = str.split("o");
+  //str = arr.join("!");
+  //console.log(str);
+
+
+  //4. 把一个字符串中所有的空格全部去掉
+  //  var str = "  ab  coe   fo  xyo   zzo  p p  ";
+  //  str = str.replace(/ /g, "");
+  //  console.log(str);
+
+  //5. 统计一个字符串中每个字符出现的次数
+  var str = "abcoefoxyozzopp";
+  var obj = {};
+  for (var i = 0; i < str.length;i++){
+      if (str[i] in obj){
+          obj[str[i]]++;
+      }else {
+          obj[str[i]] = 1;
+      }
+  }
+  console.log(obj)
+
+
+
+
+
+  //5. 统计一个字符串中每个字符出现的次数
+  var str = "abcoefoxyozzopp";
+  var obj = {};
+
+  //去重：效率最高
+  for (var i = 0; i < str.length; i++) {
+    //判断str[i]在obj中是否存在
+    if (str[i] in obj) {
+      obj[str[i]]++;
+    } else {
+      obj[str[i]] = 1;
+    }
+  }
+
+  console.log(obj);
+
+
+  var arr = [];
+  for(var k in obj) {
+    arr.push(k);
+  }
+
+  console.log(arr);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">内置对象</h1>
+<blockquote>
+<p>JS内置对象就是指Javascript自带的一些对象，供开发者使用，这些对象提供了一些常用的的功能。</p>
+<p>常见的内置对象有Math、String、Array、Date等</p>
+</blockquote>
+<p>内置对象有很多，我们主要是记下这些内置对象的用法即可。但是同学们也不可能一下子记住这么多的方法，因此当同学们忘了某个方法该如何使用的时候，可以通过以下方式查看。</p>
+<ul>
+<li>跳转到定义<code>ctrl+左键</code></li>
+<li><a href="https://developer.mozilla.org/zh-CN/">火狐开发者网站MDN</a></li>
+<li><a href="http://www.w3school.com.cn/jsref/">W3School网站</a></li>
+<li>离线文档</li>
+<li>笔记</li>
+</ul>
+<h2 id="-">如何学习一个方法？</h2>
+<ol>
+<li>方法的功能</li>
+<li>参数的意义和<strong>类型</strong></li>
+<li>返回值意义和<strong>类型</strong></li>
+<li>demo进行测试</li>
+</ol>
+<h2 id="math-">Math对象</h2>
+<blockquote>
+<p>Math对象中封装很多与数学相关的属性和方法。</p>
+</blockquote>
+<ul>
+<li><p>属性PI</p>
+<p><code>Math.PI</code></p>
+</li>
+<li><p>最大值/最小值</p>
+<pre><code>Math.max();
+Math.min();
+</code></pre></li>
+<li><p>取整（★）</p>
+<pre><code class="lang-javascript">Math.ceil();//天花板，向上取整
+Math.floor();//地板，向下取整
+Math.round();//四舍五入，如果是.5，则取更大的那个数
+</code></pre>
+</li>
+<li><p>随机数（★）</p>
+<pre><code class="lang-javascript">Math.random();//返回一个[0,1)之间的数，能取到0，取不到1
+</code></pre>
+</li>
+<li><p>绝对值</p>
+<pre><code class="lang-javascript">Math.abs();//求绝对值
+</code></pre>
+</li>
+<li><p>次幂和平方</p>
+<pre><code class="lang-javascript">Math.pow(num, power);//求num的power次方
+Math.sqrt(num);//对num开平方
+</code></pre>
+</li>
+<li><p>练习</p>
+</li>
+</ul>
+<pre><code class="lang-javascript">  随机生成一个rgb颜色？
+  function randomRGB(){
+    var colorA = parseInt( Math.random() * 256 );
+    var colorB = parseInt( Math.random() * 256 );
+    var colorC = parseInt( Math.random() * 256 );
+    return &#39;rgb(&#39;+ colorA + &quot;,&quot; + colorB + &#39;,&#39; + colorC +&#39;)&#39;;
+  }
+</code></pre>
+<h2 id="date-">Date对象</h2>
+<blockquote>
+<p>Date对象用来处理日期和时间</p>
+</blockquote>
+<ul>
+<li><p>创建一个日期对象</p>
+<pre><code class="lang-javascript">var date = new Date();//使用构造函数创建一个当前时间的对象
+var date = new Date(&quot;2017-03-22&quot;);//创建一个指定时间的日期对象
+var date = new Date(&quot;2017-03-22 00:52:34&quot;);//创建一个指定时间的日期对象
+var date = new Date(2017, 2, 22, 0, 52, 34);
+var date = new Date(1523199394644);//参数：毫秒值
+
+Date构造函数的参数
+1. 毫秒数 1498099000356        new Date(1498099000356)
+2. 日期格式字符串  &#39;2015-5-1&#39;     new Date(&#39;2015-5-1&#39;)
+3. 年、月、日……                 var date = new Date(2017, 2, 22, 0, 52, 34);月份从0开始
+</code></pre>
+</li>
+<li><p>日期格式化(了解)</p>
+<pre><code class="lang-javascript">date.toString();//默认的日期格式
+date.toLocalString();//本地风格的日期格式（兼容性）
+date.toDateString();
+date.toLocalDateString();
+date.toTimeString();
+date.toLocalTimeString();
+</code></pre>
+</li>
+<li><p>获取日期的指定部分</p>
+<pre><code class="lang-javascript">getMilliseconds();//获取毫秒值
+getSeconds();//获取秒
+getMinutes();//获取分钟
+getHours();//获取小时
+getDay();//获取星期，0-6    0：星期天
+getDate();//获取日，即当月的第几天
+getMonth();//返回月份，注意从0开始计算，这个地方坑爹，0-11
+getFullYear();//返回4位的年份  如 2016
+
+//思考：
+//封装一个函数，返回当前的时间，格式是：yyyy-MM-dd HH:mm:ss
+</code></pre>
+</li>
+<li><p>时间戳</p>
+<pre><code class="lang-javascript">var date = +new Date();//1970年01月01日00时00分00秒起至现在的总毫秒数
+//思考
+//如何统计一段代码的执行时间？
+</code></pre>
+</li>
+</ul>
+<h2 id="array-">Array对象</h2>
+<blockquote>
+<p>数组对象在javascript中非常的常用</p>
+</blockquote>
+<ul>
+<li><p>数组转换（★）</p>
+<pre><code class="lang-javascript">//语法：array.join(separator)
+//作用：将数组的值拼接成字符串
+
+var arr = [1,2,3,4,5];
+arr.join();//不传参数，默认按【,】进行拼接
+arr.join(&quot;-&quot;);//按【-】进行拼接
+</code></pre>
+</li>
+<li><p>数组的增删操作（★）</p>
+<pre><code class="lang-javascript">array.push();//从后面添加元素，返回新数组的length
+array.pop();//从数组的后面删除元素，返回删除的那个元素
+array.unshift();//从数组的前面的添加元素，返回新数组的长度
+array.shift();//从数组的最前面删除元素，返回删除的那个元素
+
+//练习1
+var arr = [&quot;刘备&quot;];
+//添加数据后变成：[&quot;赵云&quot;,&quot;马超&quot;,&quot;刘备&quot;,&quot;关羽&quot;,&quot;张飞&quot;]
+//删除数据后变成：[&quot;关羽&quot;,&quot;张飞&quot;]
+
+//练习2
+var arr = [&quot;赵云&quot;,&quot;马超&quot;,&quot;刘备&quot;,&quot;关羽&quot;,&quot;张飞&quot;];
+//把数组的最后一个元素变成数组的第一个元素
+//把数组的第一个元素变成数组的最后一个元素
+</code></pre>
+</li>
+<li><p>数组的翻转与排序</p>
+<pre><code class="lang-javascript">array.reverse();//翻转数组
+array.sort();//数组的排序，默认按照字母顺序排序
+
+//sort方法可以传递一个函数作为参数，这个参数用来控制数组如何进行排序
+arr.sort(function(a, b){
+  //如果返回值&gt;0,则交换位置
+  return a - b;
+});
+</code></pre>
+</li>
+</ul>
+<pre><code class="lang-javascript">  //思考：
+  //将[3, 6, 1, 5, 10, 2,11]从小到大排列
+  //将字符串数组按照字符长度从小到大排列
+  //将学生数组按照年龄从小到大排列
+</code></pre>
+<ul>
+<li><p>数组的拼接与截取</p>
+<pre><code class="lang-javascript">//concat：数组合并，不会影响原来的数组，会返回一个新数组。
+var newArray = array.concat(array2);
+
+//slice:数组切分，复制数组的一部分到一个新数组，并返回这个数组
+//原来的数组不受影响，包含begin，不包含end
+var newArray = array.slice(begin, end);
+
+//splice:删除数组或者增加数据元素
+//start:开始位置  deleteCount:删除的个数  items:替换的内容
+array.slice(start, deleteCount, [items]);
+
+//练习：
+var arr = [&quot;赵云&quot;,&quot;马超&quot;,&quot;刘备&quot;,&quot;关羽&quot;,&quot;张飞&quot;];
+//截取[&quot;刘备&quot;,&quot;关羽&quot;]
+//在马超后面增加 马腾
+//删除关羽
+</code></pre>
+</li>
+<li><p>数组查找元素</p>
+<pre><code class="lang-javascript">//indexOf方法用来查找数组中某个元素第一次出现的位置，如果找不到，返回-1
+array.indexOf(search, [fromIndex]);
+
+//astIndexOf()从后面开始查找数组中元素出现位置,如果找不到，返回-1
+array.lastIndexOf(search, [fromIndex]);
+</code></pre>
+</li>
+<li><p>清空数组</p>
+<pre><code class="lang-javascript">//1. array.splice(0,array.leng);//删除数组中所有的元素
+//2．array.length = 0;//直接修改数组的长度
+//3．array = [];//将数组赋值为一个空数组，推荐
+</code></pre>
+</li>
+<li><p>数组综合练习</p>
+<pre><code class="lang-javascript">var arr = [&quot;c&quot;, &quot;a&quot;, &quot;z&quot;, &quot;a&quot;, &quot;x&quot;, &quot;a&quot;, &quot;a&quot;, &quot;z&quot;, &quot;c&quot;, &quot;x&quot;, &quot;a&quot;, &quot;x&quot;]
+//1. 找到数组中第一个a出现的位置
+//2. 找到数组中最后一个a出现的位置
+//3. 找到数组中每一个a出现的位置
+//4. 数组去重，返回一个新数组
+//5. 获取数组中每个元素出现的次数
+</code></pre>
+</li>
+</ul>
+<h2 id="-">基本包装类型</h2>
+<blockquote>
+<p><strong>简单数据类型是没有方法的</strong>。为了方便操作基本数据类型，JavaScript还提供了三个特殊的引用类型：String/Number/Boolean。</p>
+</blockquote>
+<p>基本包装类型：把基本类型包装成复杂类型。</p>
+<pre><code class="lang-javascript">var str = “abc”;
+var result = str.indexOf(“a”);
+//发生了三件事情
+1. 把简单类型转换成复杂类型：var s = new String(str);
+2. 调用包装类型的indexOf方法：var result = s.indexOf(“a”);
+3. 销毁刚刚创建的复杂类型
+</code></pre>
+<h3 id="number-">Number对象</h3>
+<blockquote>
+<p>Number对象是数字的包装类型，数字可以直接使用这些方法</p>
+</blockquote>
+<pre><code class="lang-javascript">toFixed(2)//保留2位小数
+toString();//转换成字符串
+</code></pre>
+<h3 id="boolean-">Boolean对象</h3>
+<blockquote>
+<p>Boolean对象是布尔类型的包装类型。</p>
+</blockquote>
+<pre><code class="lang-javascript">toString( );//转换成字符串
+</code></pre>
+<p><strong>undefined和null没有包装类型，所以调用toString方法会报错</strong></p>
+<h3 id="string-">String对象</h3>
+<blockquote>
+<p>字符串可以看成是一个字符数组（伪数组）。因此字符串也有长度，也可以进行遍历。String对象很多方法的名字和和Array的一样。可以少记很多的单词。</p>
+</blockquote>
+<ul>
+<li><p>查找指定字符串</p>
+<pre><code class="lang-javascript">//indexOf:获取某个字符串第一次出现的位置，如果没有，返回-1
+//lastIndexOf:从后面开始查找第一次出现的位置。如果没有，返回-1
+</code></pre>
+</li>
+<li><p>去除空白</p>
+<pre><code class="lang-javascript">trim();//去除字符串两边的空格，内部空格不会去除
+</code></pre>
+</li>
+<li><p>大小写转换</p>
+</li>
+</ul>
+<pre><code class="lang-javascript">  //toUpperCase：全部转换成大写字母
+  //toLowerCase：全部转换成小写字母
+</code></pre>
+<ul>
+<li><p>字符串拼接与截取</p>
+<pre><code class="lang-javascript">//字符串拼接
+//可以用concat，用法与数组一样，但是字符串拼串我们一般都用+
+
+//字符串截取的方法有很多，记得越多，越混乱，因此就记好用的就行
+//slice ：从start开始，end结束，并且取不到end。
+//substring ：从start开始，end结束，并且取不到end
+//substr ： ：从start开始，截取length个字符。
+</code></pre>
+</li>
+<li><p>字符串切割</p>
+<pre><code class="lang-javascript">//split:将字符串分割成数组（很常用）
+//功能和数组的join正好相反。
+var str = &quot;张三,李四,王五&quot;;
+var arr = str.split(&quot;,&quot;);
+</code></pre>
+</li>
+<li><p>字符串替换</p>
+<pre><code class="lang-javascript">replace(searchValue, replaceValue)
+//参数：searchValue:需要替换的值    replaceValue:用来替换的值
+</code></pre>
+</li>
+<li><p>练习</p>
+<pre><code class="lang-javascript">//1. 截取字符串&quot;我爱中华人民共和国&quot;，中的&quot;中华&quot;
+//2. &quot;abcoefoxyozzopp&quot;查找字符串中所有o出现的位置
+//3. 把字符串中所有的o替换成!
+//4. 把一个字符串中所有的空格全部去掉
+//5. 统计一个字符串中每个字符出现的次数
+</code></pre>
+</li>
+</ul>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

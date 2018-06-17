@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //  Array()
+
+  //数组的方法
+
+  //数组的增加和删除操作
+  //push()  往数组的最后面添加一个或者多个元素，返回数组的长度
+  //pop()   :从数组的最后面删除一个元素,返回删除的那个元素
+  //unshift():在数组的最前面增加一个或者多个元素，返回长度
+  //shift()  在最前面删除一个元素，返回删除的那个元素
+
+
+  //  var arr = ["张飞", "赵云", "曹操", "貂蝉"];
+  //
+  //  //arr.push("大乔", "小乔");
+  //  //var a = arr.pop();
+  //  //console.log(arr);
+  //  //console.log(a);
+  //
+  //  arr.unshift("张辽");
+  //  arr.unshift("吕布");
+  //
+  //  arr.shift();
+  //  console.log(arr);
+
+
+  //练习1
+  //  var arr = ["刘备"];
+  //  //添加数据后变成：["赵云","马超","刘备","关羽","张飞"]
+  //  arr.push("关羽", "张飞");
+  //  arr.unshift("赵云", "马超");
+  //
+  //
+  //  //删除数据后变成：["关羽","张飞"]
+  //  arr.shift();
+  //  arr.shift();
+  //  arr.shift();
+  //
+  //  console.log(arr);
+
+
+  //练习2
+  var arr = ["赵云", "马超", "刘备", "关羽", "张飞"];
+  //把数组的最后一个元素变成数组的第一个元素
+  //var last = arr.pop();
+  //arr.unshift(last);
+
+  //arr.unshift( arr.pop() );
+
+  //把数组的第一个元素变成数组的最后一个元素
+
+  arr.push( arr.shift() );
+  console.log(arr);
+
+</script>
+
+</body>
+</html>

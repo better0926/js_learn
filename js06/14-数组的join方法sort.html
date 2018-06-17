@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //参数：分隔符，字符串,默认是,
+  //返回一个字符串
+  //var arr = ["张飞", "司马懿", "吕蒙", "孙权"];
+
+  //var result = arr.join("飞飞");
+  //console.log(result);
+
+
+  //reverse() 翻转
+  //翻转数组
+  //arr.reverse();
+  //console.log(arr);
+
+
+  //sort() 排序
+  //  var arr = [111, 2, 3, 4, 5, 11, 22, 33];
+  //  arr.sort(function (a, b) {
+  //    //如果a>b的时候，需要返回一个大于0的数，a和b的位置就会交换
+  //    return a - b;
+  //  });
+  //  console.log(arr);
+
+  //思考：
+  //将[3, 6, 1, 5, 10, 2,11]从小到大排列
+  //将字符串数组按照字符长度从小到大排列
+  //将学生数组按照年龄从小到大排列
+  //  var arr = [3, 6, 1, 5, 10, 2, 11];
+  //  arr.sort(function (a, b) {
+  //    return a - b;
+  //  });
+  //  console.log(arr);
+
+  //  var arr = ["a", "ccc", "bb", "dddddd", "eeee"];
+  //  arr.sort(function(a, b) {
+  //    return a.length - b.length;
+  //  });
+  //  console.log(arr);
+
+  var arr = [
+    {name: "zs", age: 15, score: 90},
+    {name: "ls", age: 5, score: 12},
+    {name: "ww", age: 55, score: 9},
+    {name: "zl", age: 28, score: 100},
+    {name: "tq", age: 9, score: 33}
+  ];
+
+  //按成绩排序
+  arr.sort(function (a, b) {
+    return a.age - b.age;
+  });
+  console.log(arr);
+
+
+  //1. join()
+  //作用：把数组的每一项按照分隔符拼接成一个字符串
+  //参数：分隔符，默认是,
+  //返回值 一个字符串
+  var arr = [1, 2, 3, 4];
+  var str = arr.join("-");
+  console.log(str);
+
+
+  //2. reverse()
+  //作用：翻转一个数组
+  var arr = [1, 2, 3, 4];
+  arr.reverse();
+  console.log(arr);
+
+  //3. sort:对数组进行排序
+  var arr = [11, 2, 3, 4];
+  arr.sort(function(a, b){
+    //如果想要a和b换位置，只需要返回正数
+    //a - b    b - a
+    //a.length - b.length
+    //a.age - b.age
+    return a - b;
+  });
+
+</script>
+
+</body>
+</html>

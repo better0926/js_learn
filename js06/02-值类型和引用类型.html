@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //变量在存储简单数据类型的时候，存储的是值本身，所以简单类型也叫值类型
+  //变量在存储复杂数据类型的时候，存储的是地址（引用），所以复杂数据类型也叫引用类型
+
+
+  //内存图
+  var laowang = {
+    name: "老王",
+    hobby: "串门",
+    friends: ["小花", "翠花", "如花"],
+    car: {
+      name: "摩拜",
+      price: 1
+    },
+    sayHi: function () {
+      console.log("大家好，我是" + this.name);
+    }
+  }
+
+  console.log(laowang.friends[0]);
+  console.log(laowang.car.name);
+
+  console.log(hobby);
+
+
+</script>
+
+</body>
+</html>

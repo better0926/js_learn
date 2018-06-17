@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //注意：Date不是一个对象，是一个构造函数
+
+
+  //创建日期
+  //创建了一个日期对象，创建了一个当前的日期
+  //var date = new Date();
+
+  //日期打印的时候，默认转换成字符串
+  //把日期转换成本地化的字符串格式
+  //console.log(date.toLocaleString());
+  //console.log(date.toLocaleDateString());//获取日期
+  //console.log(date.toLocaleTimeString());//获取时间
+
+
+  // 2018年04月18 12:00:00
+
+  // 如何获取日期的每一个部分  年 月 日 时 分 秒
+  var date = new Date();
+  //获取年 date.getFullYear()
+  var y = date.getFullYear();
+  console.log(y);
+
+
+  //获取月  getMonth()   从0-11   表示了1-12
+  var m = date.getMonth() + 1;
+  console.log(m);
+
+
+  //获取日  date.getDate():获取日期
+  //date.getDay():获取星期  0-6  0：星期天
+  var d = date.getDate();
+  console.log(d);
+
+
+  //获取时
+  var h = date.getHours();
+  console.log(h);
+
+  //获取分
+  var m2 = date.getMinutes();
+  console.log(m2);
+
+  //获取秒
+  var s = date.getSeconds();
+  console.log(s);
+
+
+  //思考：  2018-04-10 12:00:00
+
+</script>
+
+</body>
+</html>

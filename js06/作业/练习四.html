@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //已知：hu-cong-cong   转换成  HuCongCong
+
+  var str = 'hu-cong-cong';
+
+  var arr = str.split("-");
+
+  var newStr = "";
+  for(var i = 0; i < arr.length; i++) {
+    newStr = newStr + arr[i][0].toUpperCase() + arr[i].slice(1);
+  }
+
+  console.log(newStr);
+
+</script>
+
+</body>
+</html>

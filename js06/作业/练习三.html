@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  var arr = ["a", "b", "c", "b", "a"]
+  var obj = {};
+
+  for(var i = 0; i < arr.length; i++) {
+    if(arr[i] in obj) {
+      obj[arr[i]] ++;
+    }else {
+      obj[arr[i]] = 1;
+    }
+  }
+
+  var newArr = [];
+  for(var k in obj) {
+    newArr.push(k);
+  }
+
+  console.log(newArr);
+
+</script>
+
+</body>
+</html>

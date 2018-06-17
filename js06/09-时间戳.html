@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //时间戳：1970年1月1日0是0分0秒距离现在的毫秒数
+  //var date = new Date();
+  //当前日期,把日期转换成数值类型
+  //console.log(+date);
+
+  //计算时间差
+  var start = new Date();
+  var sum = 0;
+  for(var i = 0 ; i < 100000000; i++) {
+    sum += i;
+  }
+
+  var end = new Date();
+
+  console.log(end - start);
+
+
+
+
+</script>
+
+</body>
+</html>

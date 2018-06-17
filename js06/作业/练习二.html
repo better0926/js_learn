@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //已知字符串"a-b-c-d"，转换成成a|b|c|d
+  var str = "a-b-c-d";
+
+  //方式一：
+  //str = str.replace(/-/g, "|");
+  //console.log(str);
+
+
+  //方式二
+  str = str.split("-").join("|");
+  console.log(str);
+</script>
+
+</body>
+</html>

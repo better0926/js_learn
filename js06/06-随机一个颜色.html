@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //rgb(255,255,255);
+
+  function getRandomColor() {
+
+    //需要随机3个0-255的随机数
+    var n1 = parseInt( Math.random()*256 );
+    var n2 = parseInt( Math.random()*256 );
+    var n3 = parseInt( Math.random()*256 );
+
+    //rgb(255,255,255)
+    return  "rgb(" + n1 + "," + n2 + "," + n3 + ")" ;
+  }
+
+  var color = getRandomColor();
+
+
+  document.body.style.backgroundColor = color;
+
+
+</script>
+
+</body>
+</html>

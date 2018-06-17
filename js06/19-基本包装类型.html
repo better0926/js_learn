@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //简单数据类型：number string boolean undefined null
+    //简单数据类型：因为只有一个值，没有属性和方法  11 "abc"  true
+  //复杂数据类型：
+    //[] {} : 可以有属性和方法
+
+
+  //简单数据类型没有属性和方法 Number  String  Boolean
+  //js为了我们使用方便，可以直接使用简单类型调用方法
+  //var num = 11;
+  //num.toString()//自动把简单类型转换成复杂类型
+
+  //这个num是复杂数据类型，new了一Number对象
+  //var num = new Number(11);
+  //console.log(num.toString());
+
+
+
+  //正常情况 因为我们直接创建了一个字符串的对象
+  //var str = new String("abc");
+  //console.log(str);
+  //console.log(str.toUpperCase());
+
+  //浏览器允许使用简单类型直接调用方法，会自动把简单类型转换成复杂类型。
+  //var str = "abc";
+  //console.log(str.toUpperCase());
+
+
+  //  var num = 11.22334444444;
+  //  console.log(num.toFixed(2));
+
+
+  var flag = true;
+  console.log(flag.toString());
+
+
+  //为什么undefined和null调用toString会报错
+  //var num = undefined;
+  //num.toString();
+
+</script>
+
+</body>
+</html>

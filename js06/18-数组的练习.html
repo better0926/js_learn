@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+
+	//arr.push():给数组的最后面增加一个或者多个元素
+	//arr.pop():最后面删除一个元素
+	//arr.unshift():在最前面增加元素
+	//arr.shift():在最前面删除元素
+	//arr.join():把数组的所有元素拼接成一个字符串
+	//arr.reverse():翻转一个数组原数组变化
+	//arr.sort( function(a, b) {return a -b;});
+	//arr.concat(arr2):合并数组  原数组不变
+	//arr.slice()  :截取一个数组，原数组不变
+	//arr.splice() 可以删除，也可以增加，返回值是删除的哪些元素组成的数组
+	//arr.indexOf():查找某个元素第一次出现的位置，如果没有这个元素，会返回-1
+	//arr.lastIndexOf():从后面往前面查找第一次出现的位置。
+
+
+	//var arr = ["c", "a", "z", "a", "x", "a", "a", "z", "c", "x", "a", "x"]
+	//1. 找到数组中第一个a出现的位置
+	//  var a = arr.indexOf("a");
+	//  console.log(a);
+
+	//2. 找到数组中最后一个a出现的位置
+	//  var b = arr.lastIndexOf("a");
+	//  console.log(b);
+
+	//3. 找到数组中每一个a出现的位置
+	//  for(var i = 0; i < arr.length; i++) {
+	//    if(arr[i] == "a") {
+	//      console.log(i);
+	//    }
+	//  }
+
+
+	//4. 数组去重，返回一个新数组
+	//  var arr = ["c", "a", "z", "a", "x", "a", "a", "z", "c", "x", "a", "x"];
+	//  var newArr = [];
+	//  for (var i = 0; i < arr.length; i++) {
+	//    //判断arr[i]是否在newArr数组中
+	//    if (newArr.indexOf(arr[i]) == -1) {
+	//      newArr.push(arr[i]);
+	//    }
+	//  }
+	//  console.log(newArr);
+
+
+	//5. 获取数组中每个元素出现的次数
+	//c:2
+	//a:5
+	//z:2
+	//x:3
+	//{c:2, a:1}
+	//如果这个元素第一次出现，就让值是1， 如果已经存在了，让值+1
+	var arr = ["c", "a", "z", "a", "x", "a", "a", "z", "c", "x", "a", "x"];
+	var obj = {};
+	console.log(obj.c);
+	//遍历整个arr，判断arr[i] 是否obj中存在，如果不存在，obj[] = 1
+	for(var i = 0; i < arr.length; i++) {
+
+		if(arr[i] in obj) {
+			//有这个属性,让值+1
+			//obj["c"]
+			obj[arr[i]] = obj[arr[i]] + 1;
+		}else {
+			obj[arr[i]] = 1; //obj["c"] = 1
+		}
+	}
+	console.log(obj);
+
+
+	//如何判断对象是否包含某个属性
+	//  var obj = {
+	//    name:undefined,
+	//    age:18
+	//  }
+	//  //查看obj是否有name这个属性
+	//  console.log( "key" in obj );
+
+</script>
+</body>
+</html>
