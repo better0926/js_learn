@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">&amp;&amp;和||的短路问题</h1>
+<p>&amp;&amp;：短路与，只要碰到了假值，就会短路。如果都是真值，会返回最后一个真值。</p>
+<pre><code class="lang-javascript">true &amp;&amp; false &amp;&amp; true;//false
+true &amp;&amp; true &amp;&amp; false;//false
+&quot;abc&quot; &amp;&amp; &quot;bcd&quot;;//&quot;bcd&quot;
+null &amp;&amp; undefined; //null
+</code></pre>
+<p>||：短路或，只要碰到了真值就会短路</p>
+<pre><code class="lang-javascript">false || true;//true
+true || false;//true
+null || 123;//123
+undefined || null ; //null
+</code></pre>
+<p>使用场景：</p>
+<pre><code class="lang-javascript">function fn(num) {
+  //给num提供一个默认值
+  num = num || 30;
+  console.log(num);
+}
+
+fn();
+fn(100);
+</code></pre>
+<h1 id="-">完整版轮播图</h1>
+<h2 id="-">找对象</h2>
+<blockquote>
+<p>找对象没什么好说的，细心点，别用错方法即可。如果学到到现在，还找错对象，那这辈子就注定单身吧，别挣扎了 t.t</p>
+</blockquote>
+<h2 id="-">简单轮播功能</h2>
+<pre><code>1. 给circle下的所有的li注册点击事件
+2. 排他
+3. 移动Ul
+
+</code></pre><h2 id="-">左右焦点功能</h2>
+<p>需要定义一个变量count来记录移动的图片的张数。</p>
+<blockquote>
+<p>点击右箭头功能</p>
+</blockquote>
+<pre><code>1. 如果当前图片是最后一张（假图片），需要瞬间变成真图片
+2. 点击一次，需要让图片往右移动一张
+3. 同步小圆点，干掉所有小圆点，复活对应count的小圆点。
+    a)最后一张假图片对应的小圆点是第一个，需要做特殊处理
+
+</code></pre><blockquote>
+<p>点击左箭头的功能和右箭头基本一致。</p>
+</blockquote>
+<h2 id="-">自动轮播的功能</h2>
+<pre><code>1. 开启定时器，每隔两秒点击一次右箭头
+2. 鼠标经过盒子，停止定时器(箭头乱闪的问题解释)
+3. 鼠标离开盒子，开启定时器
+
+</code></pre><h2 id="-">同步功能</h2>
+<pre><code>1. 点击小圆点时需要同步
+2. 淘宝bug解决方法
+
+</code></pre><p>总结：代码量稍微有点大，只要屡清楚思路，一步一步，就能做出来。 后期学到的轮播图原理都是这个，所以希望大家都能掌握。</p>
+<h1 id="-">缓动框架</h1>
+<h2 id="-">缓动函数初体验</h2>
+<p>动画公式：</p>
+<pre><code class="lang-javascript">var step = (target - leader)/10;
+leader = leader + step;
+</code></pre>
+<p>【演示：01-缓动动画初体验.html】</p>
+<p>缺点：</p>
+<p>​    打开控制台，查看盒子的left值，会发现并没有跑到400px，只能跑到396.4px的地方</p>
+<p>原因：</p>
+<p>​    offsetLeft获取值的时候，只会获取整数，会对小数部分会四舍五入处理</p>
+<p>解决：</p>
+<p>​    对step向上取整处理，保证每一次都至少跑1px的距离</p>
+<p>【演示：02-缓动动画优化.html】</p>
+<h2 id="-">缓动函数封装</h2>
+<p>【演示：03-缓动函数封装.html】</p>
+<p>缺点：</p>
+<p>​    往回走的时候，到达不了终点</p>
+<p>原因：</p>
+<p>​    往回走的时候，step是负数，不应该向上取整，而应该向下取整</p>
+<p>解决：</p>
+<p>​    判断step的正负</p>
+<p>【演示：04-缓动函数优化.html】</p>
+<p>【案例：筋斗云案例.html】</p>
+<h2 id="-">获取计算后的样式</h2>
+<blockquote>
+<p>通过element.style.xxx只能获取到行内样式</p>
+<p>通过offset系列只能获取到特殊的一些样式</p>
+</blockquote>
+<p>获取元素计算后的样式指的是元素经过层叠后真正生效的样式，不管样式写在哪，计算后的样式指的就是最终的样式。</p>
+<p>现代浏览器：</p>
+<pre><code class="lang-javascript">return window.getComputedStyle(element, null)[attr];
+</code></pre>
+<p>IE678:</p>
+<pre><code class="lang-javascript2w">return element.currentStyle[attr];
+</code></pre>
+<p>【演示：05-获取元素计算后的样式.html】</p>
+<h2 id="-px-">缓动框架封装-任意样式(带px)</h2>
+<p>【演示：06-缓动框架封装-任意样式(带px).html】</p>
+<p>注意点：</p>
+<ol>
+<li>获取到的样式是字符串格式,需要取整</li>
+<li>如果是auto，取整是NaN，需要进行处理</li>
+<li>设置的时候，需要设置对应的值</li>
+</ol>
+<p>缺点：</p>
+<p>​    一次只能修改一个样式，不能同时修改多个样式</p>
+<h2 id="-">缓动框架封装-同时修改多个样式</h2>
+<p>【演示：07-缓动框架封装-同时修改多个样式.html】</p>
+<p>注意点：</p>
+<pre><code>1. 需要遍历对象
+2. attr就是k，target就是json[k]
+</code></pre><p>缺点：</p>
+<p>​    修改多个样式的时候，并不能所有的样式都到达终点。</p>
+<h2 id="-bug">缓动框架封装-修复定时器bug</h2>
+<p>【演示：08-缓动框架封装-修复定时器bug.html】</p>
+<p>假设成立法的三个步骤</p>
+<ol>
+<li>假设成立</li>
+<li>想办法推翻假设</li>
+<li>如果推翻不了，说明假设成立</li>
+</ol>
+<h2 id="-">缓动框架优化-添加回调函数</h2>
+<p>【演示：09-缓动框架优化-添加回调.html】</p>
+<p>注意点：</p>
+<ol>
+<li>在清除定时器之后，调用回调函数</li>
+<li>只有当传递了回调函数的时候才去调用</li>
+</ol>
+<h2 id="-">缓动框架优化-支持透明度和层级</h2>
+<p>【演示：10-缓动框架优化-支持不透明度和层级.html】</p>
+<p>注意点：</p>
+<ol>
+<li>将parseInt改成parseFloat</li>
+<li>将target和leader都扩大100进行动画</li>
+<li>设置值的时候，需要设置leader的100分之1，还需要去掉px</li>
+</ol>
+<h2 id="-">手风琴特效</h2>
+<blockquote>
+<p>手风琴是很常见的特效，希望大家都能掌握</p>
+</blockquote>
+<p>【案例-11-手风琴特效（浮动版）】</p>
+<p>缺点：</p>
+<p>​    动画速度不一致，导致在动画执行过程中，总宽度不会等于1200px，因此能看到手风琴的末尾在抖动。</p>
+<p>【案例-12-手风琴特效（定位版本）】</p>
+<p>优点：</p>
+<p>​    不会出现末尾抖动的情况</p>
+<blockquote>
+<p>两种手风琴效果都非常的常见</p>
+</blockquote>
+<h2 id="-">旋转木马特效</h2>
+<p>【案例-14-旋转木马特效】</p>
+<p>节流阀步骤：</p>
+<pre><code>1. 定义节流阀开关
+2. 判断阀门是否打开，只有打开了才能执行
+3. 关闭阀门，不让其他人执行
+4. 执行完动画之后，打开阀门
+</code></pre></article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

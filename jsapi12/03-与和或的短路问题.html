@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //&&: 两个值都是true，结果才是true, 有一个为false，结果就是false
+  //||: 有一个为true，结果就是true
+
+
+
+  //运算规则：
+  //对于&&，从左往右判断，如果碰到了false，就会短路，就会结束，如果全是true，会返回最后一个值。
+  console.log(true && true);//true
+  console.log(false && true);//false
+
+  //var num = 11;
+  //console.log( false && num++ );
+  //console.log(num);
+
+  //console.log("111" && "abc");//false  null
+
+
+  //null undefined 0 "" false NaN
+  //&&: 从左往右进行判断，如果碰到了假值,会短路，直接返回。如果没有短路，会返回最后一个值。
+  //console.log(null && undefined);
+  //console.log(false && "abc");
+
+  //console.log("abc" && "bcd" && "null" && "efg");
+
+
+  //|| : 从左往右判断，碰到了真值会短路，短路了直接返回，否则返回最后一个值
+  //console.log(false || false);
+  //console.log(true || false);
+  //console.log("abc" || "bcd");
+  //console.log(null || undefined);
+
+
+
+  function fn(num) {
+    //|| 经常用于给参数设置默认值。
+    num = num || 30;
+    console.log(num);
+  }
+
+  //fn();
+  fn(10);
+
+
+</script>
+
+</body>
+</html>

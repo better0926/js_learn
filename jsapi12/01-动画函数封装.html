@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<button>按钮</button>
+<div></div>
+
+<script>
+
+
+  var btn = document.querySelector("button");
+  var div =document.querySelector("div");
+  btn.onclick = function () {
+    animate(div, 395);
+  }
+
+  //可以让任意元素运动到任意的位置
+  //思路：
+  //1. 开启一个定时器
+  //2. 获取当前的位置，在当前位置的基础上每次跑一定的距离（step）
+  //3. 当与终点的距离小于step的时候，不够一步了，就可以清除定时器。
+  //4. 每次调用animate的时候，需要把上一次的定时器给清除
+  //5. 如果使用var的话，timeId是局部变量。
+
+  function animate(element, target) {
+    clearInterval(element.timeId);
+    element.timeId = setInterval(function () {
+      var current = element.offsetLeft;//当前位置
+      var step = current < target ? 10 : -10;
+
+      if(Math.abs(current - target) >= Math.abs(step)) {
+        current += step;
+        element.style.left = current + "px";
+      } else {
+        clearInterval(element.timeId);
+        element.style.left = target + "px";
+      }
+    }, 15);
+
+  }
+
+</script>
+
+</body>
+</html>

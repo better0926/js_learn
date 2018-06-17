@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 90px;
+      background-color: lime;
+      border-top: 10px solid red;
+      position: absolute;
+    }
+
+  </style>
+</head>
+<body>
+
+<button>运动400</button>
+<button>运动800</button>
+<div>飞飞</div>
+
+
+<script>
+
+  var btn1 = document.querySelectorAll("button")[0];
+  var btn2 = document.querySelectorAll("button")[1];
+  var div = document.querySelector("div");
+
+
+  //匀速的思路：在盒子当前位置，每次都固定的走一段距离step
+  //变速的思路：在盒子当前位置，step会变化  step = (target - current)/10
+  btn1.onclick = function () {
+    animate2(div, 400);
+  }
+
+  btn2.onclick = function () {
+    animate2(div, 800);
+  }
+
+  //需求：让任意元素能够运动到任意位置  要求：速度变化的
+  function animate2(element, target) {
+    //1. 开启定时器
+    //2. 获取当前的位置，计算step
+    clearInterval(element.timeId);
+    element.timeId = setInterval(function () {
+      var current = element.offsetLeft;
+      var step = (target - current) / 10;
+      //当step>0,对step向上取整,否则向下，保证至少走1px
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+      current += step;
+      element.style.left = current + "px";
+
+      if (current == target) {
+        clearInterval(element.timeId);
+      }
+      //console.log("代码还在执行吗");
+    }, 15);
+  }
+
+
+</script>
+
+</body>
+</html>

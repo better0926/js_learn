@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      padding: 10px;
+      position: absolute;
+    }
+
+    .demo {
+      width: 200px;
+      top: 100px;
+    }
+
+    #box {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box" style="border-radius: 5px;" class="demo"></div>
+
+<script>
+  //var div = document.querySelector("div");
+  //获取宽度  offsetWidth:获取的不是width,  width + padding + border
+  //console.log(div.offsetWidth)
+
+
+  //用于获取元素计算后的样式(元素生效的样式)
+  //window.getComputedStyle(element)
+  var div = document.querySelector("div");
+
+  //ie678用于获取元素计算后的样式
+  //console.log(div.currentStyle.width);
+
+
+  //对应的是元素最终生效的样式
+  //div.style.width
+  var result = window.getComputedStyle(div);
+  console.log(result.width);
+  console.log(result.paddingTop)
+  console.log(result.borderRadius);  //borderRadius
+  console.log(result.marginTop);
+  console.log(result.position);
+
+  //设置样式：用style
+  //获取样式：window.getComputedStyle()
+
+  //offsetWidth:获取样式  width + padding
+
+
+</script>
+
+
+</body>
+</html>

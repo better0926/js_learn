@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 90px;
+      background-color: lime;
+      border-top: 10px solid red;
+      position: absolute;
+    }
+
+  </style>
+</head>
+<body>
+
+<button>运动400</button>
+<button>运动800</button>
+<div>飞飞</div>
+
+
+<script>
+
+  var btn1 = document.querySelectorAll("button")[0];
+  var btn2 = document.querySelectorAll("button")[1];
+  var div = document.querySelector("div");
+
+  btn1.onclick = function () {
+    animate(div, "width", 400);
+    animate(div, "height", 400);
+  }
+
+  btn2.onclick = function () {
+    animate(div, "borderRadius", 50);
+  }
+
+
+  //能够让任意的元素运动到任意的位置
+  //1. 开启定时器，注意：需要先清除定时器
+  //2. 获取当前的位置，根据当前位置和target，计算出要移动的step
+
+  //attr：指定对哪个样式进行动画
+  function animate(element, attr ,target) {
+    //1. 清除定时器
+    clearInterval(element.timeId);
+    //开启一个新的定时器
+    element.timeId = setInterval(function () {
+
+      //获取元素当前的样式
+      //window.getComputedStyle(element)是一个对象
+      var current = window.getComputedStyle(element)[attr];
+      //获取的样式带px，需要parseInt把px去掉
+      current = parseInt(current);
+
+      //计算step
+      var step = (target - current) / 10;
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+
+      //在当前位置的基础上走step
+      current += step;
+
+      //重新设置样式
+      element.style[attr] = current + "px";
+
+      //当到达了终点，需要清除定时器。
+      if (current == target) {
+        clearInterval(element.timeId);
+      }
+
+    }, 15);
+
+  }
+
+
+</script>
+
+</body>
+</html>

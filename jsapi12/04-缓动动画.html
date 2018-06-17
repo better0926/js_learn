@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 90px;
+      background-color: lime;
+      border-top:10px solid red;
+      position: absolute;
+    }
+
+  </style>
+</head>
+<body>
+
+<button>运动800</button>
+<div>飞飞</div>
+
+
+<script>
+
+  var btn = document.querySelector("button");
+  var div = document.querySelector("div");
+
+
+  //匀速的思路：在盒子当前位置，每次都固定的走一段距离step
+  //变速的思路：在盒子当前位置，step会变化  step = (target - current)/10
+  btn.onclick = function () {
+
+    var timeId = setInterval(function () {
+      //当前位置
+      //offsetLeft获取值的时候，会做四舍五入
+      var current = div.offsetLeft;
+      //目标位置
+      var target = 400;
+
+      //为了保证能够到终点，让step最少都走1px
+      var step = (target - current)/10;
+      step = Math.ceil(step);
+
+      current += step;
+      div.style.left = current + "px";
+
+      if(current == target) {
+        clearInterval(timeId);
+      }
+
+    }, 15);
+
+  }
+
+</script>
+
+</body>
+</html>

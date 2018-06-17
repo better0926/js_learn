@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 90px;
+      background-color: lime;
+      border-top: 10px solid red;
+      position: absolute;
+    }
+
+  </style>
+</head>
+<body>
+
+<button>运动400</button>
+<button>运动800</button>
+<div>飞飞</div>
+
+
+<script>
+
+  var btn1 = document.querySelectorAll("button")[0];
+  var btn2 = document.querySelectorAll("button")[1];
+  var div = document.querySelector("div");
+
+  //width:400,
+  //height:400
+  btn1.onclick = function () {
+
+    //动画执行完成的时候，打印哈哈
+    animate(div, {left:400}, function() {
+      //在这个函数内的代码是动画结束的时候才会执行。
+      animate(div, {top:400}, function () {
+        animate(div, {borderRadius:50})
+      })
+    });
+
+  }
+
+  btn2.onclick = function () {
+    animate(div, {width:400});
+  }
+
+
+  //element:对谁做动画
+  //obj:对什么样式做动画，
+  //fn: 传递了一个fn,  fn在清除定时器的时候进行了调用。
+  //{width:400, height:400, left:400, top:400, borderRadius:200}
+  function animate(element, obj, fn) {
+    clearInterval(element.timeId);
+    element.timeId = setInterval(function () {
+
+
+      //假设所有的动画都执行完了
+      var flag = true;
+      for(var k in obj) {
+        var attr = k;
+        var target = obj[k];
+
+        var current = window.getComputedStyle(element)[attr];
+        console.log(current);
+        current = parseInt(current);
+        console.log(current);
+        var step = (target - current) / 10;
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+
+        current += step;
+        console.log(current);
+        element.style[attr] = current + "px";
+
+        //有样式没到达终点
+        if (current != target) {
+          flag = false;
+        }
+      }
+
+      //判断flag是不是true
+      if(flag) {
+        clearInterval(element.timeId);
+
+        //如果传了fn，就调用fn，如果没传，就不掉
+        //        if(fn) {
+        //          fn();
+        //        }
+        //假值短路
+        fn && fn();
+
+      }
+
+    }, 15);
+
+  }
+
+
+</script>
+
+</body>
+</html>
