@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="button" value="切换" id="btn"><br>
+<img src="images/1.jpg" width="300" id="img">
+
+<script>
+
+  var arr = ["images/1.jpg", "images/01.gif", "images/02.gif", "images/2.jpg","images/3.jpg"];
+
+  //1. 找对象
+  var btn = document.getElementById("btn");
+  var img = document.getElementById("img");
+
+  var index = 0;//显示第一张
+
+  //2. 给btn注册点击事件
+  btn.onclick = function() {
+    //修改img的地址
+    index++;
+
+    if(index > arr.length - 1){
+      index = 0;
+    }
+    img.src = arr[index];
+
+  }
+
+</script>
+
+</body>
+</html>

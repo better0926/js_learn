@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="第1张" title="images/1.jpg">
+<input type="button" value="第2张" title="images/2.jpg">
+<input type="button" value="第3张" title="images/3.jpg">
+<input type="button" value="第4张" title="images/4.jpg">
+<input type="button" value="第5张" title="images/5.jpg">
+<input type="button" value="第6张" title="images/6.jpg">
+<br>
+<img src="images/1.jpg" alt="" width="300" id="img">
+
+<script>
+
+  var inputs = document.getElementsByTagName("input");
+  var img = document.getElementById("img");
+
+  for (var i = 0; i < inputs.length; i++) {
+
+    inputs[i].onclick = function () {
+      //这里该干什么，  点击某个按钮，设置img的地址为对应的那个图片。
+      //这里不能用I:因为i已经循环完。
+      img.src = this.title;
+
+    }
+
+  }
+
+
+</script>
+
+</body>
+</html>

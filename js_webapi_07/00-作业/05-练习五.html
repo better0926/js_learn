@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //4. 已知对象 {name:"cc", age:18, desc:"很帅"} 转换成字符串"name=zs&age=18&desc=很帅"
+
+  //  var obj = {
+  //    name: "cc",
+  //    age: 18,
+  //    desc: "很帅"
+  //  };
+  //  //  name=cc  &    age=18  &   desc=很帅
+  //  var str = "";
+  //  for(var k in obj) {
+  //    var temp = k + "=" + obj[k];
+  //    str = str + temp + "&";
+  //  }
+  //  //-1表示倒数第一个
+  //  str = str.slice(0, -1);
+  //  console.log(str);
+
+  var obj = {
+    name: "cc",
+    age: 18,
+    desc: "很帅"
+  };
+
+  var arr = [];
+  for(var k in obj) {
+    var temp = k + "=" + obj[k];
+    arr.push(temp);
+  }
+
+  console.log(arr.join("&"));
+
+
+</script>
+
+</body>
+</html>

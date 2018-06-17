@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+<script>
+
+  var btns = document.getElementsByTagName("button");
+
+  for(var i = 0; i < btns.length; i++) {
+
+    btns[i].onclick = function() {
+      this.innerText = "哈哈哈";
+    }
+
+  }
+
+</script>
+
+</body>
+</html>

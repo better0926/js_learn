@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="box">
+  <p>1111111</p>
+  <div>22222</div>
+</div>
+
+
+<script>
+
+  //问题1：如何获取这个p
+  //var p = document.getElementsByTagName("p")[0];
+  //console.log(p);
+
+
+  //问题2： 如果获取222这个div
+  var box = document.getElementById("box");
+  var div = box.getElementsByTagName("div")[0];
+  console.log(div);
+</script>
+
+</body>
+</html>

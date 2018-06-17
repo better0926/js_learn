@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="button" value="切换" id="btn"><br>
+<img src="images/1.jpg" width="300" id="img">
+
+<script>
+
+  //需求：点击按钮，让图片循环切换，，换到第6张的时候，变成第1张
+
+  //1. 找对象
+  var btn = document.getElementById("btn");
+  var img = document.getElementById("img");
+
+  var index = 1;//显示第一张
+
+  //2. 给btn注册点击事件
+  btn.onclick = function() {
+    //修改img的地址
+    index++;
+
+    //index只能是1-6
+    if(index > 6){
+      index = 1;
+    }
+    img.src = "images/" + index + ".jpg";
+
+  }
+
+</script>
+
+</body>
+</html>

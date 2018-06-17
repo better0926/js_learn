@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+<script>
+
+  //需求：点击任意一个按钮，都要alert("hehe")
+  //先通过标签名获取到所有的按钮， 循环给每一个按钮注册点击事件
+  var btns = document.getElementsByTagName("button");
+
+  for(var i = 0; i < btns.length; i++) {
+    btns[i].onclick = function() {
+      alert("呵呵");
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //已知字符串"name=zs&age=18&desc=很帅",转换成对象{name:"cc", age:18, desc:"很帅"}
+  var str = "name=zs&age=18&desc=很帅";
+  //{name:"cc", age:18, desc:"很帅"}
+  var arr = str.split("&");
+  var obj = {};
+  for(var i = 0; i < arr.length; i++) {
+    //对arr[i]进行=切割
+    var temp = arr[i].split("=");
+    console.log(temp);
+
+    obj[temp[0]] = temp[1];
+  }
+
+  console.log(obj);
+
+
+</script>
+
+</body>
+</html>

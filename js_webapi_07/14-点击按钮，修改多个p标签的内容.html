@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+<p>这是一个p</p>
+<p>这是一个p</p>
+<p>这是一个p</p>
+<p>这是一个p</p>
+<p>这是一个p</p>
+<p>这是一个p</p>
+
+
+<script>
+
+  //点击按钮，修改多个p的内容
+  // document.getElementById():通过id来获取元素
+  // document.getElementsByTagName():通过标签名字获取元素
+
+  //通过标签名获取元素
+  //参数：字符串类型的标签名
+  //返回值：类数组，伪数组不是数组，所以他不能使用数组的方法，能够跟数组一样进行遍历，也可以通过下标操作。
+  //var ps = document.getElementsByTagName("p");
+  //console.log(ps);
+
+  //1. 找对象
+  var btn = document.getElementById("btn");
+
+
+  var ps = document.getElementsByTagName("p");
+
+  //2. 给btn注册点击事件
+  btn.onclick = function () {
+    //改变所有的p的内容
+    for(var i = 0; i < ps.length; i++) {
+      ps[i].innerText = "嘿嘿";
+    }
+  }
+
+</script>
+
+</body>
+</html>

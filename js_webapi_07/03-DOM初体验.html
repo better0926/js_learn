@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<img src="imgs/1.jpg" alt="你的图破了" title="前端培训" id="demo">
+
+<script>
+
+
+  //最简单的事情
+  //找到页面中的img
+  //document:文档
+  //get:获取 Element:元素 by:通过  id:id  通过id获取元素
+  //参数：字符串类型的id
+  //返回：一个元素，一个对象
+
+  //找到的img对象与img标签是一一对应的，img标签有哪些属性，这个对象就有哪些属性。
+  var img = document.getElementById("demo");
+  //console.log(img);
+  //console.dir(img);
+  //console.log() :在DOM中，console.log打印一个元素的时候，是以标签的形式展示的
+  //console.dir() :在dom中，console.dir能够以对象的形式展示一个元素
+  //console.log(img.alt);
+  //console.log(img.title);
+
+  img.title = "嘿嘿";
+  img.src = "imgs/2.jpg";
+
+</script>
+
+</body>
+</html>

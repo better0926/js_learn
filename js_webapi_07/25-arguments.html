@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+  //  //实参的个数要和形参的个数一致。
+  //  function fn(a, b) {
+  //    //任何的函数内部都有一个对象，叫做arguments
+  //    //arguments会存储函数调用时传递的所有的参数
+  //    console.log(arguments);
+  //    console.log(a + b);
+  //  }
+  //
+  //  fn(1, 2, 3);
+
+  // max函数，无论传递多少参数，求出来最大的值
+  function max() {
+    //通过arguments可以获取到所有的参数
+    var m = arguments[0];
+    for(var i = 0; i < arguments.length; i++) {
+      if(arguments[i] > m) {
+        m = arguments[i];
+      }
+    }
+
+    return m;
+  }
+
+  console.log(max(1, 2, 3, 44, 6));
+
+</script>
+
+</body>
+</html>

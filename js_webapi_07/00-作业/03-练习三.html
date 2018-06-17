@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //3. ["a", "b", "c", "b", "a"]  去重
+  var arr = ["a", "b", "c", "b", "a"];
+  for(var i = 0; i < arr.length; i++) {
+    var j = arr.lastIndexOf(arr[i]);
+    if( i !=  j) {
+      arr.splice(j, 1);
+    }
+  }
+  console.log(arr);
+
+
+  //  var arr = ["a", "b", "c", "b", "a"];
+  //  var newArr = [];
+  //  for (var i = 0; i < arr.length; i++) {
+  //    //判断newArr是否包含arr[i] indexOf
+  //    if (newArr.indexOf(arr[i]) == -1) {
+  //      //不包含
+  //      newArr.push(arr[i]);
+  //    }
+  //  }
+  //  console.log(newArr);
+
+
+  //统计每个元素出现的次数
+//  var arr = ["a", "b", "c", "b", "a"];
+//  var obj = {};
+//  for (var i = 0; i < arr.length; i++) {
+//    //判断obj中是否有arr[i]这个属性
+//    if (arr[i] in obj) {
+//      obj[arr[i]]++;
+//    } else {
+//      obj[arr[i]] = 1;
+//    }
+//  }
+//
+//  //把obj中所有的属性名存放到一个数组里面
+//  var newArr = [];
+//  for(var k in obj) {
+//    newArr.push(k);
+//  }
+//  console.log(newArr);
+
+
+</script>
+
+</body>
+</html>

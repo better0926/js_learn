@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    .odd {
+      background-color: lime;
+    }
+
+    .even {
+      background-color: teal;
+    }
+
+  </style>
+</head>
+<body>
+
+<button id="btn">变色</button>
+
+<ul id="first">
+  <li>我是第1个li</li>
+  <li>我是第2个li</li>
+  <li>我是第3个li</li>
+  <li>我是第4个li</li>
+  <li>我是第5个li</li>
+  <li>我是第6个li</li>
+  <li>我是第7个li</li>
+  <li>我是第8个li</li>
+  <li>我是第9个li</li>
+  <li>我是第10个li</li>
+</ul>
+
+<ul>
+  <li>我是别人第1个的li</li>
+  <li>我是别人第2个的li</li>
+  <li>我是别人第3个的li</li>
+  <li>我是别人第4个的li</li>
+  <li>我是别人第5个的li</li>
+  <li>我是别人第6个的li</li>
+  <li>我是别人第7个的li</li>
+  <li>我是别人第8个的li</li>
+  <li>我是别人第9个的li</li>
+  <li>我是别人第10个的li</li>
+</ul>
+
+<script>
+
+  //需求：隔行变色
+  var btn = document.getElementById("btn");
+
+  var first = document.getElementById("first");
+
+  //表示获取first中所有的li
+  var lis = first.getElementsByTagName("li");
+  //box.getElementsByTagName(): 表示获取box中所有的li
+
+  btn.onclick = function () {
+
+    //给每一个li设置一个类
+    for (var i = 0; i < lis.length; i++) {
+      if (i % 2 == 0) {
+        lis[i].className = "even";
+      } else {
+        lis[i].className = "odd";
+      }
+    }
+
+
+  }
+
+</script>
+
+</body>
+</html>

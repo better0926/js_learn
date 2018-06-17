@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>按钮</button>
+
+<script>
+
+  //1. 根据id获取元素
+
+  //1. 如果id不存在，会返回null
+  //2. 这个方法只有 document.getElementById("元素的id")
+  //3. id在页面中是唯一的，所有在有些浏览器里面可以直接使用。（不推荐）
+  //document.getElementById("标签的id")
+  //var box = document.getElementById("box");
+  //console.log(box);
+
+  //在早期，是ie提出来，id在页面中是唯一的，所以呢，在js中可以直接使用id，仅仅是ie提出来，不是规范，其他浏览器也支持。不推荐这么写
+  //box.title = "呵呵";
+  //console.log(box);
+
+
+
+  //2. document.getElementsByTagName("div"):获取页面中所有的div标签
+      //box.getElementsByTagName("div"):获取box中所有的div标签
+  //返回值：是一个伪数组,伪数组不能直接注册事件
+  //var btn  = document.getElementsByTagName("button")[0];
+
+
+  var divs = document.getElementsByTagName("div");
+  console.log(divs);
+</script>
+
+</body>
+</html>

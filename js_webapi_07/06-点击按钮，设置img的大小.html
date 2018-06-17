@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+<br>
+<img src="imgs/02.jpg" id="img" alt="">
+
+<script>
+
+  //需求：点击按钮，让图片的width和height变成200 * 300
+  //1. 找对象
+  var btn = document.getElementById("btn");
+  var img = document.getElementById("img");
+
+  //2. 给btn注册点击事件
+  btn.onclick = function() {
+    img.width = "200";
+    img.height = "300";
+  }
+
+
+</script>
+
+</body>
+</html>

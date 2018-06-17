@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="第1张" title="1">
+<input type="button" value="第2张" title="2">
+<input type="button" value="第3张" title="3">
+<input type="button" value="第4张" title="4">
+<input type="button" value="第5张" title="5">
+<input type="button" value="第6张" title="6">
+<br>
+<img src="images/1.jpg" alt="" width="300" id="img">
+
+<script>
+
+  //给所有的按钮注册点击事件
+  //点击的时候要让图片显示对应的图片
+  var inputs = document.getElementsByTagName("input");
+  var img = document.getElementById("img");
+
+  for (var i = 0; i < inputs.length; i++) {
+
+    inputs[i].onclick = function () {
+
+      console.log(this.title);
+      //修改img的地址
+      img.src = "images/" + this.title + ".jpg";
+    }
+
+  }
+
+</script>
+
+</body>
+</html>

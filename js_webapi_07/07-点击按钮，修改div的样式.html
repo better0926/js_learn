@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    .cls {
+      width: 100px;
+      height: 100px;
+      background-color: hotpink;
+      color: red;
+    }
+
+  </style>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+<div id="box" >大家好，我是渣渣辉,和我一起来玩贪玩蓝月</div>
+
+<script>
+  //1. 找对象
+  var btn = document.getElementById("btn");
+  var box = document.getElementById("box");
+
+  //2. 给btn注册点击事件
+  btn.onclick = function() {
+    //3. 给box添加class
+    //class在js中是一个保留字， 标签中class对应了对象中的className
+    box.className = "cls";
+  }
+
+
+</script>
+
+</body>
+</html>

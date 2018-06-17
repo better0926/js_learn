@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //4. 已知：hu-cong-cong   转换成  HuCongCong
+  //        shen-yan-fei   转换成  ShenYanFei
+
+  //思路：首先根据-切割成一个数组，每个单词就获取到了
+  //     遍历这个数组，把字符串的首字母变成大写
+
+  var str = "hu-cong-cong-hen-shuai";
+  //转换成数组
+  var arr = str.split("-");
+  var newStr = "";
+  for(var i = 0; i < arr.length; i++) {
+    //把手字母变成大写，加上除了首字母之外的其他部分
+    var temp = arr[i][0].toUpperCase() + arr[i].slice(1);
+    newStr = newStr + temp;
+  }
+  console.log(newStr);
+
+
+  //思考：转换成驼峰怎么办？首字母不大写怎么办
+
+</script>
+
+</body>
+</html>

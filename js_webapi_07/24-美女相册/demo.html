@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body {
+      padding-left: 100px;
+    }
+
+    #imgs {
+      overflow: hidden;
+      margin: 50px 0;
+    }
+
+    #imgs li {
+      float: left;
+      margin-right: 10px;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<h1>美女相册</h1>
+
+<ul id="imgs">
+  <li>
+    <a href="images/1.jpg" title="美女A">
+      <img src="images/1-small.jpg" alt="">
+    </a>
+  </li>
+  <li>
+    <a href="images/2.jpg"  title="美女B">
+      <img src="images/2-small.jpg" alt="">
+    </a>
+  </li>
+  <li>
+    <a href="images/3.jpg"  title="美女C">
+      <img src="images/3-small.jpg" alt="">
+    </a>
+  </li>
+  <li>
+    <a href="images/4.jpg"  title="美女D">
+      <img src="images/4-small.jpg" alt="">
+    </a>
+  </li>
+</ul>
+
+<img src="images/placeholder.png" width="400" height="250" alt="" id="bigImg">
+
+
+<!--标签的内容-->
+<p id="des">这是描述信息</p>
+
+
+<script>
+
+  //思路：
+  //1. 找对象
+  //获取ul下所有的a
+  var ul = document.getElementById("imgs");
+  var links = ul.getElementsByTagName("a");
+  var bigImg = document.getElementById("bigImg");
+  var des = document.getElementById("des");
+
+  //2. 给所有的a注册点击事件
+  for(var i = 0; i < links.length; i++) {
+    links[i].onclick = function () {
+      //3. 获取当前a的href属性，设置给bigImg的src属性
+      bigImg.src = this.href;
+
+      //4. 获取当前a的title属性，设置给p的innerText
+      des.innerText = this.title;
+
+
+      //5. 阻止a的跳转
+      return false;
+    }
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

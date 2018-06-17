@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="webapi-">WebApi基本概念</h1>
+<h2 id="-webapi-">为什么要学习WebApi?</h2>
+<blockquote>
+<p>我们前6天学习的ECMAScript语法规范，都是在打基础。</p>
+</blockquote>
+<p>想要做出好看的页面效果，就需要学习Web API，学了Web API之后就能操作页面元素了，才能做出来一些炫酷的效果。</p>
+<p><strong>思考：前6天学了什么？</strong> </p>
+<h2 id="-webapi">什么是WebApi</h2>
+<p>API（Application Programming Interface,应用程序编程接口）,API是一些预先定义的方法，这些方法能够实现某些特定的功能，我们无须知道这些API的实现方式，但是我们需要知道这些API如何使用。</p>
+<ul>
+<li>任何开发语言都会提供自己的API</li>
+<li>API的特征输入和输出(参数/返回值)</li>
+</ul>
+<p>通俗的讲，API就是编程语言给我提供的一些工具，通过这些工具，我们可以非常轻易的完成一些功能。</p>
+<pre><code class="lang-javascript">做饭需要一套做饭的工具：锅碗瓢盆
+打仗需要一套打仗的工具：刀枪剑戟
+找对象需一套找对象的工具：钱权颜缘
+
+Web API: 浏览器提供的一套操作网页（web）的API（方法），通过这套API我们可以非常轻易的操作页面的元素和浏览器的一些功能。
+</code></pre>
+<p><strong>思考：我们学习Web API，我们该学什么？</strong> </p>
+<p><img src="imgs/javascript.png" alt=""></p>
+<p><strong>ECMAScript - JavaScript的核心</strong></p>
+<p>定义了JavaScript 的语法规范</p>
+<p>JavaScript的核心，描述了语言的基本语法和数据类型，ECMAScript是一套标准，定义了一种语言的标准与具体实现无关</p>
+<p><strong>BOM - 浏览器对象模型</strong></p>
+<p>一套操作浏览器功能的API</p>
+<p>通过BOM可以操作浏览器窗口，比如：弹出框、控制浏览器跳转、获取分辨率等 </p>
+<p><strong>DOM - 文档对象模型</strong></p>
+<p>一套操作页面元素的API</p>
+<p>DOM可以把HTML看做是文档树，通过DOM提供的API可以对树上的节点进行操作</p>
+<h1 id="dom-">DOM-文档对象模型</h1>
+<h2 id="dom-">DOM基本概念</h2>
+<blockquote>
+<p>DOM（Document Object Model）文档对象模型，是<code>W3C组织</code>推荐的一套用于处理<code>HTML</code>的标准<code>编程接口</code>。</p>
+</blockquote>
+<p>DOM又称为文档树模型，因为整个HTML文档是一个树形的结构</p>
+<p><img src="imgs/1.png" alt=""></p>
+<p>DOM中常见的概念</p>
+<ul>
+<li>文档<code>document</code>：一个网页可以称为文档</li>
+<li>节点<code>node</code>：网页中的所有内容都是节点（标签、属性、文本、注释等）</li>
+<li>元素<code>element</code>：网页中的标签</li>
+</ul>
+<h2 id="dom-">DOM初体验</h2>
+<blockquote>
+<p><code>document.getElementById(&quot;box&quot;)</code>的作用是根据页面中元素的id来获取元素</p>
+</blockquote>
+<p>在DOM中，想要操作一个元素，首先需要先获取到这个元素才能进行操作。</p>
+<pre><code class="lang-javascript">//功能：通过id获取元素
+//参数：字符串类型的id值
+//返回值：元素，如果id不存在，会返回null
+var div = document.getElementById(&#39;main&#39;);
+
+console.dir(div);
+</code></pre>
+<p>关于<code>console.log</code>和<code>console.dir</code>的区别</p>
+<ul>
+<li><code>console.log</code>打印一个元素的时候，是以标签的形式进行展示的</li>
+<li><code>console.dir</code>打印一个元素的时候，是以对象的形式进行展示的</li>
+</ul>
+<p>在DOM中，页面标签的属性和DOM对象的属性是一一对应的，因此我们可以通过修改DOM对象的属性来修改标签的属性。</p>
+<pre><code class="lang-html">//html内容
+&lt;div title=&quot;hehe&quot; id=&quot;box&quot;&gt;
+
+&lt;script&gt;
+//javascript代码
+var div = document.getElementById(&#39;box&#39;);
+div.title = &quot;哈哈&quot;;
+&lt;/script&gt;
+
+//结果：div标签的title属性就发生了更改
+&lt;div title=&quot;哈哈&quot; id=&quot;box&quot;&gt;
+</code></pre>
+<h2 id="-getelementbyid-">使用getElementById的注意事项</h2>
+<ul>
+<li>如果id不存在，会返回null</li>
+<li>在DOM中，<code>document.getElementById(&quot;box&quot;)</code>方法需要写在html内容的后面，保证页面加载完成之后才能获取到内容。</li>
+<li>部分浏览器，如果元素设置了id属性，可以直接使用（但是不是规范，不推荐）</li>
+</ul>
+<p><strong>当getElementById返回null的时候，null.onclick就会报错</strong></p>
+<pre><code class="lang-html">&lt;!--没有id--&gt;
+&lt;img src=&quot;images/1.jpg&quot; alt=&quot;图破了&quot; title=&quot;呵呵&quot;&gt;
+
+&lt;script&gt;
+  //如果找不到，返回的是null，试图给null设置属性会报错
+  var element = document.getElementById(&quot;img&quot;);
+  element.title = &quot;嘿嘿&quot;;//报错Uncaught TypeError: Cannot set property &#39;title&#39; of null
+&lt;/script&gt;
+</code></pre>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementById">mdn地址</a></p>
+<h2 id="-">事件的基本使用</h2>
+<blockquote>
+<p>事件：触发-响应机制，javascript是基于事件驱动的。</p>
+</blockquote>
+<p>事件三要素：</p>
+<ul>
+<li>事件源:触发事件的元素</li>
+<li>事件名称: click 点击事件</li>
+<li>事件处理程序:事件触发后要执行的代码(函数形式)</li>
+</ul>
+<p><strong>思考：我扇了飞飞一巴掌，飞飞哇哇哇哭了，三要素是啥？</strong></p>
+<p>注册事件的基本语法：</p>
+<pre><code class="lang-javascript">var box = document.getElementById(&#39;box&#39;);
+//on:当  click:点击   当按钮被点击的时候触发
+box.onclick = function() {
+  console.log(&#39;代码会在box被点击后执行&#39;);  
+};
+</code></pre>
+<p><strong>注意：事件处理程序并不是立马执行，而是当事件触发的时候在会执行（浏览器会自动调用）</strong></p>
+<h2 id="-">修改标签的属性</h2>
+<blockquote>
+<p>在DOM中，页面标签的属性和DOM对象的属性是一一对应的，因此我们可以通过修改DOM对象的属性来修改标签的属性。</p>
+</blockquote>
+<p>标签的alt，title，src，width，height等属性，可以直接通过对象进行修改。</p>
+<p><strong>如果是class属性，在js中class是关键字，因此对应的是className属性</strong></p>
+<pre><code class="lang-javascript">//1. 点击按钮，修改div的样式
+//2. 点击按钮，修改div的宽高
+//3. 点击按钮，div进行显示和隐藏（两个按钮）
+//4. 点击按钮，div进行显示和隐藏（一个按钮）
+//5. 点击按钮，循环切换图片
+</code></pre>
+<p><strong>通过innerText属性和修改标签的内容</strong></p>
+<pre><code class="lang-javascript">//1. 点击按钮修改p标签的内容
+</code></pre>
+<h2 id="getelementsbytagname">getElementsByTagName</h2>
+<blockquote>
+<p>通过标签名获取元素</p>
+</blockquote>
+<pre><code class="lang-javascript">//参数：标签名
+//返回值：一个伪数组， 伪数组不是数组，不能使用属性的方法，但是可以跟数组一样进行遍历和使用下标进行操作。
+var divs = document.getElementsByTagName(&#39;div&#39;);
+</code></pre>
+<p><strong>注意：返回值有没有获取到元素，都是一个伪数组，即便元素只有一个</strong></p>
+<p>案例：</p>
+<pre><code class="lang-javascript">//1. 点击按钮，同时修改多个p标签的内容
+//2. 给多个按钮注册点击事件
+</code></pre>
+<ol>
+<li><code>document.getElemntsByTagName(&quot;div&quot;)</code>表示获取页面中所有的div元素，范围太大了，可以使用<code>box.getElementsByTagName(&quot;div&quot;)</code>表示获取box中所有的div元素，范围更小。</li>
+<li><code>document.getElementById(&quot;box&quot;)</code>表示获取页面中id为box的元素，没有<code>box.getElementById(&quot;box&quot;)</code>这种用法。</li>
+</ol>
+<h2 id="-this">事件中的this</h2>
+<blockquote>
+<p>当在事件中表示当前元素的时候，可以使用this</p>
+</blockquote>
+<pre><code class="lang-javascript">var btn = document.getElementById(&quot;btn&quot;);
+btn.onclick = function() {
+  //给btn注册的事件，因此this表示btn
+  this.value = &quot;哈哈&quot;;
+}
+</code></pre>
+<p>练习：</p>
+<pre><code class="lang-javascript">//1. 给多个按钮注册点击事件，点击的那个变成红色。
+//2. 点击按钮，显示对应的图片
+</code></pre>
+<h2 id="-a-">阻止a标签跳转</h2>
+<blockquote>
+<p>对于a标签来说，默认的行为就是进行页面跳转，如果不想让a标签进行跳转，可以在注册事件中使用<code>return false</code></p>
+</blockquote>
+<pre><code class="lang-javascript">var link = document.getElementById(&quot;link&quot;);
+link.onclick = function() {
+  alert(&quot;呵呵&quot;);
+  //阻止页面跳转
+  return false;
+}
+</code></pre>
+<h2 id="-">美女相册案例</h2>
+<pre><code class="lang-javascript">//1. 找对象
+var imgs = document.getElementById(&quot;imgs&quot;);//ul
+var links = imgs.getElementsByTagName(&quot;a&quot;);//所有的a标签
+var bigImg = document.getElementById(&quot;bigImg&quot;);//大图片
+var des = document.getElementById(&quot;des&quot;);
+
+//2. 给所有的a标签注册点击事件
+for(var i = 0; i &lt; links.length; i++) {
+  links[i].onclick = function () {
+
+    //3. 修改大图片的src属性， this.href
+    bigImg.src = this.href;
+
+    //4. 修改p标签的内容, innerText:内部的文本
+    des.innerText = this.title;
+
+    //5. 阻止a跳转
+    return false;
+  }
+}
+</code></pre>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

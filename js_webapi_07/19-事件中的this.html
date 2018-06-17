@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+<div id="box">哈哈</div>
+<script>
+  //点击按钮的时候，把按钮的值改成 钮按
+  var btn = document.getElementById("btn");
+  var box = document.getElementById("box");
+
+  //给某个对象注册事件的时候，在在事件内的this表示就是这个对象
+  btn.onclick = function() {
+    this.innerText = "嘿嘿";
+  }
+
+
+
+</script>
+
+</body>
+</html>

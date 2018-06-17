@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+<br>
+<img src="imgs/01.jpg" id="img" alt="">
+<script>
+
+
+  //怎么注册事件？
+  var btn = document.getElementById("btn");
+  var img = document.getElementById("img");
+
+  //事件源.onclick = function(){}
+
+  //on: 当..时候  click:点击  onclick:当点击的时候
+
+
+
+  //事件什么时候执行：当按钮被点击的时候（触发的时候），浏览器会自动调用这个function
+  btn.onclick = function() {
+    console.log("1111")
+    //点击的时候，切换图片
+    //alert("呵呵");
+    img.src = "imgs/02.jpg";
+  }
+
+
+
+
+  //事件三要素：
+  //事件源：谁触发这个事件
+  //事件名称：触发了什么事件
+  //事件处理程序：触发事件的时候，要干什么
+
+  //飞飞被扇了一巴掌，飞飞哇哇哇哭了。
+  //飞飞：事件源
+  //事件名称：扇
+  //处理程序：哇哇哇哭了
+
+  //我点击了一下按钮，图片进行切换了
+  //事件源：按钮
+  //事件名称：点击
+  //处理程序：切换图片
+
+
+
+
+</script>
+
+</body>
+</html>

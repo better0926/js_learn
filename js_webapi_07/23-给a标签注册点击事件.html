@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<a href="http://web.itcast.cn" id="link">传智大前端</a>
+
+<script>
+
+  //1. href = "#"
+  //2. 注册事件的时候，return false就行。
+  var age = 20;
+
+  //a标签的默认行为就是页面跳转，如果希望页面不跳转该怎么办
+  var link = document.getElementById("link");
+  link.onclick = function () {
+
+    alert("呵呵");
+
+    //阻止a标签的跳转
+
+    return false;
+
+  }
+
+</script>
+
+</body>
+</html>

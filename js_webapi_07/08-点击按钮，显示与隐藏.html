@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: lime;
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<button id="btn1">显示</button>
+<button id="btn2">隐藏</button>
+<div id="box"></div>
+
+<script>
+
+  //1. 找对象
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var box = document.getElementById("box");
+
+  //2. 给显示按钮注册点击事件
+  btn1.onclick = function() {
+    //给box设置class为show
+    box.className = "show";
+  }
+
+  btn2.onclick = function() {
+    //把box的class的值设置为空字符串
+    box.className = "";
+  }
+
+</script>
+
+</body>
+</html>
