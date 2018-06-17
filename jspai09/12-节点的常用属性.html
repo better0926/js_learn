@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<ul id="box">
+  <!--注释的文本-->
+  <li>貂蝉</li>
+  <li>西施</li>
+  <li>王昭君</li>
+  <li>杨玉环</li>
+</ul>
+
+<script>
+  //节点的常用属性：
+
+  var box = document.getElementById("box");
+
+  //box.childNodes:  子节点: 11个
+  console.dir(box.childNodes[0]);//文本节点
+  console.dir(box.childNodes[1]);//注释节点
+  console.dir(box.childNodes[3]);//标签节点
+
+
+  console.dir(box.getAttributeNode("id"));
+
+  //nodeType: 1:元素，标签
+
+
+</script>
+
+</body>
+</html>

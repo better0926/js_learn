@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box">
+  <!--注释-->
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <div>2</div>
+  <div>2</div>
+  <div>2</div>
+</div>
+
+<script>
+
+  //需求：让box中的元素隔行变色
+  //childNodes: 获取所有的子节点
+  var box = document.getElementById("box");
+
+  //获取所有的子节点（包括文本节点、注释节点、标签）
+  //var childs = box.childNodes;
+  var childs = box.children;
+  console.log(childs.length);
+
+  //children: 获取所有的孩子元素
+  //console.log(childs);
+  for(var i = 0; i < childs.length; i++) {
+    if(i % 2 === 0) {
+      childs[i].style.backgroundColor = "pink";
+    }else {
+      childs[i].style.backgroundColor = "red";
+    }
+  }
+
+</script>
+
+</body>
+</html>

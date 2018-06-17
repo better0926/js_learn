@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    
+    div {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      border: 1px solid #000;
+    }
+    
+    .one {
+      background-color: green;
+    }
+    
+    .two {
+      background-color: yellowgreen;
+      margin: 100px;
+    }
+
+    .three {
+      background-color: pink;
+      margin: 200px;
+    }
+  </style>
+</head>
+<body>
+<div class="one"></div>
+<div class="two"></div>
+<div class="three"></div>
+
+
+<script>
+
+  var count = 1;
+  //需求：点谁谁上来
+  var divs = document.querySelectorAll("div");
+
+  for (var i = 0; i < divs.length; i++) {
+    divs[i].onclick = function () {
+      this.style.zIndex = ++count;
+    }
+  }
+
+</script>
+</body>
+</html>

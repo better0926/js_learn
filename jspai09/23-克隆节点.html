@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+    
+    .cls {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <span>我是一个div</span>
+</div>
+<p id="box" class="cls"><span>哈哈哈</span></p>
+
+
+
+
+<script>
+
+  var div = document.querySelector("div");
+  var p = document.querySelector("p");
+
+  //参数：deep :默认false,表示浅复制，只会复制一个标签，并不会复制内容
+  //     deep:  true,    表示深复制，会复制所有的内容
+  //克隆一个p
+  //会在内存中克隆一个节点， 这个节点克隆出来之后，就不会影响到原来的节点了
+  var newP = p.cloneNode(true);
+  newP.innerText = "嘿嘿嘿";
+  newP.id = "box1";
+
+  div.appendChild(newP);
+
+</script>
+</body>
+</html>

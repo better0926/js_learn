@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <span>我是一个div</span>
+</div>
+<p>我是一个p标签</p>
+
+
+
+
+<script>
+
+  //把p标签添加到div的内部
+
+  //把child添加到parent的子元素的最后面
+  //parent.appendChild(child)
+
+  var div = document.querySelector("div");
+  var p = document.querySelector("p");
+
+  //把p添加到div的子元素的最后面
+  div.appendChild(p);
+
+</script>
+</body>
+</html>

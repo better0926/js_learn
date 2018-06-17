@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<input type="button" value="随机">
+<div></div>
+
+<script>
+
+  var btn = document.querySelector("input");
+  var div = document.querySelector("div");
+
+  btn.onclick = function () {
+
+    var randomX = parseInt(Math.random() * 1201);
+    var randomY = parseInt(Math.random() * 501);
+    //随机给div设置一个left和top
+    div.style.position = "absolute";
+    div.style.left = randomX + "px";
+    div.style.top = randomY + "px";
+
+  };
+
+</script>
+
+</body>
+</html>

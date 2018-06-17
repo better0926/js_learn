@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+<input type="text"><br>
+
+<script>
+
+  //思路：
+  //获取所有的input
+  var inputs = document.querySelectorAll("input");
+
+
+  for(var i = 0; i < inputs.length; i++) {
+    //给input注册onfocus事件
+    inputs[i].onfocus = function () {
+      this.style.backgroundColor = "pink";
+    }
+
+    inputs[i].onblur = function() {
+      this.style.backgroundColor = "";
+    }
+  }
+
+</script>
+
+</body>
+</html>

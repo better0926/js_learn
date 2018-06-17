@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+</head>
+<body>
+用户名：<input type="text" id="txtName"><span></span><br>
+密码：<input type="password" id="txtPwd"><span></span><br>
+
+<script>
+
+  //onclick
+  //onmouseover
+  //onmouseout
+  //onfocus
+  //onblur
+
+  //onkeydown: 当键盘按下的时候会触发
+  //onkeyup:当键盘弹起的时候触发
+
+  //判断用户名，如果长度不是2-6，提示用户
+  //判断密码，长度6-12位
+
+  var txtName = document.getElementById("txtName");
+  txtName.onkeyup = function () {
+    //判断value的长度是否是2-6
+    var content = txtName.value;
+    if (content.length < 2 || content.length > 6) {
+      //不符合要求，需要在span中提示
+      txtName.nextElementSibling.innerText = "用户名需要在2-6位之间";
+      txtName.nextElementSibling.style.color = "red";
+    } else {
+      //满足条件
+      txtName.nextElementSibling.innerText = "正确";
+      txtName.nextElementSibling.style.color = "green";
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

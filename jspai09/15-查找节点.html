@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul id="box">
+  <li>11</li>
+  <li id="two">22</li>
+  <li>33</li>
+  <li>44</li>
+</ul>
+
+<script>
+
+  //  var box = document.getElementById("box");
+  //
+  //  //获取到box中所有的子节点
+  //  console.log(box.childNodes);
+  //
+  //  //获取box中所有的子元素
+  //  console.log(box.children);
+  //
+  //
+  //  //获取第一个子节点 firstChild
+  //  console.log(box.firstChild);   //childNodes[0]
+  //  //获取第一个子元素 firstElementChild (IE678中不支持)
+  //  console.log(box.firstElementChild);//  children[0]
+  //
+  //
+  //  //获取最后一个子节点
+  //  console.log(box.lastChild);
+  //  console.log(box.lastElementChild);
+
+
+  //获取兄弟
+  //
+  //  previousSibling:  获取前面的兄弟
+  var two = document.getElementById("two");
+
+  //
+  //  //获取前面的兄弟节点
+  //  console.log(two.previousSibling);
+  //  //获取前面的兄弟元素
+  //  console.log(two.previousElementSibling);
+  //
+  //  //获取后面的兄弟节点
+  //  console.log(two.nextSibling);
+  //  //获取后面的兄弟元素
+  //  console.log(two.nextElementSibling);
+
+  // parentNode :  父节点
+  console.log(two.parentNode);
+
+</script>
+
+</body>
+</html>

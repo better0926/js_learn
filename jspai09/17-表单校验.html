@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+</head>
+<body>
+用户名：<input type="text" id="txtName"><span></span><br>
+密码：<input type="password" id="txtPwd"><span></span><br>
+
+<script>
+
+  //校验用户名的长度： 2-6位
+  //1. 获取到用户名
+  //2. 注册onkeyup事件
+  //3. 获取用户名的value值
+  //4. 判断value值的长度，如果是2-6位，提示 正确（green）
+  var txtName = document.getElementById("txtName");
+  var txtNameTips = txtName.nextElementSibling;
+  txtName.onkeyup = function () {
+    var v = txtName.value;
+    if (v.length >= 2 && v.length <= 6) {
+      txtNameTips.innerText = "正确";
+      txtNameTips.style.color = "green";
+    } else {
+      txtNameTips.innerText = "用户名必须是2-6位之间";
+      txtNameTips.style.color = "red";
+    }
+  }
+
+
+  //校验密码的长度： 6-12位
+  var txtPwd = document.getElementById("txtPwd");
+  var txtPwdTips = txtPwd.nextElementSibling;
+  txtPwd.onkeyup = function () {
+
+    if (txtPwd.value.length >= 6 && txtPwd.value.length <= 12) {
+      txtPwdTips.innerText = "正确";
+      txtPwdTips.style.color = "green";
+    }else {
+      txtPwdTips.innerText = "密码必须是6-12位";
+      txtPwdTips.style.color = "red";
+    }
+
+  }
+
+
+</script>
+
+</body>
+</html>

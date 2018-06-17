@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+<button>按钮</button>
+<div class="box">111</div>
+
+<script>
+
+  //  var btn = document.querySelector("button");
+  //  var div = document.querySelector("div");
+  //  btn.onclick = function () {
+  //    div.className = "box";
+  //  }
+
+  //1. div.style属性是一个对象，里面有很多很多的键值对，这些键值对对应了所有的行内样式
+  //2. 如果样式名带有-，background-color font-size:  会变成驼峰命名
+  var div = document.querySelector("div");
+  //console.log(div.style);
+
+
+  //
+  div.style.width = "200px";
+  div.style.height = "200px";
+  div.style.backgroundColor = "red";
+
+</script>
+</body>
+</html>

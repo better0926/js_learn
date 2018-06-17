@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮</button>
+
+
+<script>
+
+  var btn = document.querySelector("button");
+
+  btn.onclick = function () {
+
+    //随机一个颜色
+    var n1 = parseInt(Math.random() * 256);
+    var n2 = parseInt(Math.random() * 256);
+    var n3 = parseInt(Math.random() * 256);
+
+    //rgb(100, 200, 100)
+    document.body.style.backgroundColor = "rgb(" + n1 + ", " + n2 + ", " + n3 + ")";
+  }
+
+</script>
+</body>
+</html>

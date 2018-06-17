@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-style-">样式操作（style属性）</h1>
+<blockquote>
+<p>标签不仅可以通过class属性操作样式，还可以通过style属性操作样。同样的DOM对象可以通过className操作样式，也可以通过style属性操作样。</p>
+</blockquote>
+<pre><code class="lang-javascript">//1. style属性是一个对象，里面存储了所有行内样式对应的键值对。
+//2. 如果样式的名字带了-，比如background-color,到了style对象中，变成了驼峰命名法，backgroundColor（因为-在js中不是一个合法的标识符）
+//3 style属性只能获取和设置行内样式，在类样式中定义的样式通过style获取不到。
+</code></pre>
+<p><strong>style设置的样式是行内样式，因此优先级要高于className设置的样式</strong></p>
+<p>关于body:</p>
+<pre><code class="lang-javascript">1. document.body  : body比较常用，并且在页面中时唯一的，因此可以使用document.body直接获取。
+2. document.documentElement  : 可以获取html元素
+3. document.head :  可以直接获取head元素
+4. document.title :  可以直接获取title的文本
+</code></pre>
+<p>【案例：开关灯案例】</p>
+<p>【案例：百度换肤】</p>
+<p>【案例：让当前文本框高亮显示】</p>
+<p>【案例：表格隔行变色+高亮】</p>
+<h2 id="-csstext">关于cssText</h2>
+<blockquote>
+<p>使用cssText可以设置style的属性值</p>
+</blockquote>
+<pre><code class="lang-javascript">//优点：可以一次性设置多个值
+//缺点：会覆盖其他值
+var box = document.getElementById(&quot;box&quot;);
+box.style.cssText = &quot;background-color:red&quot;;
+</code></pre>
+<h1 id="-">节点操作</h1>
+<h2 id="-">节点的属性</h2>
+<p>节点分类：</p>
+<p>​    元素节点、文本节点、属性节点、注释节点</p>
+<p>节点常用的属性</p>
+<p>​    nodeType:  节点类型：元素节点的nodeType = 1  2：属性   注释：8  文本：3</p>
+<p>​    nodeName: 节点名称</p>
+<p>​    nodeValue: 节点值</p>
+<h2 id="-">节点查找</h2>
+<h3 id="-">孩子节点</h3>
+<pre><code class="lang-javascript">//childNodes:获取所有的孩子节点（包括了元素节点和其他很多类型的节点，基本不常用）
+//children:获取所有的子元素（用途很广泛），兼容性：IE678会把注释节点算上。
+//firstChild //第一个子节点
+//firstElementChild //第一个子元素 有兼容性问题（IE678）
+//lastChild //最后一个节点
+//lastElementChild //最后一个子元素 有兼容性问题（IE678）
+</code></pre>
+<h3 id="-">兄弟节点</h3>
+<pre><code class="lang-javascript">//1. nextSibling:下一个兄弟节点
+//2. nextElementSibling:下一个兄弟元素（IE678不兼容）
+//3. previousSibling//上一个兄弟节点
+//4. previousElementSibling //上一个兄弟元素 有兼容性问题 可以封装一个兼容性方法
+</code></pre>
+<h3 id="-">父节点</h3>
+<pre><code class="lang-javascript">//1. parentNode:父节点  没有兼容性问题
+</code></pre>
+<p>【案例：列表的隔行变色】</p>
+<p>【案例：菜单切换】</p>
+<p>【案例：表单校验】</p>
+<p>javascript:void(0)的作用</p>
+<pre><code class="lang-javascript">//1. javascript:是伪协议，表示url的内容通过javascript执行。
+//2. void(0)表示不作任何操作，这样会防止链接跳转到其他页面。
+//3. 让页面不跳转，JavaScript:void(0)是最通用的方式。
+</code></pre>
+<h3 id="keydown-keyup-">keydown与keyup事件</h3>
+<pre><code class="lang-javascript">1. keydown:当键盘按下时触发的事件
+2. keyup:键盘弹起时触发的事件
+
+注意：如果给文本框注册的是keydown事件，获取的value值是上一次的。
+</code></pre>
+<h2 id="-">克隆节点</h2>
+<p>语法：var newNode = node.cloneNode(deep)</p>
+<p>功能：在内存中克隆一份节点</p>
+<p>参数：deep</p>
+<ul>
+<li>false：默认值：是浅复制，只会复制标签，节点本身，不会复制节点的孩子。</li>
+<li>true:深度复制，会复制标签，还会复制标签的所有内容 <strong><em>常用</em></strong> </li>
+</ul>
+<blockquote>
+<ol>
+<li>克隆出来的节点跟原来的节点没有关系了，修改了也不会相互影响。</li>
+<li>如果克隆的节点带了id，我们需要给id重新设置一个值，不让id冲突</li>
+</ol>
+</blockquote>
+<h2 id="-">添加节点</h2>
+<h3 id="appendchild">appendChild</h3>
+<p>语法：parent.appendChild(newChild)</p>
+<p>parent:调用者，父节点来调用</p>
+<p>newChild:需要添加的那个孩子。</p>
+<p>作用：把newChild添加到parent的孩子的最后面。</p>
+<blockquote>
+<p>如果添加的是页面中本来就存在的元素，是一个剪切的效果，原来的就不在了。</p>
+</blockquote>
+<pre><code class="lang-javascript">var demo = document.getElementById(&quot;demo&quot;);
+var box = document.getElementById(&quot;box&quot;);
+box.appendChild(demo);
+</code></pre>
+<p>【选好友案例】</p>
+<h3 id="insertbefore">insertBefore</h3>
+<p>语法：parent.insertBefore(newChild, refChild);</p>
+<p>parent:必须要父节点来调用</p>
+<p>newChild：需要添加的那个节点</p>
+<p>refChild:添加到哪一个节点的前面。</p>
+<pre><code class="lang-javascript">var ul = document.getElementById(&quot;list&quot;);
+var li = document.createElement(&quot;li&quot;);
+li.innerHTML = &quot;骥骥&quot;;
+//就是添加到子节点的最前面。
+ul.insertBefore(li, ul.children[0]);
+</code></pre>
+<h3 id="-">双击事件</h3>
+<p>ondblclick:双击的时候触发</p>
+<h2 id="-3-">创建节点（3种方式）</h2>
+<h3 id="document-write-">document.write（基本不用）</h3>
+<p>可以生成新的节点，但是不推荐使用。<strong><em>如果页面已经加载完成了，你还是用document.write写内容的话，会把之前的页面给覆盖掉</em></strong> </p>
+<p>原理：页面从上往下加载的时候，会开启一个文档流，当页面加载完，文档流就会关闭。</p>
+<p>document.write的本意就是在文档流上写入内容。如果页面没加载完成，文档流还是开着的，document.write直接在这个文档流上写东西</p>
+<p>如果页面加载完成了，还是用document.write写东西，会重新开启一个新的文档流，往新的文档流上写东西，旧的文档流就被新的文档流覆盖了。</p>
+<h3 id="innerhtml">innerHTML</h3>
+<p>innerHTML也可以创建节点</p>
+<blockquote>
+<p>innerHTML创建节点的时候有一个特点，如果原来有内容的话，使用innerHTML会把原先的内容给干掉。</p>
+<p>慎用：很容易出现效率问题。</p>
+</blockquote>
+<h3 id="createelement">createElement</h3>
+<p>语法：var element = document.createElement(&quot;tagName&quot;);</p>
+<p>作用：在内存里面创建了一个节点</p>
+<p>返回：一个元素</p>
+<p>用途非常的广泛。</p>
+<h2 id="-">删除节点</h2>
+<p>语法：parent.removeChild(child);</p>
+<p>功能：有父盒子调用，删除里面的一个子元素。</p>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

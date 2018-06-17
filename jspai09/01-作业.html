@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div class="one">
+  <p>cc</p>
+  <div>
+    <p>ff</p>
+  </div>
+</div>
+
+<div class="two">
+  <p>gg</p>
+</div>
+
+<script>
+
+  //document.getElementById()：通过id
+  //document.getElementsByTagName("标签名"):通过标签名
+  //document.getElementsByClassName("类名")
+  //document.getElementsByName():通过name属性查找
+
+  //通过css选择器来查找，， 如果是id需要加上#id   如果是类名，需要加上.类型
+  //document.querySelector()   :返回一个对象，如果有多个，会返回第一个
+  //document.querySelectorAll():返回一个伪数组，
+
+
+  //不允许增加任何的id和class的情况下
+  //1. 把cc改成  聪聪
+  //2. 把ff改成  飞飞
+  //3. 把gg改成  哥哥
+
+  var cc = document.querySelector(".one>p");
+  cc.innerText = "聪聪";
+
+  var ff = document.querySelector(".one>div>p");
+  ff.innerText = "飞飞";
+
+  var gg = document.querySelector(".two p");
+  gg.innerText = "哥哥";
+</script>
+
+<script>
+
+
+
+</script>
+
+</body>
+</html>

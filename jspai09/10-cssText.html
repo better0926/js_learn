@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="box" style="width:200px; height:200px; background-color: pink;">111</div>
+
+<script>
+  var box = document.getElementById("box");
+
+  //box.style对应了style标签
+  //cssText用的不多，因为会把其他的样式覆盖掉。
+  box.style.cssText = "font-size: 20px; width:100px; height:100px;background-color:pink;";
+</script>
+</body>
+</html>
