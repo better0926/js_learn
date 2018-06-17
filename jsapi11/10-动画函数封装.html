@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<button id="btn1">按钮1</button>
+<button id="btn2">按钮2</button>
+<div></div>
+
+
+<script>
+
+  var btn1 = document.querySelector("#btn1");
+  var btn2 = document.querySelector("#btn2");
+  var div = document.querySelector("div");
+
+  //问题：每次调用animate，必须保证有timeId这个遍历
+  //var timeId;
+  btn1.onclick = function () {
+    animate(div, 895);
+  }
+
+  btn2.onclick = function () {
+    animate(div, 400);
+  }
+
+  //需求：封装一个函数，可以让任意的元素去任意的位置
+  //需要使用定时器，每次让elment在原来的基础上跑一段距离
+  function animate(element, target) {
+    clearInterval(element.timeId);
+    element.timeId = setInterval(function () {
+      //获取元素当前的位置
+      var current = element.offsetLeft;
+      //定义元素每次跑的距离
+      var step = current < target ? 10 : -10;
+
+      //什么时候才跑
+      //如果当前位置和与目标位置的距离小于了step，可以清除定时器,否则就跑
+      if (Math.abs(current - target) < Math.abs(step)) {
+        clearInterval(element.timeId);
+        //最终需要把element的位置设置到target
+        element.style.left = target + "px";
+      } else {
+        current += step;
+        element.style.left = current + "px";
+      }
+    }, 15);
+  }
+
+</script>
+</body>
+</html>

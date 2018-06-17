@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="offset-">offset系列</h1>
+<blockquote>
+<p>offset系列用于用于获取元素自身的大小和位置，在网页特效中有广泛应用
+offset系列主要有：offsetHeight、offsetWidth、offsetParent、offsetLeft、offsetTop</p>
+</blockquote>
+<h2 id="offsetheight-offsetwidth">offsetHeight与offsetWidth</h2>
+<blockquote>
+<p>offsetHeight与offsetWidth</p>
+<pre><code class="lang-javascript">1.    获取的是元素真实的高度和宽度
+2.    获取到的是数值类型，方便计算
+3.    offsetHeight与offsetWidth是只读属性，不能设置。
+</code></pre>
+</blockquote>
+<blockquote>
+<p>style.height与style.width</p>
+</blockquote>
+<pre><code class="lang-javascript">1.    只能获取行内样式
+2.    获取到的是字符串类型，需要转换
+</code></pre>
+<blockquote>
+<p><strong><em>结论</em></strong></p>
+</blockquote>
+<pre><code class="lang-javascript">1. 设置宽度高度使用style.width与style.height
+2. 获取宽度和高度offsetWidth与offsetHeight
+</code></pre>
+<h2 id="offsetparent">offsetParent</h2>
+<blockquote>
+<p>parentNode和offsetParent</p>
+</blockquote>
+<pre><code class="lang-javascript">1. parentNode始终是父元素
+2. offsetParent是离当前元素最近的定位元素(absolute、relative)，如果没有，那就找body
+</code></pre>
+<h2 id="offsetleft-offsettop">offsetLeft与offsetTop</h2>
+<blockquote>
+<p>offsetLeft: 自身左侧到offsetParent左侧的距离：left + margin-left
+offsetTop:自身顶部到offsetParent顶部的距离 :  top + margin-top</p>
+</blockquote>
+<blockquote>
+<p>offsetLeft与offsetTop</p>
+<pre><code class="lang-javascript">1.    元素自身与offsetParent真实的距离
+2.    获取到的是数值类型，方便计算
+3.    只读属性，只能获取，不能设置
+</code></pre>
+</blockquote>
+<blockquote>
+<p>style.left与style.top</p>
+</blockquote>
+<pre><code class="lang-javascript">1.    只能获取行内样式
+2.    获取到的是字符串，需要转换
+3.    可以获取，也可以设置
+</code></pre>
+<blockquote>
+<p><strong>结论</strong></p>
+</blockquote>
+<pre><code class="lang-javascript">获取操作：用offset系列
+设置操作：用style.xxx进行设置。
+</code></pre>
+<p> <img src="images\1.png" alt="1"></p>
+<h1 id="-">动画函数封装</h1>
+<pre><code class="lang-javascript">1. 让一个盒子，点一次能够跑一次
+2. 一个盒子，能够自动的跑到400px的地方
+    a).判断leader&lt;400才跑，否则清除定时器
+    b).一进来，要记得清除定时器，不然会越点越快。
+3. 封装成一个函数
+    a).把box替换成element
+    b).把400替换成target
+    c).把timer绑定到element上
+4. 封装的函数不会往回跑
+    a).修改step，要有正负 var step = target &gt; leader ? 10 : -10;
+    b).判断条件修改，当距离大于等于一步的时候，才跑，否则清除定时器，抱过去
+</code></pre>
+<h1 id="-">轮播图</h1>
+<h2 id="-">简单轮播图</h2>
+<pre><code class="lang-javascript">1.    结构分析
+2.    按钮高亮以及排他
+3.    移动图片：
+    渐渐的移动图片，用到animate函数
+</code></pre>
+<h2 id="-">左右焦点图</h2>
+<pre><code class="lang-javascript">1.    结构分析
+2.    左右箭头的显示与隐藏
+3.    点击左箭头与右箭头（下标判断）
+</code></pre>
+<h2 id="-">无缝轮播图</h2>
+<pre><code class="lang-javascript">1. 需要添加假图片
+2. 真图片与假图片之间互相切换。
+</code></pre>
+<h2 id="-">完整版轮播图</h2>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

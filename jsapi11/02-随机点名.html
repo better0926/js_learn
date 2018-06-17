@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    input {
+      position: absolute;
+      left: 50%;
+      width: 100px;
+      margin-left: -20px;
+      top: 10px;
+    }
+
+    ul {
+      width: 816px;
+      list-style: none;
+      margin: 40px auto;
+    }
+
+    ul li {
+      width: 100px;
+      height: 40px;
+      border: 1px solid #cc9258;
+      float: left;
+    }
+
+  </style>
+</head>
+<body>
+<input type="button" value="随机点名" id="btn">
+<ul>
+
+</ul>
+<script>
+  var arr = ["张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八"];
+
+
+  //思路：
+  //1. 动态的生成结构
+  var btn = document.getElementById("btn");
+  var ul = document.querySelector("ul");
+
+  for (var i = 0; i < arr.length; i++) {
+    //生成li
+    var li = document.createElement("li");
+    li.innerText = arr[i];
+    //添加到ul
+    ul.appendChild(li);
+  }
+
+
+  var lis = ul.children;
+  //2. 点击按钮，随机点名
+  btn.onclick = function () {
+    //干掉所有人的背景颜色
+    for(var i = 0; i < lis.length; i++) {
+      lis[i].style.backgroundColor = "";
+    }
+    //复活随机一个li
+    var ramdom = parseInt(Math.random() * lis.length);
+    lis[ramdom].style.backgroundColor = "hotpink";
+
+  }
+</script>
+</body>
+</html>

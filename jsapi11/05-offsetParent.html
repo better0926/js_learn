@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .father {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+      margin: 100px;
+      position: relative;
+    }
+    
+    .son {
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+      position: relative;
+    }
+    
+    .sun {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="father">
+  <div class="son">
+    <div class="sun"></div>
+  </div>
+</div>
+
+<script>
+
+  var sun = document.querySelector(".sun");
+
+  //获取sun的父节点
+  console.log(sun.parentNode);
+  //offsetParent:获取的是最近的有定位的父元素。
+  console.log(sun.offsetParent);
+
+</script>
+
+</body>
+</html>

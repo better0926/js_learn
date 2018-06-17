@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /*box的大小必须和图片一样，保证只显示一张图片*/
+    .box {
+      width: 790px;
+      height: 340px;
+      margin: 100px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*ul要保证宽度足够，不能让li掉下去
+      需要绝对定位
+    */
+    .box ul {
+      width: 900%;
+      height: 340px;
+      position: absolute;
+    }
+    
+    .box ul li {
+      float: left;
+    }
+
+    .box ol {
+      width: 182px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      margin-left: -91px;
+      border-radius: 10px;
+    }
+
+    .box ol li {
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      float: left;
+      margin-top: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .box ol li.now {
+      background-color: red;
+    }
+
+    /*箭头隐藏*/
+    .arrow {
+      display: none;
+    }
+
+    /*移到box上，箭头显示*/
+    .box:hover .arrow {
+      display: block;
+    }
+
+    .left,
+    .right {
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, .3);
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      text-decoration: none;
+      text-align: center;
+      line-height: 60px;
+      font-size: 24px;
+      font-family: "宋体";
+      color: #fff;
+    }
+
+    .left:hover,
+    .right:hover {
+      background-color: rgba(0, 0, 0, .6);
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+
+  <!--放图片的-->
+  <ul>
+    <li>
+      <a href="#"><img src="images/1.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/2.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/3.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/4.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/5.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/6.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/7.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/8.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/1.jpg" alt=""></a>
+    </li>
+  </ul>
+
+  <!--小圆点-->
+  <ol>
+    <li class="now"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+  
+  <!--左右箭头-->
+  <div class="arrow">
+    <a class="left" href="javascript:;">&lt;</a>
+    <a class="right" href="javascript:;">&gt;</a>
+  </div>
+</div>
+
+<script src="animate.js"></script>
+<script>
+
+  //1. 找对象
+  //2. 给右箭头注册点击事件
+  //3. 给左箭头注册点击事件
+
+  //1. 获取对象
+  //1.1 获取box
+  var box = document.querySelector(".box");
+  //1.2 获取ul
+  var ul = box.querySelector("ul");
+  //1.3 左箭头
+  var leftArr = box.querySelector(".left");
+  //1.4 右箭头
+  var rightArr = box.querySelector(".right");
+  //1.5 所有的图片
+  var imgs = ul.children;
+  //1.6 所有的小圆点
+  var points = box.querySelectorAll("ol li");
+
+  //2. 给右箭头注册点击事件
+  //需要一个核心的变量：
+  var count = 0;
+  rightArr.onclick = function () {
+    //判断是否是最后一张，如果是，瞬间换成第0张
+    if (count >= imgs.length - 1) {
+      count = 0;
+      ul.style.left = "0px";
+    }
+
+
+    //2.1 count++
+    count++;
+    //2.2 需要移动ul
+    var target = -count * box.offsetWidth;
+    animate(ul, target, 40);
+
+
+    //同步小圆点，
+    //干掉所有的小圆点
+    for (var i = 0; i < points.length; i++) {
+      points[i].className = "";
+    }
+    //让count对应的小圆点亮
+    if (count < imgs.length - 1) {
+      points[count].className = "now";
+    } else {
+      points[0].className = "now";
+    }
+
+  }
+
+
+  //3. 给左箭头注册点击事件
+  leftArr.onclick = function () {
+    //3.0 如果是第一张，瞬间变回最后一张
+    if (count <= 0) {
+      count = imgs.length - 1;
+      //====================================坑：不要丢了px=====================
+      ul.style.left = -count * box.offsetWidth + "px";//这行代码等于没用
+    }
+
+
+    //2.1 count++
+    count--;
+    //2.2 需要移动ul
+    var target = -count * box.offsetWidth;
+    animate(ul, target, 40);
+
+
+    //同步小圆点，
+    //干掉所有的小圆点
+    for (var i = 0; i < points.length; i++) {
+      points[i].className = "";
+    }
+    //让count对应的小圆点亮
+    if (count < imgs.length - 1) {
+      points[count].className = "now";
+    } else {
+      points[0].className = "now";
+    }
+  }
+
+</script>
+
+
+</body>
+</html>

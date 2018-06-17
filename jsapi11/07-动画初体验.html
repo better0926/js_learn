@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 90px;
+      background-color: hotpink;
+      border-top: 30px solid lime;
+      border-radius: 30px 30px 0 0;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<button>奔跑把，飞飞</button>
+<div>飞飞</div>
+
+<script>
+
+  var btn = document.querySelector("button");
+  var ff = document.querySelector("div");
+
+
+  //每次在原来的位置  加上一小段距离20
+  btn.onclick = function () {
+
+    var timeId = setInterval(function () {
+      //获取ff当前的left值
+      var current = ff.offsetLeft;
+      //需求：让飞飞渐渐地跑到400的地方
+
+      //如果当前位置<400，才能跑，否则清除定时器
+      if (current < 400) {
+        current += 20;
+        ff.style.left = current + "px";
+      } else {
+        clearInterval(timeId);
+      }
+
+    }, 15);
+
+  };
+
+</script>
+
+</body>
+</html>

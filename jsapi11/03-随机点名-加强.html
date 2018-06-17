@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      margin: 50px auto;
+    }
+
+    td {
+      padding: 15px;
+      text-align: center;
+
+      /*border: 1px solid #000;*/
+    }
+
+    input {
+      width: 100px;
+      height: 40px;
+      margin: 0 auto;
+    }
+  </style>
+
+</head>
+
+<body>
+<input type="button" value="开始" id="btn1">
+<input type="button" value="结束" id="btn2">
+</body>
+
+<script>
+  var list = [
+    ["@", "@", "@", "@", "@", "讲师", "@", "徐红影", "马玉婉", "楚宁宁", "周忠琴", "张瑞", "@"],
+    ["王书琴", "徐蕊", "潘鑫杰", "孟腾腾", "田芳", "高萍萍", "@", "刘欢欢", "李日军", "吴娟娟", "刘星", "陈洋", "丁双"],
+    ["刘韵", "杨千丽", "张文昭", "刘诗覃", "庄翠", "邓海霞", "@", "王凤", "陈玲钰", "李珍", "吴程", "张媛媛", "胡豪杰"],
+    ["李辉", "严小伟", "王宽", "张璐", "李威", "石皖军", "@", "苏恩梅", "张瑞雪", "张梦黎", "聂男男", "季大伟", "马金哲"],
+    ["杨凯", "程松伟", "张丽", "谢民成", "张龙", "余佳宁", "@", "程岳飞", "张建山", "汪洋", "侯孔生", "郭海华", "莫龙"],
+    ["张学文", "蒋鲲", "吴凌云 ", "伏文东", "孙玉", "尹健楠", "@", "朱铮", "范景阁", "干滨昭", "陈城", "张怡怡", "施佳尧"],
+    ["黄先伟", "王俊豪", "郭尧峰", "程晨", "郑锦彬", "汪丽", "@", "李廷", "郭栋", "张运", "莫彪", "陈九松", "熊亮"],
+    ["张亚楠", "黄磊", "章华杰", "杨佳", "叶新民", "马黎明", "@", "彭万健", "张志阳", "周为华", "@", "@", "@"],
+  ];
+
+
+  //1. 创建一个table，添加到body中
+  //2. 根据list的长度生成tr，添加到table中
+  //3. 根据list[i]的长度生成td，添加到tr中
+  var table = document.createElement("table");
+  document.body.appendChild(table);
+
+  var students = [];
+
+  //生成tr
+  for (var i = 0; i < list.length; i++) {
+    var tr = document.createElement("tr");
+    table.appendChild(tr);
+
+    //每生成一个tr，就要生成多个td
+    for (var j = 0; j < list[i].length; j++) {
+      //生成td
+      var td = document.createElement("td");
+      tr.appendChild(td);
+
+      if (list[i][j] != "@") {
+        td.innerText = list[i][j];
+        td.style.backgroundColor = "yellowgreen";
+
+        //把所有需要点名的td放到一个数组中
+        students.push(td);
+      }
+    }
+
+  }
+
+
+  //随机点名功能
+  //思路：
+  var btn1 = document.querySelector("#btn1");
+  var btn2 = document.querySelector("#btn2");
+  var timeId;
+  btn1.onclick = function () {
+
+
+    //开启定时器，其实就是给浏览器一个任务，每次时间到了
+    //在开始定时器之前，清除其他的定时器
+    clearInterval(timeId);
+    console.log("清除定时器，定时器的id是"+timeId);
+    timeId = setInterval(function () {
+      //排他
+      for (var i = 0; i < students.length; i++) {
+        students[i].style.backgroundColor = "yellowgreen";
+      }
+      //随机students
+      var random = parseInt(Math.random() * students.length);
+      students[random].style.backgroundColor = "hotpink";
+    }, 100);
+    console.log(timeId);
+
+  }
+
+  btn2.onclick = function () {
+    clearInterval(timeId);
+  }
+
+
+</script>
+</html>

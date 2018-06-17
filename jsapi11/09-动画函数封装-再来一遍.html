@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 90px;
+      background-color: hotpink;
+      border-top: 30px solid lime;
+      border-radius: 30px 30px 0 0;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<button>奔跑到400把，飞飞</button>
+<button>奔跑到800把，飞飞</button>
+<div>飞飞</div>
+
+<script>
+
+  var btn1 = document.querySelectorAll("button")[0];
+  var btn2 = document.querySelectorAll("button")[1];
+  var ff = document.querySelector("div");
+
+  //缺点1： 这是一个全局变量，每次调用animate必须保证有一个全局变量，timeId
+  //缺点2： 保证整个页面永远都只有一个定时器在跑
+  //var timeId;
+
+  btn1.onclick = function () {
+    animate(ff, 400);
+  }
+
+
+  btn2.onclick = function () {
+    animate(ff, 880);
+  }
+
+
+  //每一个元素只能有一个timeId, 不同元素之间的定时器不会干扰
+  //1. animate独立了，在哪儿都能用
+  //2. 每个对象的timeId相互独立
+  function animate(element, target) {
+    //开启一个定时器
+    clearInterval(element.timeId);
+    //console.log("清除了定时器" + timeId);
+    element.timeId = setInterval(function () {
+      //获取当前的位置
+      var current = element.offsetLeft;
+      //目标的位置
+      //每次跑的距离
+      var step = current < target ? 10 : -10;
+      //条件：什么时候才能走
+      //当前位置与终点的位置的距离 超过了 step才走，，，
+      //如果距离<step，说明不需要走了。
+      if (Math.abs(current - target) >= Math.abs(step)) {
+        current += step;
+        element.style.left = current + "px";
+      } else {
+        clearInterval(element.timeId);
+        //如果清除了定时器，发现还没有到终点
+        element.style.left = target + "px";
+      }
+    }, 15);
+  }
+
+</script>
+
+</body>
+</html>

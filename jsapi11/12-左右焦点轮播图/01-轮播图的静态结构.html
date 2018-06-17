@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /*box的大小必须和图片一样，保证只显示一张图片*/
+    .box {
+      width: 790px;
+      height: 340px;
+      margin: 100px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*ul要保证宽度足够，不能让li掉下去
+      需要绝对定位
+    */
+    .box ul {
+      width: 900%;
+      height: 340px;
+      position: absolute;
+    }
+    
+    .box ul li {
+      float: left;
+    }
+
+    .box ol {
+      width: 182px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      margin-left: -91px;
+      border-radius: 10px;
+    }
+
+    .box ol li {
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      float: left;
+      margin-top: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .box ol li.now {
+      background-color: red;
+    }
+
+    /*箭头隐藏*/
+    .arrow {
+      display: none;
+    }
+
+    /*移到box上，箭头显示*/
+    .box:hover .arrow {
+      display: block;
+    }
+
+    .left,
+    .right {
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, .3);
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      text-decoration: none;
+      text-align: center;
+      line-height: 60px;
+      font-size: 24px;
+      font-family: "宋体";
+      color: #fff;
+    }
+
+    .left:hover,
+    .right:hover {
+      background-color: rgba(0, 0, 0, .6);
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+
+  <!--放图片的-->
+  <ul>
+    <li>
+      <a href="#"><img src="images/1.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/2.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/3.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/4.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/5.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/6.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/7.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/8.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/1.jpg" alt=""></a>
+    </li>
+  </ul>
+
+  <!--小圆点-->
+  <ol>
+    <li class="now"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+  
+  <!--左右箭头-->
+  <div class="arrow">
+    <a class="left" href="javascript:;">&lt;</a>
+    <a class="right" href="javascript:;">&gt;</a>
+  </div>
+</div>
+<script src="animate.js"></script>
+<script>
+
+  //找对象
+  var box = document.querySelector(".box");
+  var leftArr = document.querySelector(".box .left");
+  var rightArr = document.querySelector(".box .right");
+  var ul = document.querySelector(".box ul");
+  var imgs = ul.children;
+
+
+  //核心变量：记录需要出去的图片的张数
+  var count = 0;
+  //右箭头
+  rightArr.onclick = function () {
+    //是最后一张图片了
+    if (count >= imgs.length - 1) {
+      //瞬间把图片变回第0张
+      count = 0;
+      ul.style.left = 0;
+    }
+
+    count++;
+    //渐渐的移动ul
+    var target = -count * box.offsetWidth;
+    animate(ul, target, 40);
+
+
+    console.log(count);
+  }
+
+  //左箭头
+  leftArr.onclick = function () {
+    if (count <= 0) {
+      //瞬间变到最后一张
+      count = imgs.length - 1;
+      //ul的位置应该换到最后
+      ul.style.left = - count * box.offsetWidth + "px";
+    }
+
+    count--;
+    //渐渐的移动ul
+    var target = -count * box.offsetWidth;
+    animate(ul, target, 40);
+
+
+  }
+
+
+</script>
+
+</body>
+</html>

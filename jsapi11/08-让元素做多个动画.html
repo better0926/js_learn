@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 90px;
+      background-color: hotpink;
+      border-top: 30px solid lime;
+      border-radius: 30px 30px 0 0;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<button>奔跑到400把，飞飞</button>
+<button>奔跑到800把，飞飞</button>
+<div>飞飞</div>
+
+<script>
+
+  var btn1 = document.querySelectorAll("button")[0];
+  var btn2 = document.querySelectorAll("button")[1];
+  var ff = document.querySelector("div");
+
+
+  btn1.onclick = function () {
+
+    animate(ff, 400);
+
+  }
+
+
+  btn2.onclick = function () {
+    animate(ff, 800);
+  }
+
+
+  //封装一个函数，这个函数： 可以让任意的元素去任意的位置
+  function animate(element, target) {
+    var timeId = setInterval(function () {
+      //在ff的原来的位置的基础上，加上一段距离
+      var current = element.offsetLeft;
+      //如果current < target,step:10  否则 step:-10
+      var step = current < target ? 9 : -9;
+
+      //当前的到距离终点的距离 大于 step
+      if (Math.abs(target - current) > Math.abs(step)) {
+        current += step;
+        //设置位置
+        element.style.left = current + "px";
+      } else {
+        clearInterval(timeId);
+        //清除定时器的时候，有可能出现跑不到终点的情况，误差不会很大，因为这段距离肯定要小于step
+        element.style.left = target + "px";
+      }
+    }, 15);
+  }
+
+
+</script>
+
+</body>
+</html>

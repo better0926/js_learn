@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /*box的大小必须和图片一样，保证只显示一张图片*/
+    .box {
+      width: 790px;
+      height: 340px;
+      margin: 100px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /*ul要保证宽度足够，不能让li掉下去
+      需要绝对定位
+    */
+    .box ul {
+      width: 800%;
+      height: 340px;
+      position: absolute;
+    }
+    
+    .box ul li {
+      float: left;
+    }
+
+    .box ol {
+      width: 182px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      margin-left: -91px;
+      border-radius: 10px;
+    }
+
+
+    .box ol li {
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      float: left;
+      margin-top: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .box ol li.now {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+
+  <!--放图片的-->
+  <ul>
+    <li>
+      <a href="#"><img src="images/1.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/2.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/3.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/4.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/5.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/6.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/7.jpg" alt=""></a>
+    </li>
+    <li>
+      <a href="#"><img src="images/8.jpg" alt=""></a>
+    </li>
+  </ul>
+
+  <!--小圆点-->
+  <ol>
+    <li class="now"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+</div>
+
+
+<script src="animate.js"></script>
+<script>
+
+  //1. 找对象
+  //2. 给所有的小圆点注册点击事件
+  //3. 让当前的小圆点亮起来，排他。
+  //4. 移动ul（使用动画）
+
+
+
+  //1. 找对象
+  //1.1 找box
+  var box = document.querySelector(".box");
+  //1.2 找ul
+  var ul = document.querySelector(".box ul");
+  //1.3 找所有的小原点
+  var points = document.querySelectorAll(".box ol li");
+
+  //2. 给所有的小圆点注册点击事件
+  //2.1 遍历所有的小圆点
+  for(var i = 0; i < points.length; i++) {
+    //2.2 给每一个小圆点注册点击事件
+    //2.3 给每一个小圆点存储一个下标
+    points[i].index = i;
+    points[i].onclick = function () {
+
+      //3. 小圆点排他
+      //3.1 干掉所有人
+      for(var i = 0; i < points.length; i++) {
+        points[i].className = "";
+      }
+      //3.2 复活我自己
+      this.className = "now";
+
+      //4. 移动ul
+      //4.1 计算移动的ul的目标值   - 当前li的下标 * 图片宽度
+      var target = - this.index * box.offsetWidth;
+      //4.2 调用animate函数，需要引入
+      animate(ul, target, 40);
+    }
+  }
+</script>
+
+</body>
+</html>
