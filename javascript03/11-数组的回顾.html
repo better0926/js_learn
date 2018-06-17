@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //这创建了一个数组，值是4
+  //var arr = [4];
+  //var arr = new Array(4);
+  //console.log(arr);
+
+
+  //下标:0开始     最大的下标：length-1
+  //长度:length    数组中元素的个数
+  //稀疏数组：下标不连续，避免使用
+
+
+  //var arr = ["张三", "李四", "王五"];
+
+  //存值  数组名[下标] = 值；
+  //如果有值，会覆盖
+  //如果没有值，新增
+  //arr[3] = "赵六";
+  //arr[0] = "哈哈";
+  //console.log(arr);
+
+  //取值：数组名[下标]
+  //console.log(arr[0]);
+  //console.log(arr[100]);
+
+  var arr = ["哈哈", "张三", "李四", "王五", "嘿嘿"];
+  //不管数组有多少元素，，，，需要打印数组最后一个元素
+  //console.log(arr[0]);
+  //console.log(arr[arr.length - 1]);
+  //console.log(arr[arr.length]);
+
+
+  //如何在数组的最后面增加一个元素
+  arr[arr.length] = "嘻嘻";
+  arr[arr.length] = "呵呵";
+  console.log(arr);
+
+
+</script>
+
+</body>
+</html>

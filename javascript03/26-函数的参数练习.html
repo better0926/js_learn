@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 计算1-n之间所有数的和
+  //function 函数名(形参) {}
+  function getSum(n) {
+    var sum = 0;
+    for(var i = 1; i <= n; i++) {
+      sum += i;
+    }
+
+    console.log(sum);
+  }
+
+
+  getSum(10);
+
+  getSum(100);
+
+  //3. 计算m-n之间所有数的积
+  function getProduct(m, n) {
+
+    var product = 1;
+    for(var i = m; i <= n; i++) {
+      product *= i;
+    }
+
+    console.log(product);
+  }
+
+  getProduct(1,3);
+  getProduct(1,5);
+  getProduct(4,5);
+
+</script>
+
+</body>
+</html>

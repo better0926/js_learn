@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+
+  //冒泡排序
+  // 一趟：两两比较，如果前一个比后一个大，交换位置，可以得到一个最大的值
+  // 一趟： 两两比较，只需要比length-1次    得到一个最大的值
+  var arr = [65, 97, 76, 13, 27, 49, 58];
+  //为什么减1： 两两比较，只需要比length-1
+  for(var i = 0; i < arr.length - 1; i++) {
+    if(arr[i] > arr[i + 1]){
+      //交换位置
+      var temp = arr[i];
+      arr[i] = arr[i+1];
+      arr[i+1] = temp;
+    }
+  }
+
+
+  console.log(arr);
+
+
+</script>
+
+</body>
+</html>

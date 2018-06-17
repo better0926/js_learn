@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //冒泡排序
+  //一趟：两两之间相互比较，称之为一趟, 一趟下来就能够得到一个最大的数
+  var arr = [65, 97, 76, 13, 27, 49, 58];
+
+  var tang = 0;
+  var ci = 0;
+  //外层循环控制交换多少趟
+  for(var i = 0; i < arr.length -1; i++) {
+    tang++;
+
+    //内层循环控制每趟循环多少次
+    for (var j = 0; j < arr.length - 1 - i; j++) {
+      ci++;
+      if (arr[j] > arr[j + 1]) {
+        //交换位置
+        var temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+
+  }
+  console.log(tang, ci);
+  console.log(arr);
+
+
+</script>
+
+</body>
+</html>

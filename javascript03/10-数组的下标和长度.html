@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //下标：下标是从0开始，，，数组通过下标来进行操作数组的内的元素。
+  //长度：arr.length, 表示数组中元素的个数
+
+  //var arr = ["张三", "李四", "王五", "赵六", "田七", "王八"];
+  //console.log(arr);
+  //console.log(arr.length);
+
+
+  //存值和取值
+  //存值： 如果下标存在，会把原来的值给覆盖， 如果下标不存在，表示给数组新增加一个元素。
+  //arr[3] = "赵六";
+  //arr[1] = "刘四";
+  //console.log(arr);
+
+  //length和下标的关系
+  //下标从0开始，，，，，最大的下标：length-1
+  //console.log(arr.length);
+  //console.log(arr[5]);
+
+
+
+  //下标从0开始， 最大下标是 length-1
+  //稀疏数组： 数组的下标不连续（避免）
+  var arr = ["张三", "李四", "王五"];
+  arr[100] = "赵六";
+  console.log(arr);
+
+</script>
+
+</body>
+</html>

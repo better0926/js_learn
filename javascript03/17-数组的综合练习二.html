@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1 将字符串数组用|把数组中所有的字符串都拼接起来
+
+  //方法1
+  var arr = ["a", "b", "c", "d", "e"];
+  //  a|b|c|d|e  在末尾添加
+  var str = "";
+  for (var i = 0; i < arr.length - 1; i++) {
+    str = str + arr[i] + "|";
+  }
+  str = str + arr[arr.length - 1];
+  console.log(str);
+
+  //方法2
+  var arr = ["a", "b", "c", "d", "e"];
+  //  a|b|c|d|e 在末尾添加
+  var str = "";
+  for (var i = 0; i < arr.length; i++) {
+    if (i < arr.length - 1) {
+      str = str + arr[i] + "|";
+    } else {
+      str = str + arr[i];
+    }
+  }
+  console.log(str);
+
+
+  //方法3  在头部添加
+  var arr = ["a", "b", "c", "d", "e"];
+  var str = arr[0];
+  for (var i = 1; i < arr.length; i++) {
+    str = str + "|" + arr[i];
+  }
+  console.log(str);
+
+
+</script>
+
+</body>
+</html>

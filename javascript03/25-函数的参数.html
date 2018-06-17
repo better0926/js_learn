@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //2. 封装一个函数，计算两个数的和
+  //  function getSum() {
+  //    var n1 = 11;
+  //    var n2 = 22;
+  //    console.log(n1 + n2);
+  //  }
+  //
+  //  getSum();
+  //  getSum();
+
+
+  //3. 封装一个函数，计算1-100之间所有数的和
+  //  function getSum() {
+  //    var sum = 0;
+  //    for(var i = 1; i <= 100; i++) {
+  //      sum += i;
+  //    }
+  //    console.log(sum);
+  //  }
+  //
+  //  getSum();
+  //  getSum();
+
+
+  //函数的参数:
+
+  //n1和n2是不确定的，对于这种变化的值，我们可以给函数设置参数
+  //在函数声明的时候，设置的参数，形式参数，占位置的，没有具体的值。
+
+  //在函数调用的时候。
+  function getSum(n1, n2) {
+    console.log(n1 + n2);
+  }
+
+  //如果函数声明的时候，指定了参数，在调用时需要传递对应的值。
+  getSum(1, 2);
+
+  getSum(100, 200);
+
+  getSum(-1, 2);
+
+
+  //形参：形式参数，在函数声明的时候，设置的参数，作用是占位置,没有具体的值
+  //实参：实际参数，在函数调用的时候，设置的参数，作用是：在函数调用的时候，把值赋值给形参。
+  //function 函数名(形参1， 形参2....){ //函数体 }
+  // 函数名(实参1, 实参2...)
+
+
+</script>
+
+</body>
+</html>

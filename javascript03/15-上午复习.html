@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+1. break和continue
+break:结束整个for循环
+continue:结束本次for循环,继续下一次循环
+
+2. 数组：一个有序的集合，可以存储多个数据，可以存储任意类型的数据。
+推荐1：存储的类型要统一。
+推荐2：数组的下标要连续
+
+2.1 创建数组
+var arr = new Array();
+var arr = new Array(1,2,3,4,5);
+var arr = new Array(4) :创建一个长度为4的空数组（不要用）
+
+var arr = [];
+var arr = [1,2,3,4,5];
+var arr = [4];
+
+
+2.2 数组的下标和长度
+下标：数组是通过下标来操作元素。下标从0开始，最大到length-1
+长度：arr.length, 数组中元素的个数。
+
+2.3 数组的存值和取值
+
+存值语法： arr[下标] = 值
+arr[0] = 值 ：如果原来有值，会覆盖
+如果在数组的最后面增加一个元素
+  arr[arr.length] = 值
+  arr.push(值)
+
+取值的语法：  arr[下标]
+如果下标存在，打印对应的值
+如果下标不存在，打印的是undefined
+
+arr[0]   .......arr[arr.length-1]
+
+
+2.4 遍历
+for(var i = 0; i < arr.length; i++) {
+}
+
+
+for(var i = arr.length - 1; i >= 0; i--) {
+}
+
+
+</body>
+</html>

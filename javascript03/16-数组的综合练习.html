@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  var arr = ["a", "bb", "ccc", "dddd"];
+  //  ["dddd", "ccc", "bb", "a"]
+  //1.让一个数组倒叙保存另一个数组中的每一项
+  var newArr = [];
+  //倒着遍历arr
+  for (var i = arr.length - 1; i >= 0; i--) {
+    //newArr[newArr.length] = arr[i];
+    newArr.push(arr[i]);
+  }
+  console.log(newArr);
+
+
+  //2 有一个字符串数组，求字符串数组中每项的长度，并把长度的数值存储到新的数组中
+  // [1, 2, 3, 4]
+  var arr = ["a", "bb", "ccc", "dddd"];
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    //console.log(arr[i].length);
+    newArr.push(arr[i].length);
+  }
+  console.log(newArr);
+
+  //3 将数组中值为0的项去掉，将不为0的值存入一个新的数组
+  var arr = [1, 0, 2, 3, 0, 0, 0, 5, 0, 0, 1];
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] != 0) {
+      newArr.push(arr[i]);
+    }
+  }
+  console.log(newArr);
+
+  //4 将字符串数组用|或其他符号拼接
+  var arr = ["a", "bb", "ccc", "dddd"];
+  //  var str = "a|bb|ccc|dddd"    a-bb-ccc-dddd
+
+</script>
+
+</body>
+</html>
