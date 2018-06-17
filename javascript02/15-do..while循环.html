@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //  //先执行循环体，再判断条件
+  //  do {
+  //    //循环体
+  //  }while(条件);
+  //
+  //  //先判断条件，在执行循环体
+  //  while(条件){
+  //    //循环体
+  //  }
+
+  //  do {
+  //    console.log("我回执行吗")
+  //  } while (false);
+
+
+  //计算1-100所有数的和
+
+  var sum = 0;
+  var i = 1;
+  do {
+    sum += i;
+    i++;
+  } while (i <= 100);
+  console.log(sum);
+
+
+  //循环表白
+  do {
+    var result = prompt("你爱我吗?");
+  } while (result != "y");
+  alert("我也是，我也很爱我自己");
+
+
+  //循环登录
+  do {
+    var username = prompt("请输入用户名");
+    var password = prompt("请输入密码");
+  } while (!(username == "admin" && password == "123456"));
+  alert("登录成功");
+
+</script>
+
+</body>
+</html>

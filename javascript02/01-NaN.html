@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //以后看到NaN的时候，说明代码是有问题的
+  // NaN:表示的是number类型的一个特殊值，  不是一个数字
+  // 可以判断某个值是不是数字  "abc"/12  == NaN  false
+  // isNaN(num)  //true:不是个数字   false:是个数字
+
+  //1. 看到NaN，提示你的代码有问题
+  //2. 可以判断某个值是不是数字
+
+
+  //自增与自减操作符
+
+  //++i   ：先让i自增, 在返回结果
+  //i++   ：先返回结果，后自增
+  //无论先自增还是后自增，i都会+1
+  //var i = 5;
+  //console.log(++i);
+  //console.log(i);
+
+
+  var num = 5;
+
+  //num 8       6      6       8
+  console.log(++num + num++ + ++num);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //素质教育（把分数变成ABCDE）千万不要写100个case哟
+  //不适合用switch..case，，，适合用if..else
+
+  var score = +prompt("请输入你的成绩");
+
+  //判断十位数即可
+  score = parseInt(score/10);
+  switch (score) {
+    case 10:
+    case 9:
+      console.log("A");
+      break;
+    case 8:
+      console.log("B");
+      break;
+    case 7:
+      console.log("C");
+      break;
+    case 6:
+      console.log("D");
+      break;
+    default:
+      console.log("E");
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //1. for循环里面的语句用分号隔开
+  //2. for循环里面两个分号，一个都不能少
+
+
+  //1. 初始化语句
+  //2. 条件
+  //3. 自增或者自减
+  //4. 循环体
+
+  //执行顺序：1  243   243   243    2
+  //  for(初始化语句;条件; 自增或者自减) {
+  //    //循环体：重复执行的代码
+  //  }
+
+
+  //使用一个变量之前，先声明它
+  //1-100之间所有数的和
+  var sum = 0;
+  for(var i = 1; i <= 100; i++) {
+    sum += i;
+  }
+  console.log(sum);
+
+  //求1-100之间所有偶数的和
+//  var sum = 0;
+//  for(var i = 1; i <= 100; i++) {
+//    if(i%2 == 0) {
+//      sum += i;
+//    }
+//  }
+//  console.log(sum);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  //1. 输入一个数字，  0-6  0:星期天  1-6对应了星期1--星期6  0-6：
+  //  var week = +prompt("请输入一个0-6的数字");
+  //  if(week == 0) {
+  //    console.log("今天是星期天");
+  //  }else if(week == 1) {
+  //    console.log("今天是星期一");
+  //  }else if(week == 2) {
+  //    console.log("今天是星期二");
+  //  }else if(week == 3) {
+  //    console.log("今天是星期三");
+  //  }else if(week == 4) {
+  //    console.log("今天是星期四");
+  //  }else if(week == 5) {
+  //    console.log("今天是星期五");
+  //  }else if(week == 6) {
+  //    console.log("今天是星期六");
+  //  }else{
+  //    console.log("你输入的数字有误");
+  //  }
+
+  var week = +prompt("请输入一个0-6的数字");
+  switch (week) {
+    case 0:
+      console.log("今天是星期天");
+      break;
+    case 1:
+      console.log("今天是星期一");
+      break;
+    case 2:
+      console.log("今天是星期二");
+      break;
+    case 3:
+      console.log("今天是星期三");
+      break;
+    case 4:
+      console.log("今天是星期四");
+      break;
+    case 5:
+      console.log("今天是星期五");
+      break;
+    case 6:
+      console.log("今天是星期六");
+      break;
+    default:
+      console.log("输入的数字有误");
+  }
+
+
+  //素质教育（把分数变成ABCDE）千万不要写100个case哟
+</script>
+</body>
+</html>

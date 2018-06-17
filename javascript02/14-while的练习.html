@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+
+  //3. 循环表白案例  你爱我吗？y/n
+  var result = prompt("你爱我吗？y/n");
+
+  while ( result != "y" ){
+    result = prompt("你爱我吗？y/n");
+  }
+
+  alert("我也是，我也很爱我自己");
+
+
+  //2. 让用户输入用户名和密码，只有当用户名=admin并且用户密码=123456的时候才提示登录成功，否则一直弹框
+  var username = prompt("请输入用户名");
+  var password = prompt("请输入密码");
+  //什么时候一直要询问
+  //如果用户名不是admin  或者是  密码不等于123456
+
+
+  //while( username != "admin" || password != "123456") {
+  while( !(username == "admin" && password == "123456") ) {
+    username = prompt("请输入用户名");
+    password = prompt("请输入密码");
+  }
+  alert("登录成功");
+
+
+
+
+
+</script>
+
+</body>
+</html>

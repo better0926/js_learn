@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">流程控制</h1>
+<blockquote>
+<p>程序的三种基本结构</p>
+</blockquote>
+<h2 id="-">顺序结构</h2>
+<p> 从上到下执行的代码就是顺序结构</p>
+<p><strong>程序默认就是由上到下一行一行的顺序执行的</strong></p>
+<pre><code class="lang-javascript">console.log(&quot;哈哈1&quot;);
+console.log(&quot;哈哈2&quot;);
+console.log(&quot;哈哈3&quot;);
+</code></pre>
+<p><img src="imgs/顺序结构.png" alt=""></p>
+<h2 id="-">分支结构</h2>
+<p>分支结构，也叫选择结构，根据不同的情况，执行对应代码</p>
+<p><img src="imgs/分支结构.png" alt=""></p>
+<h2 id="-">循环结构</h2>
+<p>循环结构：重复做一件事情</p>
+<p><img src="imgs/循环结构.png" alt=""></p>
+<h1 id="-">分支结构</h1>
+<h2 id="if-">if语句</h2>
+<ul>
+<li>单独的if语句</li>
+</ul>
+<pre><code class="lang-javascript">//语法
+if (条件){
+  //只有当条件为 true 时执行的代码
+}
+
+var age = 8;
+if(age &lt; 12) {
+  console.log(&quot;不准玩王者荣耀&quot;);
+}
+</code></pre>
+<ul>
+<li>if..else语句</li>
+</ul>
+<pre><code class="lang-javascript">if (条件){
+  //当条件为 true 时执行的代码
+} else {
+  //当条件不为 true 时执行的代码
+}
+
+var age = 8;
+if(age &lt; 12) {
+  console.log(&quot;不准玩王者荣耀&quot;);
+}else {
+  console.log(&quot;可以玩王者荣耀&quot;);
+}
+</code></pre>
+<ul>
+<li>if..else if..else语句</li>
+</ul>
+<pre><code class="lang-javascript">if (条件 1){
+  //当条件 1 为 true 时执行的代码
+} else if (条件 2) {
+  //当条件 2 为 true 时执行的代码
+} else {
+  //当条件 1 和 条件 2 都不为 true 时执行的代码
+}
+
+var age = 8;
+if(age &lt; 12) {
+  console.log(&quot;不准玩王者荣耀&quot;);
+}else if(age &lt; 18){
+  console.log(&quot;可以玩王者荣耀2个小时&quot;);
+}else {
+  console.log(&quot;可以玩王者荣耀一天&quot;);
+}
+</code></pre>
+<p>案例：</p>
+<pre><code class="lang-javascript">1. 判断一个数是偶数还是奇数
+2. 素质教育，把百分制分数转换成ABCDE   
+      A: 90-100
+      B: 80-89
+    C: 70-79
+    D: 60-69
+    E: 0-59
+</code></pre>
+<h2 id="-">三元运算符</h2>
+<pre><code class="lang-javascript">表达式1 ? 表达式2 : 表达式3
+1. 三元运算符会得到一个结果，结果根据表达式1的值来确定。
+2. 如果表达式1的值为true，会返回表达式2的值
+3. 如果表达式1的值为false，会返回表示3的值
+</code></pre>
+<p>案例：</p>
+<pre><code class="lang-javascript">//求两个数的最大值
+var max = n1 &gt; n2 ? n1 : n2;
+
+//思考1：求两个数的最小值
+//思考2：判断成年还是未成年
+//思考3：求三个数的最小值
+</code></pre>
+<h2 id="switch-">switch语句</h2>
+<blockquote>
+<p>if..else适用于范围的判断，switch..case适用于具体的值的判断</p>
+</blockquote>
+<p>语法格式:</p>
+<pre><code class="lang-javascript">switch (变量) {
+  case 值1:
+    语句1;
+    break;
+  case 值2:
+    语句2;
+    break;
+  case 值3:
+    语句3;
+    break;
+  …
+  default:
+    默认语句;
+    break;
+}
+</code></pre>
+<p>注意：</p>
+<pre><code>break可以省略，如果省略，代码会继续执行下一个case
+switch 语句在比较值时使用的是全等操作符, 因此不会发生类型转换（例如，字符串&#39;10&#39; 不等于数值 10）
+</code></pre><p>案例：</p>
+<pre><code>输入一个数字，显示星期几
+素质教育（把分数变成ABCDE）千万不要写100个case哟
+</code></pre><pre><code class="lang-javascript">//测试题：
+var num = &quot;10&quot;;
+switch (num) {
+    case 10:
+        console.log(&quot;10&quot;);
+    case 20:
+        console.log(&quot;20&quot;);
+    case 30:
+        console.log(&quot;30&quot;);
+    default:
+        console.log(&quot;lalala&quot;);
+}
+</code></pre>
+<h2 id="-">使用场景</h2>
+<ol>
+<li>如果是范围性的判断，使用if..else会更加方便</li>
+<li>如果是对具体值的判断，使用switch..case语句会更加方便，当然用if..else也是可以的。</li>
+<li>如果if..else比较简单，可以使用三元运算符进行替代。</li>
+</ol>
+<pre><code class="lang-javascript">//练习1：土豪的儿子, 输入ABCDE
+    //如果考了A：  买玛莎拉蒂
+    //如果考了B：  买宝马
+    //如果考了C：  买三轮
+    //如果考了D：  买摩拜自行车
+    //如果考了E：  断绝父子关系
+    //如果是其他值，提示代码有bug
+
+//练习2： 买手机，输入自己的工资
+   //如果超过30000:  买苹果手机
+   //如果10000-30000： 买vivo手机
+   //如果5000-10000 ： 买魅族手机
+   //如果低于5000   ： 还买个锤子
+
+//练习3： 输入自己的银行卡金额
+    //如果超过1000W  : 高富帅
+    //如果不超过      ：穷矮丑
+</code></pre>
+<h1 id="-">循环语句</h1>
+<blockquote>
+<p>在javascript中，循环语句有三种，while、do..while、for循环。</p>
+</blockquote>
+<h2 id="while-">while循环</h2>
+<p><img src="imgs/while.png" alt=""></p>
+<p>基本语法：</p>
+<pre><code class="lang-javascript">//当循环条件为true时，执行循环体，
+//当循环条件为false时，结束循环。
+while(循环条件){
+  //循环体：需要循环执行的语句
+}
+</code></pre>
+<p>代码示例：</p>
+<pre><code class="lang-javascript">//计算1-100之间所有数的和
+//1. 初始化变量
+var i = 1;
+var sum = 0;
+while(i &lt;= 100){//判断条件
+  sum += i;//循环体
+  i++;//自增，修改循环条件（不能省略）
+}
+console.log(sum);
+</code></pre>
+<p>练习：</p>
+<pre><code class="lang-javascript">//1. 计算所有偶数的和
+//2. 让用户输入用户名和密码，只有当用户名=admin并且用户密码=123456的时候才提示登录成功，否则一直弹框
+//3. 循环表白案例
+</code></pre>
+<h2 id="do-while-">do..while循环</h2>
+<blockquote>
+<p>do..while循环和while循环非常像，二者经常可以相互替代，但是do..while的特点是不管条件成不成立，都会执行一次。</p>
+</blockquote>
+<p><img src="imgs/dowhile.png" alt=""></p>
+<p>基础语法：</p>
+<pre><code class="lang-javascript">do{
+  //循环体;
+}while(循环条件);
+</code></pre>
+<p>代码示例：</p>
+<pre><code class="lang-javascript">//初始化变量
+var i = 1;
+var sum = 0;
+do{
+  sum += i;//循环体
+  i++;//自增
+}while(i &lt;= 100);//循环条件
+</code></pre>
+<p>思考：</p>
+<pre><code class="lang-javascript">// 1. 计算所有偶数的和
+// 2. 循环输入账号密码的案例用do..while怎么写？
+// 3. 循环表白的案例用do..while怎么写？
+</code></pre>
+<p>思考：</p>
+<pre><code class="lang-javascript">// while循环与do..while循环的区别是啥？
+</code></pre>
+<h2 id="-">断点调试</h2>
+<blockquote>
+<p>断点调试是指自己在程序的某一行设置一个断点，调试时，程序运行到这一行就会停住，然后你可以一步一步往下调试，调试过程中可以看各个变量当前的值，出错的话，调试到出错的代码行即显示错误，停下。</p>
+</blockquote>
+<p>调试步骤：</p>
+<pre><code class="lang-javascript">浏览器中按F12--&gt;sources--&gt;找到需要调试的文件--&gt;在程序的某一行设置断点
+</code></pre>
+<p>调试中的相关操作：</p>
+<pre><code class="lang-javascript">Watch:监视，通过watch可以监视变量的值的变化，非常的常用。
+F10:程序单步执行，让程序一行一行的执行，这个时候，观察watch中变量的值的变化。
+F8：跳到下一个断点处，如果后面没有断点了，则程序执行结束。
+</code></pre>
+<p>苦口婆心一下：</p>
+<font color="red">
+
+1. 代码调试的能力非常重要，只有学会了代码调试，才能学会自己解决bug的能力。初学者不要觉得调试代码麻烦就不去调试，知识点花点功夫肯定学的会，但是代码调试这个东西，自己不去练，永远都学不会。
+2. 今天学的代码调试非常的简单，只要求同学们记住代码调试的这几个按钮的作用即可，后面还会学到很多的代码调试技巧。
+
+</font>
+
+<h2 id="for-">for循环（重点）</h2>
+<blockquote>
+<p>写while循环的经常会忘记自增，for循环其实是while循环演化过来的，语法更加的简洁明了，使用非常的广泛。</p>
+</blockquote>
+<p><img src="imgs/for.png" alt=""></p>
+<p>for循环语法：</p>
+<pre><code class="lang-javascript">//1. for循环使用分号分隔
+//2. for循环有2个分号，两个分号不能少
+for(初始化语句;判断语句;自增语句){
+  //循环体
+}
+</code></pre>
+<p>执行顺序：1243  ----  243   -----243(直到循环条件变成false)</p>
+<ol>
+<li>初始化语句</li>
+<li>判断语句</li>
+<li>自增或者自减</li>
+<li>循环体</li>
+</ol>
+<p>for循环代码示例：</p>
+<pre><code class="lang-javascript">//计算1-100之间所有数的和
+var sum = 0;
+for(var i = 1; i &lt;= 100; i++){
+  sum += i;
+}
+</code></pre>
+<p>思考1：</p>
+<pre><code class="lang-javascript">//1 求1-100之间所有数的和、平均值
+//2 求1-100之间所有数的乘积
+//3 计算1-100之间能3整除的数的和
+</code></pre>
+<p>思考2：</p>
+<pre><code class="lang-javascript">//1 计算1-100之间不能被7整除的数的和
+//2 求1-100之间所有偶数的和
+//3 同时求1-100之间所有偶数和奇数的和
+</code></pre>
+<p>思考3（双重for循环）：</p>
+<pre><code class="lang-javascript">//1 打印正方形
+//2 打印直角三角形
+//3 打印9*9乘法表
+</code></pre>
+<h2 id="break-continue">break和continue</h2>
+<blockquote>
+<p>break:立即跳出整个循环，即循环结束，开始执行循环后面的内容（直接跳到大括号）</p>
+<p>continue:立即跳出当前循环，继续下一次循环（跳到i++的地方）</p>
+</blockquote>
+<p>思考：</p>
+<pre><code class="lang-javascript">//1. 找到1-100之间第一个能被7整除的数
+//2. 打印1-10之间所有的数，除了5这个数
+</code></pre>
+<p>思考1：</p>
+<pre><code class="lang-javascript">//输出结果是什么？
+for(var i = 1; i &lt;=10; i++) {
+  if(i == 5){
+    continue;
+  }
+  if(i == 7){
+    break;
+  }
+  console.log(i);
+}
+</code></pre>
+<p>思考2：</p>
+<pre><code class="lang-javascript">//1. 求1-100之间不能被7整除的整数的和（用continue）
+//2. 求200-300之间所有的奇数的和（用continue）
+//3. 求200-300之间第一个能被7整数的数（break）
+</code></pre>
+<h2 id="-">总结</h2>
+<ol>
+<li>循环有很多种，但是以后用得最多的是for循环</li>
+<li>当不明确循环次数的时候，可以使用while循环</li>
+<li>当无论如何都要执行一次代码的时候，可以使用do..while循环。</li>
+<li>循环可以相互替代。</li>
+</ol>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>
