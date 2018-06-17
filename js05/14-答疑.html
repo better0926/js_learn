@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //对象
+  //对象的字面量  {}
+
+  //var arr = [1,2,3,4];
+
+  //函数：不在对象的函数，叫函数，在函数中使用this没有意义
+      //this不要出现在函数中，或者是全局作用域
+  //方法：在对象中的函数，叫做方法,this在方法中使用表示的是当前的对象
+  var obj = {
+    name: "zs",
+    age: 18,
+    sayHi: function () {
+      console.log("大家好，我是" + obj.name);
+      console.log(this);
+    }
+  };
+
+  //调用一个方法  对象名.方法名
+
+  console.log(obj.age);
+
+
+
+  //  var obj = {};
+  //  var obj = {name:"zs"}
+  //  var obj = {
+  //    name:"zs",
+  //    age:18
+  //  }
+  //
+  //  obj.hobby = "篮球"
+
+</script>
+
+</body>
+</html>

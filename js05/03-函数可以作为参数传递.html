@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //函数是可以作为参数来进行传递（函数也是一种数据类型）
+  function fn(a) {
+    console.log(a);
+    a();
+  }
+
+  //  function fn1() {
+  //    console.log("哈哈");
+  //  }
+
+
+  //如果参数是一个函数，那么这个作为参数传递的函数叫做回调函数。
+  fn(function(){
+    console.log("Hehe");
+  });
+
+
+</script>
+
+</body>
+</html>

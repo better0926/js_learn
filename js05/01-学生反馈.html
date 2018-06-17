@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+  //只要是第一次使用变量，都需要声明
+  //  function fn() {
+  //    for(var i = 0; i < 5; i++) {
+  //      fn1();
+  //    }
+  //  }
+  //
+  //
+  //  function fn1() {
+  //    for(var i = 0; i < 10; i++) {
+  //      console.log(i);
+  //    }
+  //  }
+  //
+  //  fn();
+
+
+
+//  for(var i = 1; i <= 10; i++) {
+//
+//    for(var j = 1; j <= 10; j++) {
+//      document.write("★");
+//      if(j == 5) {
+//        break;
+//      }
+//    }
+//    document.write("<br>");
+//
+//  }
+
+
+  //num就是一个全局变量
+  //隐式全局变量：变量没有使用var声明（以后避免使用）
+  var num = 11;
+  function fn() {
+    num = 22;
+  }
+
+</script>
+</body>
+</html>

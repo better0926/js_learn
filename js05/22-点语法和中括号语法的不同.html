@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18,
+  //    sex: "男"
+  //  };
+  //
+  //
+  //  var key = "name";
+  //  //obj.key表示的是obj的key属性，跟变量key没有任何关系
+  //  console.log(obj.key);//obj的key
+  //  console.log(obj.name);//obj的name属性
+  //
+  //  //[]的下标需要一个字符串
+  //  console.log(obj["na"+ "me"]);
+  //  //中扩号中可以写变量
+  //  console.log(obj[key]);
+
+
+  //测试题
+  var obj = {
+    name: "zs",
+    age: 18,
+    sex: "男"
+  };
+
+
+
+  //结论：点语法不管变量  obj.age 和age变量没有关系
+  //     []语法可以识别变量，当属性的名字存在于变量中的时候，就可以是中括号语法。
+  var age = "name";
+  console.log(obj.age); //18  obj.age:obj的age
+  console.log(obj["age"]);//18
+
+  console.log(obj[age]);//zs
+
+</script>
+
+</body>
+</html>

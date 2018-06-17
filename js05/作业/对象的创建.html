@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+/*	1. 创建一个对象
+	名字：张三
+	年纪：18
+	性别：男
+	爱好：篮球
+
+	方法:
+		打招呼
+	打人*/
+	/*var obj = {
+		name : "张三",
+		age :18,
+		gender : "男",
+		hobby : "篮球",
+		sayHi : function (){
+			console.log("大家好，我是"+this.name);
+		},
+		attack : function(name){
+			console.log("我是"+this.name+",我攻击了"+name);
+		}
+	}
+	console.log(obj);
+	obj.sayHi();
+	obj.attack("李四");*/
+	//工厂模式
+	function createPerson(name,age,gender,hobby){
+		var person = {
+			name : name,
+			age : age,
+			gender : gender,
+			hobby : hobby,
+			sayHi : function(){
+				console.log("大家好，我是"+this.name);
+			},
+			attack : function (name){
+				console.log("我是"+this.name+",我攻击了"+name);
+			}
+		}
+		return person;
+	}
+	var person1 = createPerson("张三",18,"男","篮球");
+	person1.sayHi();
+	person1.attack("李四");
+	console.log(person1);
+</script>
+</body>
+</html>

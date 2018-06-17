@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //对象：一个无序的键值对的集合。
+  //作用：可以存储一个事物所有的属性和方法存储到一个对象
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18
+  //  }
+
+
+  //1  创建对象  var obj = new Object()  ;创建了一个空的对象
+  //2. var obj = {};   创建了一个空的对象
+  //3. var obj = {name:"zs"} 创建了一个对象，有一个name属性
+
+  var obj = {name: "zs"};
+  //给对象增加属性
+  obj.age = 18;
+
+  //增加方法
+  obj.sayHi = function () {
+    console.log("呵呵")
+  }
+
+
+  //获取属性
+  console.log(obj.name);
+
+  obj.sayHi();
+
+  //看到一个对象，就能够用js表示出来
+  // 人   车   猪  猫
+  var cat = {};
+
+
+  //批量的创建很多个对象
+  function createCat(name, type, color) {
+
+    var cat = {};
+    cat.name = name;
+    cat.type = type;
+    cat.color = color;
+
+    cat.eat = function (food) {
+      console.log("能吃" + food);
+    }
+
+    return cat;
+  }
+
+  var cat1 = createCat("mimi", "英短", "灰色");
+  console.log(cat1.name);
+  cat1.eat("鱼");
+  cat1.eat("肉");
+
+
+  var cat2 = createCat("花花", "蓝猫", "蓝色");
+  cat2.eat("老鼠");
+
+
+</script>
+
+</body>
+</html>

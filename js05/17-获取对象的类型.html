@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //数据类型
+  //简单数据类型
+  //复杂数据类型
+
+  //var num = function () {}
+  //1. 使用typeof可以查看简单数据类型： number string boolean undefined  null(object)
+  //2. typeof查看复杂数据类型，返回object类型,,,,, 查看函数,返回的是function类型（一等公民）
+  //console.log(typeof num);
+
+
+
+  //如何查看复杂的数据类型
+  //instanceof :  实例
+  //arr.constructor.name
+  //var arr = [];
+  //arr是否是Array的实例。
+  //var obj = {};
+  //console.log(arr instanceof Array);
+  //console.log(obj instanceof Array);
+  //console.log(obj instanceof Object);
+
+  var arr = [];  //new Array()
+
+  //获取数组的类型
+  console.log(arr.constructor.name);
+  var obj = {};  //new Object()
+  console.log(obj.constructor.name);
+
+
+</script>
+
+</body>
+</html>

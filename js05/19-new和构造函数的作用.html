@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //新的 对象
+  //var obj = new Object();
+  //新的数组
+  //var arr = new Array();
+
+
+
+  //浏览器不识别Student构造函数
+
+  //构造函数负责给这个新创建的对象增加属性和方法。(实例化对象)
+  //在构造函数中给this（新创建的那个对象）增加属性和方法
+  function Student(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+
+    this.sayHi = function(n) {
+      console.log(n + ",你好啊");
+    }
+  }
+
+
+  //new + 构造函数();
+  //new干了什么？
+  //1. 创建一个新的对象（类型取决了new后面跟的构造函数）
+  //2. 让构造函数内部的this指向这个新的对象
+  //3. 执行这个构造函数
+  //4. new会返回这个新创建的对象
+  var stu = new Student("zs", 18, "女");
+  console.log(stu);
+  stu.sayHi("皮皮虾");
+
+  var stu2 = new Student("ls", 20, "男");
+  console.log(stu2);
+
+
+
+
+  //new的作用（创建对象）：  创建的空的对象   让this执行空对象   执行构造函数  返回对象
+
+  //构造函数的作用(实例化对象)： 给创建出来的对象增加属性和方法。
+</script>
+
+</body>
+</html>

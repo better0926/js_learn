@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //学生对象
+    //属性
+      //名字
+      //性别
+      //年龄
+      //发型
+      //爱好
+      //星座
+    //方法
+      //睡觉
+      //唱歌
+      //撩妹
+
+  //var arr = [];
+
+
+  var stu = new Object();  // {}
+  //增加属性  对象名.属性名 = 值
+  stu.name = "郑锦彬";
+  stu.gender = "不详";
+  stu.age = 38;
+  stu.hairStyle = "landMiddleSea";
+  stu.hobby = "女";
+  stu.star = "射手";
+
+  //增加方法
+  //this表示当前的这个对象
+  stu.sleep = function() {
+    console.log("大家好，我是"+ this.name+", 我喜欢睡觉");
+  }
+
+  stu.sing = function() {
+    console.log("我今天晚上给大家唱2首歌")
+  }
+
+
+  stu.sleep();
+  stu.sing();
+</script>
+
+</body>
+</html>

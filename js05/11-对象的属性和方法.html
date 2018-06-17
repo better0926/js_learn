@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //特征：属性
+    //姓名：老宫
+    //性别：女
+    //年龄：18
+    //身高：175
+    //体重：200
+
+  //行为：方法
+    //打招呼
+    //打人
+
+
+  //对象可以存储属性（特征），存储方法（行为）
+  var obj = {};
+
+  //增加属性  对象名.属性名 = 值
+  obj.name = "老宫";
+  obj.gender = "女";
+  obj.age = 18;
+  obj.height = 175;
+  obj.weight = 200;
+
+  //增加方法 对象.方法名 = function(){}
+  obj.sayHi = function() {
+    console.log("大家好，我是"+obj.name);
+  };
+
+
+  obj.attack = function(n) {
+    console.log("我攻击了" + n)
+  }
+
+
+  console.log(obj.name);
+
+
+  obj.sayHi();
+  obj.attack("飞飞");
+
+
+  //思考：  如果不创建空对象， var obj = {}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //批量创建多个对象
+  //定义一个函数，用于创建学生对象
+  //工厂函数：
+  function createStudent(name, age, sex) {
+    var stu = {};
+    stu.name = name;
+    stu.age = age;
+    stu.sex = sex;
+    stu.sayHi = function() {
+      console.log("大家好,我是"+this.name);
+    }
+    return stu;
+  }
+
+  var stu1 = createStudent("zs", 18, "男");
+  stu1.sayHi();
+
+  var stu2 = createStudent("ls", 20, "女");
+  stu2.sayHi();
+</script>
+
+</body>
+</html>

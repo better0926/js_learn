@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //创建数组   new + 构造函数()  就可以创建一个对象
+
+
+  //js已经帮我们提供了Array和Object两个构造函数
+  //new:关键字：创建一个新的对象
+  //Array():  Array其实就是构造函数
+  //var arr = new Array();   //var arr = [];
+
+
+  //Object也是构造函数
+  //var obj = new Object();
+  //console.log(typeof Object);
+
+
+  //创建老师对象
+
+  //构造函数：构造函数就是一个函数
+  //1. 要和new搭配使用，创建对象
+  //2. 构造函数首字母大写（推荐）。
+
+
+  //所有创建出来的对象都有：
+    //name
+    //age
+    //hobboy
+  function Teacher(name, age) {
+    //构造函数内部的this指向的是新创建的那个对象
+    this.name = name;
+    this.age = age;
+  }
+
+  var tea = new Teacher("zs", 18);
+  console.log(tea);
+
+  var tea2 = new Teacher("ls", 20);
+  console.log(tea2);
+
+
+</script>
+
+</body>
+</html>

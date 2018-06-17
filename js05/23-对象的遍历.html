@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //[]中扩号中可以出现数字，也可以出现变量
+  //  var arr = [1,2,3,4];
+  //  for(var i = 0; i < arr.length; i++) {
+  //    console.log(arr[i]);
+  //  }
+
+
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18,
+  //    gender: "男",
+  //    hobby:"篮球"
+  //  }
+
+  //遍历对象的固定语法：for..in
+  //i:表示的对象的属性名(键)
+  //  for(var key in obj) {
+  //    //对象的键
+  //    console.log(key);
+  //    //对象的值
+  //    console.log(obj[key]);  //obj.key表示 obj的key属性
+  //  }
+
+
+  //  var obj = {
+  //    age: 18,
+  //    gender:"男"
+  //  }
+  //
+  //  for(var k in obj) {
+  //    console.log(k);
+  //    console.log(obj[k]);
+  //  }
+
+
+  var obj = {
+    name: "zs",
+    age: 18,
+    gender: "男",
+    hobby: "篮球"
+  }
+
+  var key = "name";
+  console.log(obj.key);  //undefined
+  console.log(obj["key"]);  //undefiend
+  console.log(obj[key]);  //zs
+  key = "hobby";
+  console.log(obj.key);   //undefiend
+  console.log(obj["key"]);  //undefined
+  console.log(obj[key]);  //篮球
+
+
+</script>
+
+</body>
+</html>

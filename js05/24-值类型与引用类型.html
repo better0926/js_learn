@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //js的数据分类
+  //简单数据类型：（值类型）
+  //复杂数据类型：（引用类型）
+
+  //内存的划分 ： 2G  4G 6G 8G  16G
+  //运行任何的程序，都需要占用内存，当程序关闭的时候，这块内存就会释放。
+
+
+  //值类型：变量在存储简单数据类型的时候，存储的是值本身。
+
+  //var表示声明一个变量
+  //  var num = "abc";
+  //
+  //  var num2 = num;
+  //
+  //  num2 = 22;
+  //  console.log(num);//11
+  //  console.log(num2);//22
+
+
+  //变量在存储复杂数据类型的时候，存储的仅仅是地址（引用）
+  //对象本身会在内存中随机开辟一块空间（new）
+
+  //new出来的
+  var obj = {
+    name: "zs",
+    age: 18
+  }
+
+  //明确的，对象并没有复制，对象还是一个，仅仅是把obj的地址给了一份obj2
+  var obj2 = obj;
+
+  obj2.name = "ls";
+
+  console.log(obj.name);//ls
+  console.log(obj2.name);//ls
+
+
+</script>
+
+</body>
+</html>

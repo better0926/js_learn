@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //函数可以作为返回值
+  //闭包
+  function fn() {
+    return function(){
+      console.log("呵呵")
+    };
+  }
+
+  //fn()
+  fn()();
+
+</script>
+
+</body>
+</html>

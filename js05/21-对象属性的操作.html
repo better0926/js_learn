@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  var obj = {
+    name: "zs",
+    age: 18,
+    sex: "男"
+  };
+
+
+  //怎么操作这个对象的属性
+  //  对象名.属性名 = 属性值  ：设置对象的属性
+  //  obj.name = "ls"; //obj的name的值变成ls
+  //  obj.hobby = "篮球";
+  //  console.log(obj);
+  //
+  //  //获取对象的属性值
+  //  // 对象名.属性名  如果有值，直接返回，如果没值，返回undefined。
+  //  console.log(obj.hobby);
+  //  console.log(obj.aaa);
+
+
+  var obj = {
+    name: "zs",
+    age: 18,
+    sex: "男"
+  };
+  //[]语法，把对象当成数组来看待。  数组的下标是数字   对象的下标类型是字符串。
+
+  //console.log(obj.name);//obj的name属性
+  //console.log(obj["name"]);
+  //console.log(obj["age"]);
+
+  obj["sex"] = "女";  //obj.sex = "女"
+  console.log(obj);
+
+</script>
+
+</body>
+</html>

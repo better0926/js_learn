@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //全局变量，尽量避免使用全局变量
+  //防止全局变量污染
+  //张三的代码
+  (function(){
+    var num = 11;
+    function fn() {
+      console.log("呵呵")
+    }
+    fn();
+    console.log(num);
+  })();
+
+
+  //李四的代码
+  (function(){
+    var num = 11;
+    function fn() {
+      console.log("呵呵")
+    }
+    fn();
+    console.log(num);
+  })();
+
+
+  (function(){
+    //王五的代码
+  })()
+
+
+</script>
+
+</body>
+</html>
