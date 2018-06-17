@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+  //函数的名字  参数   返回值
+
+
+  //1. 求任意半径的圆的面积
+  //单行注释
+  /*
+    多行注释
+   */
+
+  /**
+   * 文档注释，一般会用在函数的上面，对整个函数进行解释。
+   * 求任意圆的面积
+   * @param r 半径
+   * @returns {number} 面积
+   */
+
+//  function getArea(r) {
+//    return Math.PI * r * r;
+//  }
+//
+//  var result = getArea(100);
+//  console.log(result);
+
+  //2. 求任意半径的圆的周长
+  function getPerimeter (r) {
+    return 2 * Math.PI * r;
+  }
+
+  var result = getPerimeter(100);
+  console.log(result);
+
+  console.log(getPerimeter(10));
+
+</script>
+
+</body>
+</html>

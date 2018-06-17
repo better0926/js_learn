@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //需求：想要执行带具体怎么执行。
+  function fn() {
+    console.log("fn开始执行。。。。。。");
+    console.log("fn结束执行..........")
+  }
+
+
+  function fn2 () {
+    console.log("fn2开始执行。。。。");
+    fn();
+    console.log("fn2结束。。。。。。")
+  }
+
+
+  //F8:跳到下一个断点出，如果后续没有断点了，程序会执行到结束
+  //F10: 让代码一步一步执行，如果这步是函数的调用，不会进入到函数的内部。
+  //F11: 让代码一步一步执行，如果是函数的调用，进入到函数的内部
+  //shift+F11: 跳出本地函数的调用
+  fn2();
+  console.log("哈哈哈哈哈a");
+
+
+  console.log(num);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //自己调用自己的函数,递归函数
+  //递归函数需要留有出口,需要一个结束的条件
+
+  //只讲5次
+  //  var count = 0;
+  //  function tellStory() {
+  //    count++;
+  //    console.log("从前有座山");
+  //    console.log("山里有座庙");
+  //    console.log("庙里有个老和尚");
+  //    console.log("老和尚给小和尚讲故事");
+  //    console.log("讲什么呢？");
+  //
+  //    if(count < 5){
+  //      tellStory();
+  //    }
+  //
+  //  }
+  //
+  //  tellStory();
+
+
+  //化归思想
+
+  //计算1-100所有数的和
+  //getSum(90)
+  //getSum(90) = getSum(89) + 90;
+  //getSum(89) = getSum(88) + 89;
+  //getSum(88) = getSum(87) + 88;
+  //......
+  //getSum(3) = getSum(2) + 3;
+  //getSum(2) = 3;
+  //getSum(1) = 1;
+
+
+  //  function getSum(n) {
+  //    //已经条件：n=1 结果也是1   2：3
+  //    if(n == 1) {
+  //      return 1;
+  //    }
+  //    return getSum(n-1) + n;
+  //  }
+  //
+  //  var result = getSum(100);
+  //  console.log(result);
+
+
+  //2. 兔子
+  //  1   1    2    3    5   8    13   21   34   55   89   144
+  //求第n个月的兔子
+  function getTu(n) {
+    if(n == 1 || n == 2){
+      return 1;
+    }
+    return getTu(n -1) + getTu(n-2);
+  }
+
+  var a = getTu(100);
+  console.log(a);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //函数内部可以使用函数外部的变量
+  //函数查找变量的时候，如果有局部变量，会优先使用，如果没有局部变量会使用全局变量。
+
+  //  var num = 11;//全局变量
+  //  function fn() {
+  //    num = 44;
+  //    console.log(num);
+  //  }
+  //
+  //  fn();
+  //  console.log(num);
+
+
+  //  var num1 = 11;
+  //  var num2 = 22;
+  //  function fn() {
+  //    var num1 = 33;
+  //    num1 = 44;
+  //    num2 = 55;
+  //    console.log(num1);
+  //    console.log(num2);
+  //  }
+  //
+  //  fn();
+  //
+  //  console.log(num1);
+  //  console.log(num2);
+
+
+  var num1 = 11;
+  function fn() {
+    var num1 = 22;
+    num1 = 33;
+    num2 = 44;
+    console.log(num1);
+    console.log(num2);
+  }
+
+  fn();
+  console.log(num1);
+  console.log(num2);
+
+
+
+  //全局变量：函数外面用var声明的变量
+  //局部变量：函数内用var声明的变量
+  //隐式全局变量：没有用var声明的变量，隐式全局变量（不要用）
+
+
+</script>
+
+</body>
+</html>

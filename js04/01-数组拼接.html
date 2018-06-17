@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //  var arr = ["a", "b", "c", "d"];
+  //  var str = "";
+  //  for (var i = 0; i < arr.length - 1; i++) {
+  //    str = str + arr[i] + "|";
+  //  }
+  //  //拼接上最后一个值
+  //  str = str + arr[arr.length - 1];
+  //  console.log(str);
+
+  //  var arr = ["a", "b", "c", "d"];
+  //  var str = "";
+  //  for (var i = 0; i < arr.length; i++) {
+  //    if (i == arr.length - 1) {
+  //      str = str + arr[i];
+  //    } else {
+  //      str = str + arr[i] + "|";
+  //    }
+  //  }
+  //  console.log(str);
+
+
+  var arr = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10];
+  //思路： 两个两个进行比较，如果前一项大于了后一项，交换位置
+
+  //趟数， 如果有某一个趟没有做比较，说明排好序，后续的趟数就不需要排了
+  for (var i = 0; i < arr.length - 1; i++) {
+    //次数, 对次数进行优化，后续的趟数比较的次数要更少
+
+    var flag = true;//确定有没有人改了这个标记
+    for (var j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        flag = false;
+        var temp = arr[j+1];
+        arr[j+1] = arr[j];
+        arr[j] = temp;
+      }
+    }
+
+    //判断标记动没动
+    if(flag){
+      break;
+    }
+
+  }
+  console.log(arr);
+
+
+</script>
+
+</body>
+</html>

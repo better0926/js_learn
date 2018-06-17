@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //求一个数的位数(不准使用字符串的length属性)
+  //12345
+  //var num = 12345;
+  //num = num + "";
+  //console.log(num.length);
+
+
+  //1
+  //看他除以10能除几次，直到  除以10取整 0
+  var num = +prompt("请输入数字");
+  // 1次    1234.5     1234
+  // 2次    123.4      123
+  // 3次    12.3       12
+  // 4次    1.2        1
+  // 5次    0.1        0
+  var count = 0;
+  do {
+    num = parseInt(num/10);//让数字除以10并且取整
+    count++;
+  }while(num != 0);
+  console.log(count);
+
+
+</script>
+
+</body>
+</html>

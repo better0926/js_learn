@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //1. 求两个数的最大值
+  function getMax(n1, n2) {
+    return n1 > n2 ? n1 : n2;
+  }
+
+  var result = getMax(100, 20);
+  console.log(result);
+
+  //2. 求三个数的最大值
+  //  function getMax(n1, n2, n3) {
+  //    var max = n1 > n2 ? n1 : n2;
+  //    return max > n3 ? max : n3;
+  //  }
+  //
+  //  var result = getMax(1, 22, 3);
+  //  console.log(result);
+  //3. 求一个数组的最大值和最小值，并且返回。
+  function getMaxAndMin(arr) {
+
+    var max = arr[0];
+    var min = arr[0];
+
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] > max) {
+        max = arr[i];
+      }
+
+      if (arr[i] < min) {
+        min = arr[i];
+      }
+    }
+
+    //如何返回
+    return [max, min];
+  }
+
+  var result = getMaxAndMin([1, 2, 3, 4]);
+  console.log(result[1]);
+
+</script>
+
+</body>
+</html>

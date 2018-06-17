@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  var num = 12345;
+  // 1次    1234.5     1234
+  // 2次    123.4      123
+  // 3次    12.3       12
+  // 4次    1.2        1
+  // 5次    0.1        0
+  var str = "";
+  do {
+    console.log( num%10 );//对10取余的结果
+    str += num%10;
+    num = parseInt(num/10);//让数字除以10并且取整
+  }while(num != 0);
+  console.log(+str);
+
+
+
+</script>
+
+</body>
+</html>

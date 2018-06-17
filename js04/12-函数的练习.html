@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 封装一个函数，求阶乘  (求1-n之间所有数的积)
+  //  5！= 1 * 2 * 3 * 4 * 5
+
+
+
+  //求阶乘
+  //   给1返回 1
+  //   给2返回2!   2
+  //   给3返回3!   3*2*1
+  function getProduct(n) {
+    //计算1-n的积
+    var product = 1;
+    for(var i = 1; i <= n; i++) {
+      product *= i;
+    }
+    return product;
+  }
+
+//  var a = getProduct(5);
+//  console.log(a);
+//
+//  var b = getProduct(3);
+//  console.log(b);
+
+
+  //2. 封装一个函数，求阶乘和  1!+2!+3!+4!+5!
+  // getSum(5)  // 1! + 2! + 3! + 4! + 5!
+
+
+  function getSum(n) {
+    //计算 1!  ----  n!
+    var sum = 0;
+    for(var i = 1; i <= n; i++) {
+      //sum每次都要加上i的阶乘
+      sum += getProduct(i);
+    }
+
+    return sum;
+  }
+  // 1! + 2!  = 3
+  var a = getSum(2);
+  console.log(a);
+  // 1    1* 2    1*2*3
+  var b = getSum(3);
+  console.log(b);
+
+</script>
+
+</body>
+</html>

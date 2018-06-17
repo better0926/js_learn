@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //求和：  计算两个数的和。  并且把结果给到调用者
+  //  function getSum(n1, n2) {
+  //    //return能够让函数返回一个结果
+  //    return  n1 + n2;
+  //  }
+  //
+  //  //使用一个变量来接受函数的返回值
+  //  //var str = prompt("请输入密码");
+  //  var num = getSum(100, 200);
+  //  console.log(num);
+  //  alert(num);
+  //  document.write(num);
+
+
+  //函数并不是都需要返回值
+  // getSum:
+//    function sayHi() {
+  //      console.log("萨瓦迪卡");
+  //    }
+  //
+  //    var result = sayHi();
+  //    console.log(result);
+
+
+
+  //break:for循环，表示整个for循环结束
+  //return:表示整个函数结束，return后面的代码不会执行。 不要在return后面书写代码。
+
+
+
+  //1. 可以通过return返回一个值，如果返回了，可以通过一个变量来接受这个返回
+  //2. 函数也可以没有返回值，
+  //3. return后面的语句不执行。  参数可以有多个，但是返回值只能有一个
+  function fn() {
+    console.log("1111");
+    return 222;
+    return 333;
+    console.log("2222");
+  }
+
+  var result = fn();
+  console.log(result);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 求任意数组中的最大值
+  //  //代码规范  格式化
+  //  function getMax(arr) {
+  //    var max = arr[0];
+  //    for (var i = 0; i < arr.length; i++) {
+  //      if (arr[i] > max) {
+  //        max = arr[i];
+  //      }
+  //    }
+  //    return max;
+  //  }
+  //
+  //  var result = getMax([1, 2, 333, 4, 5]);
+  //  console.log(result);
+
+  //2. 求任意数组中的最小值
+
+
+  //3. 翻转任意数组，返回一个新的数组
+  // [1,2,3,4]
+
+  // []
+  var arr = [1, 2, 3, 4, 5, 6, 7];
+
+  for(var i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+
+
+  var arr = ["a", "b", "c", "d"];
+  var sum = 0;
+  for(var i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+
+
+
+
+  var newArr = [];
+  for(var i = arr.length - 1; i >= 0; i--) {
+    console.log(arr[i]);
+
+    newArr.push(arr[i]);
+  }
+
+  console.log(newArr)
+
+  //arr.length-1
+  //arr.length
+
+
+  function reverseArray(arr) {
+    //定义一个新的数组
+    var newArr = [];
+    //把老的数组倒叙的遍历，放到新数组
+    for (var i = arr.length - 1; i >= 0; i--) {
+      newArr.push(arr[i]);
+    }
+
+    return newArr;
+  }
+
+  var result = reverseArray([1, 2, 3, 4]);
+  console.log(result);
+
+  console.log(reverseArray(["a", "b", "c", "d"]));
+  //
+  //  //4. 对任意数组从小到大排序
+  //  function bubbleSort(arr) {
+  //
+  //    for (var i = 0; i < arr.length - 1; i++) {
+  //      //优化趟数
+  //      var flag = true;
+  //      for (var j = 0; j < arr.length - 1 - i; j++) {
+  //        if (arr[j] > arr[j + 1]) {
+  //          flag = false;
+  //          var temp = arr[j];
+  //          arr[j] = arr[j + 1];
+  //          arr[j + 1] = temp;
+  //        }
+  //      }
+  //
+  //      if (flag) {
+  //        break;
+  //      }
+  //    }
+  //    return arr;
+  //  }
+  //
+  //  var newArr = bubbleSort([1, 3, 5, 7, 9, 2, 4, 6, 8, 10]);
+  //  console.log(newArr);
+  //
+
+</script>
+
+</body>
+</html>

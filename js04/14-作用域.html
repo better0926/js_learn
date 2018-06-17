@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //作用域：变量起作用的区域。
+
+  //全局作用域：  在script标签内，在函数外的区域，在全局作用域内定义的变量是全局变量，全局变量在任何地方都能访问到
+  //函数作用域：  在js里面，只有函数才能形成作用域，在函数内部的函数作用域，在函数内部定义的变量，局部变量，，，，这个局部变量只有在当前函数内部才能访问。
+  //在js里面没有块级作用域（es6以前）
+
+
+
+  //var num = 11;//全局变量
+
+  //全局变量:哪儿都能访问
+  //局部变量：只有在函数内部能访问
+
+
+
+  //函数内部可以访问外部的变量，函数外部无法访问函数内部的变量。
+  //  function fn() {
+  //    console.log(num);
+  //  }
+
+  //  fn();
+  //  console.log(num);
+
+
+
+  var num = 11;//全局变量
+  function fn() {
+    var num2 = 22;
+    //在函数内部可以访问全局变量
+    //console.log(num);
+    console.log(num2);
+
+  }
+
+  function fn2() {
+    console.log(num2);
+  }
+  fn();
+  fn2();
+
+
+</script>
+
+</body>
+</html>

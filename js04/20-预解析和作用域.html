@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //在函数外用var定义的变量叫做全局变量
+  //在函数内用var定义的变量叫做局部变量
+
+  //没有用var定义的变量叫隐式全局变量
+
+
+  //预解析：代码执行之前
+    //1. 把所有的function声明提升，不会提升调用
+    //2. 把所有的var声明提升， 不会提升赋值
+    //3. 如果var和function同名，函数优先
+
+  //不要重复的声明一个变量
+  //需要把变量的声明先声明，在使用。
+
+
+
+  //es6
+  console.log(num);
+  var num = 11;
+
+</script>
+
+</body>
+</html>
