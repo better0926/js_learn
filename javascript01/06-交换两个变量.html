@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //内存：重复的使用
+//  var num1 = 11;
+//  var num2 = 22;
+//
+//  //用num3把num1的值保存起来
+//  var num3 = num1;
+//  //把num2的值给num1
+//  num1 = num2;
+//  num2 = num3;
+//
+//  console.log(num1);
+//  console.log(num2);
+
+
+  //扩展性
+  //不允许使用第三个变量， 交换这两个变量
+  //数字才能这么做
+  var num1 = 11;
+  var num2 = 22;
+  num1 = num1 + num2;//num1:33    num2:22
+  num2 = num1 - num2;//num1:33    num2:11
+  num1 = num1 - num2;//num1:22    num2:11
+  console.log(num1);
+  console.log(num2);
+
+
+
+</script>
+
+</body>
+</html>
