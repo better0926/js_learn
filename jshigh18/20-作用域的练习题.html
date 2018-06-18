@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //  var num = 10;
+  //  fn1();
+  //  function fn1() {
+  //    console.log(num);
+  //    var num = 20;
+  //    console.log(num);
+  //  }
+  //  console.log(num);  //undefined 20 10
+
+  //  var num1 = 10;
+  //  var num2 = 20;
+  //  function fn(num1) {
+  //    num1 = 100;
+  //    num2 = 200;
+  //    num3 = 300;
+  //    console.log(num1);
+  //    console.log(num2);
+  //    console.log(num3);
+  //    var num3;
+  //  }
+  //  fn();
+  //  console.log(num1);
+  //  console.log(num2);
+  //  console.log(num3);
+  //  //100 200 300 10/100 200 报错
+
+  //
+  //  fn3();
+  //  console.log(c);
+  //  console.log(b);
+  //  console.log(a);
+  //
+  //  function fn3() {
+  //    var a = b = c = 9;
+  //    console.log(a);
+  //    console.log(b);
+  //    console.log(c);
+  //  }
+
+
+//  var num = 1;
+//  function fn() {
+//    var num = 100;
+//    num++;
+//    console.log(num);
+//  }
+//  fn();//101
+//  fn();//101
+//  console.log(num);//1
+
+
+//
+//  var color = "red";
+//  function outer() {
+//    var anotherColor = "blue";
+//
+//    function inner() {
+//      var tmpColor = color;
+//      color = anotherColor;
+//      anotherColor = tmpColor;
+//      console.log(anotherColor);
+//    }
+//
+//    inner();
+//  }
+//  outer();
+//  console.log(color);
+//
+//  //red blue  2
+
+
+
+  //立即执行函数： 自调用函数
+
+
+  //() [] //  `` :之前的代码必须使用分号结束
+
+
+
+  (function () {
+    console.log("111")
+  })()
+
+
+  (function () {
+    console.log(222)
+  })()
+
+</script>
+
+</body>
+</html>

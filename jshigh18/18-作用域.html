@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //变量起作用的区域
+  //全局变量： 整个全局都能使用， 在函数外使用var声明的变量就是全局变量
+  //局部变量： 只能在当前函数内使用。在函数内使用var声明的变量就是局部变量
+
+
+  //全局作用域和函数作用域：在js中，只有函数才能形成一个作用域,在js中没有所谓的块级作用域
+
+  //  for(var i = 0; i < 10; i++) {
+  //    console.log("Hehe");
+  //    var num = 11;
+  //  }
+  //
+  //  console.log(i);
+  //  console.log(num);
+
+
+  var num = 123;
+
+  function f1() {
+    console.log(num);
+  }
+
+
+  function f2() {
+    var num = 456;
+
+    f1();
+  }
+
+
+  function fn3(){
+    function fn4(){
+      f1();
+    }
+    fn4();
+  }
+  f2();//打印啥？
+  fn3();
+
+</script>
+
+</body>
+</html>

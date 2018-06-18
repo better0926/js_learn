@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //this
+  //任何一个函数里面都会有this，  this指向谁的问题
+
+  //1. 函数调用模式,  函数名()  this会执行window
+  //2. 方法调用模式
+  //3. 构造函数调用模式
+  //4. 上下文调用模式，（方法借调）
+
+  var fn1 = fn;
+  function fn() {
+    console.log(this);
+  }
+
+  //    //函数调用模式
+  //    fn();
+  //
+  //    var obj = {
+  //      sayHi: fn
+  //    }
+  //
+  //    //方法调用模式
+  //    obj.sayHi();
+
+
+  //  var age = 38;
+  //  var obj = {
+  //    age: 18,
+  //    getAge: function () {
+  //      console.log(this.age);
+  //    }
+  //  }
+  //
+  //  var f = obj.getAge;
+  //
+  //  //函数调用模式 ;this指向window
+  //  f();//???
+  //  obj.getAge();
+
+
+  //  var age = 38;//window.age
+  //  var obj = {
+  //    age:18,//obj.age
+  //    getAge:function () {
+  //      console.log(this.age);//???
+  //      function foo(){
+  //        console.log(this.age);//????
+  //      }
+  //
+  //      //函数调用模式
+  //      foo();
+  //    }
+  //  }
+  //  //方法调用模式
+  //  obj.getAge();//18 38
+  //  obj["getAge"]();
+
+
+  //  var length = 10;
+  //  var age = 18;
+  //  function fn() {
+  //    console.log(this.length);//arr.length
+  //  }
+  //  var arr = [fn, "222"];
+  //
+  //  //函数调用模式
+  //  fn();
+  //
+  //
+  //  //方法调用模式
+  //  //arr.0
+  //  //arr[0]
+  //  arr[0]();
+
+
+  //函数的参数可以是一个函数
+  var length = 10
+  function fn() {
+    console.log(this.length)
+  }
+  var obj = {
+    length: 5,
+    method: function (fn) {
+      fn()
+      console.log(arguments);
+
+      //方法调用模式： this指向arguments自己
+      arguments[0]();//arguments.length 3
+    }
+  }
+
+  obj.method(fn, "222", "333", "4444");
+
+
+  //5 3
+  //5 10
+  //没看懂 2
+  //10 3
+  //不会 3
+
+</script>
+
+</body>
+</html>

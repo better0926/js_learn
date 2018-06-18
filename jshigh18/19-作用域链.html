@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //函数可以形成一个作用域
+
+
+
+//  function fn1() {
+//    //var num = 456;
+//    function fn2() {
+//      //var num = 789;
+//      var num = 11;
+//    }
+//    fn2();
+//  }
+//
+//  fn1();
+
+
+  var str = "123";
+  function fn(){
+    var str = "456";
+    console.log(str);//???
+  }
+  fn();
+  console.log(str);//???
+
+</script>
+
+</body>
+</html>

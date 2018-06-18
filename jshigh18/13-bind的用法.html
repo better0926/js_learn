@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //  //bind:
+  //  function fn() {
+  //    console.log(this);
+  //    console.log("呵呵呵e");
+  //  }
+  //
+  //  var cc = {
+  //    name:"聪聪"
+  //  }
+  //
+  //  //参数：指定函数的this指向
+  //  //返回一个新的函数，这个新的函数功能和fn是一样的，但是这个返回的新的函数的this已经定死了就是cc
+  //  var newFn = fn.bind([]);//
+  //
+  //  newFn();
+  //
+  //  var obj = {
+  //    sayHi: newFn
+  //  }
+  //
+  //  obj.sayHi();
+
+
+
+
+
+  var obj = {
+    name:"zs",
+    age: 18,
+    sayHi: function () {
+      var that = this;
+      setInterval(function () {
+        console.log("大家好，我是"+that.name + ",今年" +that.age);
+      }, 1000);
+    }
+  }
+
+
+
+  obj.sayHi();
+
+</script>
+
+</body>
+</html>

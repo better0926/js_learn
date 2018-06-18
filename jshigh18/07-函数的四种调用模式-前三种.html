@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //this只有在调用的时候才能确定，根据调用的方式不同，this就不同
+  function fn() {
+    console.log(this);
+  }
+
+  //函数调用模式，this指向window
+  fn();
+
+
+  var obj = {
+    sayHi: fn
+  }
+  //方法调用模式，this执行obj
+  obj.sayHi();
+
+
+  //方法调用模式，this指向arr
+  var arr = [fn];
+  arr[0]();
+
+
+  //构造函数调用模式  this指向新创建的对象
+  var f = new  fn();
+
+
+
+</script>
+
+</body>
+</html>

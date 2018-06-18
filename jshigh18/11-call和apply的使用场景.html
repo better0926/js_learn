@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //  function fn(n1, n2, n3, n4) {
+  //    console.log(n1, n2, n3, n4);
+  //    console.log(this);
+  //  }
+  //
+  //
+  //  //fn(1, 2, 3, 4);
+  //
+  //  fn.call([], 1, 2, 3, 4);
+  //
+  //  fn.apply([], [1,2,3,4]);
+
+  //  var arr = [1, 33, 66, 122, 88, 11];
+  //  //需求：求数组的最大值怎么求？Math.max(1,2,3,4,5);//5
+  //  //var ret = Math.max(1,2,3,4);
+  //  //console.log(ret);
+  //
+  //  //使用Math.max计算了arr中最大值
+  // var ret =  Math.max.apply(null, arr);
+  //  console.log(ret);
+
+
+  //  var arr = [1, 2, 3, 4, 1, 2, 3];
+  //
+  //
+  //  Math.max(arr)
+  //  var ret = Math.max.apply(null, arr);
+  //  console.log(ret);
+
+
+  //call和apply的使用场景
+  //1. call和apply的作用都是一样的，都可以借用一个函数
+  //2. 区别就在于：call使用的是参数列表  apply：会把所有的参数放到一个数组中 apply(thisArg, []);
+  //如果参数全部存在于一个数组中，需要使用apply，不能使用call
+
+
+  //求数组的最小值
+  var arr = [1, 2, 3, 4, 4, 3, -2, 1];
+
+  var ret = Math.min.apply(null, arr);
+  console.log(ret);
+
+
+
+  //思考：
+  //封装一个函数 log，  效果可以和console.log一样，打印所有的参数
+  function log() {
+    //console.log(arguments);
+  }
+
+
+  log("哈哈");
+  log("哈哈", "嘿嘿");
+  log("哈哈", "嘿嘿", "嘻嘻");
+</script>
+
+</body>
+</html>

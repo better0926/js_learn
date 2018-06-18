@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //call: 方法借调   call调用的函数内的this是固定不变的，指向的是call的第一个参数。
+
+
+  //伪数组：可以和数组一样进行遍历，也可以使用下标，但是不是数组，所以不能使用数组的方法.
+
+  // qsa  getElemntsByTagName  arguments
+  //  function fn() {
+  //    console.log(arguments);
+  //  }
+  //
+  //  fn(1,2,3,4,54);
+
+  //伪数组是一个对象，只不过键是数字，还有一个长度属性：length
+  var obj = {
+    0: "张飞",
+    1: "关羽",
+    2: "黄忠",
+    length: 3
+  }
+
+
+  //往伪数组中添加一个元素  3: 赵云
+  //push("赵云")
+  //Array.prototype.push.call(obj, "赵云");
+  //console.log(obj);
+
+  //var str = [].join.call(obj, "-")
+  //console.log(str);
+
+
+
+  //如何把一个伪数组变成一个真的数组。
+  var newArr = [].slice.call(obj);
+  console.log(newArr);
+
+
+</script>
+
+</body>
+</html>

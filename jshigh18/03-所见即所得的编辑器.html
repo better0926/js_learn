@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<textarea  cols="60" rows="20"></textarea>
+<div>
+  aaaaa
+</div>
+<script>
+
+  var txt = document.querySelector("textarea");
+
+  txt.onkeyup = function () {
+
+
+    //Function.prototype
+    try{
+      var content = txt.value;
+      var fn = new Function(content);
+      fn();
+    }catch(e) {
+
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

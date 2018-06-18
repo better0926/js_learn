@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //apply和call一样，都可以调用函数,区别，参数不一样
+
+  //apply语法：
+  //参数1：指定this
+  //参数2：数组 ，需要把所有的形参都放到一个数组中
+
+  //  function fn(n1, n2) {
+  //    console.log(n1 + n2);
+  //    console.log(this);
+  //  }
+  //
+  //  fn.call([], 1, 2);
+  //  fn.apply({}, [1,2]);
+
+
+  var ff = {
+    name : "飞飞",
+    age: 38,
+    liaomei: function () {
+      console.log("对面的女孩扛过来，我是"+this.name + ',今年'+this.age);
+    }
+  }
+
+  ff.liaomei();
+
+  var cc = {
+    name: "聪聪",
+    age: 19
+  }
+
+  ff.liaomei.apply(cc);
+
+</script>
+
+</body>
+</html>

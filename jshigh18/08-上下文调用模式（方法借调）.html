@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 任何一个函数都有：call apply bind
+
+
+  //  function fn() {
+  //    console.log("111");
+  //    console.log(this);
+  //  }
+  //
+  //  //小括号表示调用fn
+  //  //函数还可以使用call来调用
+  //
+  //  //fn.call()调用的这个函数，此时函数的内部的this是固定，固定为call的第一个参数。
+  //
+  //
+  //  fn.call({});
+
+
+  //  function fn(n1, n2) {
+  //    console.log(n1 + n2);
+  //    console.log(this);
+  //  }
+  //
+  //  //call调用 参数跟原来的函数的参数一致，多一个参数，第一个参数，用来指定this的一个对象
+  //  fn.call([], 1, 2);
+
+
+  var ff = {
+    name : "飞飞",
+    age: 38,
+    liaomei: function () {
+      console.log("对面的女孩扛过来，我是"+this.name + ',今年'+this.age);
+    }
+  }
+
+  ff.liaomei();
+
+  var cc = {
+    name: "聪聪",
+    age: 19
+  }
+
+
+  //this可以指定， cc
+  //方法还是ff.liaomei,  this指向的是cc，相当于  cc.liaomei()
+  //call如果第一个参数不传，或者是传了一个null,  内部的this默认是window
+  ff.liaomei.call(cc);
+
+
+
+</script>
+
+</body>
+</html>

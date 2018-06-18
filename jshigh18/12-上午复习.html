@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 定义函数的三种方式
+  //  //函数声明
+  //  function fn() {
+  //
+  //  }
+  //  fn();
+  //
+  //  //函数表达式
+  //  var fn = function() {
+  //
+  //  }
+  //  fn();
+
+  //使用Function构造函数
+  //arg1, arg2, .... body
+  //  var fn = new Function("n1", "n2", "console.log(n1 + n2)");
+  //  //var fn = function(n1, n2) {console.log(n1 + n2)};
+  //  fn(1,2);
+
+
+  function fn(n1, n2) {
+    console.log(n1, n2);
+    console.log(this);
+  }
+  //2. 函数的4种调用模式
+  //1. 函数调用模式, this指向window
+  //fn(1,2);
+
+
+  //2. 方法调用模式. this指向当前对象
+  //  var obj = {
+  //    sayHi:fn
+  //  }
+  //  obj.sayHi(1,2);
+  //var arr = [fn];
+  //arr[0](1,2 );
+
+
+  //3. 构造函数调用模式  this指向新创建的对象
+  //var f = new fn(1,2);
+
+
+  //4. call获取apply来调用 ， 上下文模式（方法借调模式）
+  //   this定死了第一个参数
+  //fn.call([], 1, 2);
+  //fn.apply(null, [1, 2]);
+
+
+
+  //求一个数组的最大值
+
+
+  //伪数组： 跟数组一样有下标 长度
+  //  var obj = {
+  //    0: "张飞",
+  //    1: "关羽",
+  //    length: 2
+  //  };
+  //
+  //
+  //  var arr= [];
+  //  //this
+  //  arr.push.call(obj, "刘备");
+  //  console.log(obj)
+  //  console.log(arr);
+
+
+  //var ret = Math.max(1,2,3,4,5,6);
+  //var ret = Math.max.call(Math, 1,2,3,4,5,6);
+  //var ret = Math.max.apply(null, [1,2,3,4,5]);
+  //console.log(ret);
+
+  //var arr = [1,2,3,4,5];
+  //var ret = Math.max.call(null,...arr);
+  //console.log(ret);
+  //console.log(...arr);
+
+
+</script>
+
+</body>
+</html>

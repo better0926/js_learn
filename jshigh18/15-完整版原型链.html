@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  function Person() {
+
+  }
+
+  //实例：p
+  //构造函数：Person
+  //原型Person.prototype
+  //var p = new Person();
+
+
+  //实例：Person
+  //构造函数： Function
+  //原型：Function.prototype
+
+
+  //实例： Person.prototype
+  //构造函数： Object
+  //原型：Object.prototype
+
+  var Fn = new Function();
+
+  var f = new Fn();
+
+
+  Function.prototype.age = 18;
+  Object.prototype.gender = "女";
+  // f ==> Fn.prototype ==> object.prototype;
+  // Fn ==> Function.prototype ==>  Object.prototype
+
+  console.log(f.age);
+  console.log(f.gender);
+  console.log(Fn.age);
+  console.log(Fn.gender);
+
+  //建议：  想一下：  f的原型链    想一下：Fn的原型
+
+  //f ==> Fn.prototype ==> Object.prototype
+  //Fn==> Function.prototype ==> Object.prototype
+  /*console.log(f.age);
+  console.log(f.gender);
+  console.log(Fn.age);
+  console.log(Fn.gender);*/
+
+
+</script>
+
+</body>
+</html>

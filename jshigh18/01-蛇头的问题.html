@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //引用类型与值类型
+
+  var body = [
+    {x:2, y:0},
+    {x:1, y:0},
+    {x:0, y:0}
+  ];
+
+  var newNode = body[0];
+
+  console.log(newNode === body[0]);
+
+  console.log(body);
+
+
+  //window document body:
+  // window对象：全局对象，js顶级对象
+  // BOM：document navigator location history 全局变量  全局的函数
+  // setInterval setTimeout
+
+  //document:  DOM,  页面中的元素
+
+
+
+  // window注册的事件： onload  onresize  onscroll
+
+  // document: keyup  click
+
+  // body: 修改背景颜色  修改背景图片
+
+
+  document.onclick = function () {
+    console.log("Hehe")
+  }
+
+  document.onkeyup = function (e) {
+    console.log(e.keyCode);
+  }
+
+</script>
+
+</body>
+</html>

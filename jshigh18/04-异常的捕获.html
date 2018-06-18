@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div></div>
+<script>
+
+  //代码一旦报错了，后续的代码就无法执行。
+
+  //错误：  连接一个数据库   数据库：可能没开
+
+
+  //try:尝试
+  //catch:捕获
+  try {
+    //可能出错的代码， 如果try里面出错了， 会把错误的信息放到e里面,执行catch
+    //如果try没有报错，catch不执行。
+    var div = document.querySelector("div");
+    div.onclick = function () {
+      console.log("哈哈")
+    }
+  } catch (e) {
+    console.log(e);
+    console.log("请在页面中写一个div，谢谢")
+  }
+
+  console.log("1111");
+
+
+</script>
+
+</body>
+</html>
