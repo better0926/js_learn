@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //混入式继承
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18
+  //  }
+  //
+  //  var obj1 = {
+  //    car : "马萨拉斯"
+  //  }
+  //
+  //
+  //  for(var k in obj1) {
+  //    obj[k] = obj1[k];
+  //  }
+  //
+  //  console.log(obj);
+
+
+
+  //原型链继承： 对象可以访问到他的原型连上的所有的东西
+  function Person() {
+
+  }
+
+  //给Person的原型加：
+  //1. 直接给Person的原型, 不好的地方，如果要给原型增加很多方法,只能一个一个加。
+  //2. 可以直接使用一个对象把原来的原型替换., 注意给对象增加一个constructor
+  //3. 用原型链继承+ 混入继承
+  Person.prototype = {
+    constructor: Person,
+    sayHi:function () {
+      console.log("Hehe ");
+    },
+    goodBye:function () {
+      console.log("拜拜");
+    },
+    extend: function (obj) {
+      for(var k in obj) {
+        this[k] = obj[k];
+      }
+    }
+  }
+
+
+  Person.prototype.extend({
+    last:function () {
+      console.log("最后一个")
+    }
+  })
+
+  var bb = {
+      dat : "今天",
+      week : "明天"
+  }
+  var p = new Person();
+  p.extend(bb);
+  console.log(p);
+  p.sayHi();
+  p.goodBye();
+  p.last();
+
+</script>
+
+</body>
+</html>

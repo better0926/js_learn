@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 0 auto;
+      position: relative;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="food.js"></script>
+<script src="snake.js"></script>
+<script>
+
+  var map = document.getElementById("map");
+
+  var f = new Food();
+  f.render(map);
+
+
+
+  var s = new Snake();
+  console.log(s);
+  s.render(map);
+
+
+  s.move();
+  console.log(s);
+
+</script>
+
+</body>
+</html>

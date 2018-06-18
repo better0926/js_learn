@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 0 auto;
+      position: relative;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="food.js"></script>
+<script src="snake.js"></script>
+<script src="game.js"></script>
+<script>
+
+
+
+  //全局变量污染的问题：
+  //沙箱模式：沙盒 沙盘  独立的环境，   并不会影响到真实的环境。
+  // 匿名函数自调用
+
+  (function() {
+    var num = 11;
+  })();
+
+
+
+
+
+  var map = document.getElementById("map");
+
+  var g = new Game(map);
+
+  g.start();
+
+</script>
+
+</body>
+</html>

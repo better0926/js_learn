@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">案例：贪吃蛇</h1>
+<blockquote>
+<p>游戏的目的是用来体会js高级语法的使用</p>
+<p>不要求学完就能具备抽象对象的能力，使用面向对象的方式分析问题，需要一个漫长的过程。</p>
+</blockquote>
+<h2 id="html-">html结构</h2>
+<pre><code class="lang-html">&lt;button&gt;开始游戏&lt;/button&gt;
+&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>样式</p>
+<pre><code class="lang-css">* {
+  margin: 0;
+  padding: 0;
+}
+#map {
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  background-color: #ccc;
+  position: relative;
+}
+button {
+  margin: 0 auto;
+  display: block;
+}
+</code></pre>
+<h2 id="-">食物对象</h2>
+<ul>
+<li>Food<ul>
+<li>属性<ul>
+<li>宽度 width</li>
+<li>高度 height</li>
+<li>背景色 bgColor</li>
+<li>横坐标  x</li>
+<li>纵坐标  y</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>render  需要将食物渲染到地图上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>书写Food的构造函数</li>
+</ul>
+<pre><code class="lang-javascript">  //所有的参数都放到options这个对象中
+  function Food( options ) {
+    options = options || {};
+    this.width = options.width || 20;
+    this.height = options.height || 20;
+    this.bgColor = options.bgColor || &quot;blue&quot;;
+    this.x = options.x || 0;
+    this.y = options.y || 0;
+  }
+
+</code></pre>
+<ul>
+<li>给Food.prototype添加了render方法</li>
+</ul>
+<pre><code class="lang-javascript">// 将食物对象渲染到地图上
+Food.prototype.render = function( target ) {
+  // 谁调用的函数, 函数里面的 this 就指向谁,
+  // food.render() 所以 render 执行时 里面的 this 指向 food 实例
+
+  // 创建 div 标签
+  var div = document.createElement( &quot;div&quot; );
+  target.appendChild( div );
+
+  div.style.width = this.width + &quot;px&quot;;
+  div.style.height = this.height + &quot;px&quot;;
+  div.style.backgroundColor = this.bgColor;
+
+  // 设置 div 的 left 和 top
+  // 为什么要有坐标, 不直接随机位置, 因为要保证在格子上
+  // this.x 会是 0-800 / 20 之间的随机整数 [0,40)
+  // 所以坐标
+  this.x = parseInt( Math.random() * target.offsetWidth / this.width );
+  this.y = parseInt( Math.random() * target.offsetHeight / this.height );
+
+  // 加定位, 设置 left 和 top
+  div.style.position = &quot;absolute&quot;;
+  div.style.left = this.x * this.width + &quot;px&quot;;
+  div.style.top = this.y * this.height + &quot;px&quot;;
+}
+
+</code></pre>
+<h2 id="-">蛇对象</h2>
+<ul>
+<li>Snake（蛇是由多个小方格组成）<ul>
+<li>属性<ul>
+<li>width  蛇的关节小方格的宽度 默认值：20</li>
+<li>height 蛇的关节小方格的高度 默认值 20</li>
+<li>headColor:  蛇头颜色</li>
+<li>bodyColor: 身体颜色</li>
+<li>body: 蛇的身体(关节的坐标)是个数组, 里面存了很多对象, 每个对象指的是一个关节的坐标</li>
+<li>direction: 蛇运动的方向(默认值 right)</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>render  把蛇渲染到地图上</li>
+<li>move    蛇要会动</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>创建Snake构造函数</li>
+</ul>
+<pre><code class="lang-javascript">function Snake( options ) {
+  options = options || {};
+  this.width = options.width || 20;
+  this.height = options.height || 20;
+  this.headColor = options.headColor || &quot;green&quot;;
+  this.bodyColor = options.bodyColor || &quot;red&quot;;
+  this.direction = options.direction || &quot;right&quot;;
+
+  // 蛇的身体(关节的坐标) 一个对象指的是每个小方块
+  this.body = [
+    { x: 2, y: 0 },
+    { x: 1, y: 0 },
+    { x: 0, y: 0 }
+  ];
+};
+</code></pre>
+<ul>
+<li>给Snake.prototype 添加 render 方法</li>
+</ul>
+<pre><code class="lang-javascript">  // 把蛇渲染到地图上
+  Snake.prototype.render = function( target ) {
+
+    // 渲染是根据 body 里面每个关节的坐标来进行渲染的
+    // 每一个对象, 都代表了一个关节, 就是一个span, 需要遍历 body 进行蛇关节的渲染
+    for ( var i = 0; i &lt; this.body.length; i++ ) {
+
+      // 1. 创建一个 span, 用以和 食物 div 作区分, 添加到页面中
+      var span = document.createElement( &quot;span&quot; );
+      target.appendChild( span );
+
+      // 2. 设置 span 宽高
+      span.style.width = this.width + &quot;px&quot;;
+      span.style.height = this.height + &quot;px&quot;;
+
+      // 3. 设置背景色, 需要区分蛇头 和 蛇身体, 默认数组第一项为蛇头
+      span.style.backgroundColor = i === 0 ? this.headColor : this.bodyColor;
+
+      // 4. 根据坐标设置位置
+      span.style.position = &quot;absolute&quot;;
+      span.style.left = this.body[i].x * this.width + &quot;px&quot;;
+      span.style.top = this.body[i].y * this.height + &quot;px&quot;;
+    }
+  }
+</code></pre>
+<ul>
+<li>给Snake.prototype 添加 move 方法</li>
+</ul>
+<pre><code class="lang-javascript">Snake.prototype.move = function( target ) {
+    // 蛇移动的核心点: 在前面加一个新节点, 在最后面剁掉一个多余的
+
+    // 1. 添加一个新节点, 在原来头的基础上计算新位置
+    var newNode = {
+      x: this.body[0].x,
+      y: this.body[0].y
+    }
+
+
+    // 2. 根据方向计算新节点的坐标
+    switch( this.direction ) {
+      case &quot;right&quot;:
+        newNode.x++;
+        break;
+      case &quot;left&quot;:
+        newNode.x--;
+        break;
+      case &quot;up&quot;:
+        newNode.y--;
+        break;
+      case &quot;down&quot;:
+        console.log(111);
+        newNode.y++;
+        break;
+    };
+    // 将计算完成的新节点添加到 this.body 最前面作为新的蛇头
+    this.body.unshift( newNode );
+
+    // 3. 将尾巴剁掉, 删除数组的最后一项
+    this.body.pop();
+
+      // 4. 重新渲染
+    // 数组body变了, 但是页面没有变, 需要重新渲染
+    // 且重新渲染前要清除页面中所有的 span
+    var spans = target.querySelectorAll(&quot;span&quot;);
+    for( var i = 0; i &lt; spans.length; i++ ) {
+      target.removeChild( spans[ i ] );
+    }
+    this.render( target );
+
+  }
+</code></pre>
+<h2 id="-">游戏对象</h2>
+<h3 id="-">游戏对象</h3>
+<ul>
+<li><p>Game 游戏对象, 管理所有的对象</p>
+<ul>
+<li><p>属性</p>
+<ul>
+<li><p>map  地图属性, 游戏里面有地图</p>
+</li>
+<li><p>snake,  蛇属性,  游戏里面有蛇</p>
+</li>
+<li>food,    食物属性,  游戏里面有食物</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li>start  开始游戏的函数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="-">游戏对象构造函数</h3>
+<p>Game 游戏对象, 管理所有的对象, 有蛇, 有食物, 可以开始游戏</p>
+<pre><code class="lang-javascript">function Game(map) {
+    this.food = new Food();
+    this.snake = new Snake();
+    this.map = map;
+}
+
+var g = new Game(map);
+g.start();
+</code></pre>
+<h3 id="-">开始游戏的方法</h3>
+<p>蛇, 食物的初始化, 以及上下左右按键事件的注册应该放在 init 初始化函数中</p>
+<pre><code class="lang-javascript">Game.prototype.start = function () {
+    //**************注册：在定时器中的this指的是window**************//
+    var that = this;
+    setInterval(function () {
+        that.snake.move(that.map);
+    }, 300);
+
+    //注册keyup事件
+    document.addEventListener(&quot;keyup&quot;, function (e) {
+        console.log(e.keyCode);
+        switch (e.keyCode) {
+            case 37:
+                that.snake.direction = &quot;left&quot;;
+                break;
+            case 38:
+                that.snake.direction = &quot;up&quot;;
+                break;
+            case 39:
+                that.snake.direction = &quot;right&quot;;
+                break;
+            case 40:
+                that.snake.direction = &quot;down&quot;;
+                break;
+        }
+    });
+}
+</code></pre>
+<h3 id="-">蛇撞墙的逻辑</h3>
+<pre><code class="lang-javascript">//蛇撞墙的逻辑
+var head = that.snake.body[0];
+if (head.x &lt; 0 || head.x &gt; that.map.offsetWidth / that.snake.width ||
+    head.y &lt; 0 || head.y &gt; that.map.offsetHeight / that.snake.height) {
+    return true;
+}
+</code></pre>
+<h3 id="-">撞身体的逻辑</h3>
+<pre><code class="lang-javascript"> //蛇撞身体的逻辑
+for (var i = 4; i &lt; that.snake.body.length; i++) {
+    if (head.x == that.snake.body[i].x &amp;&amp; head.y == that.snake.body[i].y) {
+        return true;
+    }
+}
+</code></pre>
+<h2 id="-">沙箱模式</h2>
+<p>沙箱其实就是一个独立的环境，这个环境中任何的改变，都不会对外部环境产生影响。</p>
+<p>函数自调用一样，在自调用函数内部的变量是不会影响到外部的，因此函数自调用模式也叫沙箱模式。</p>
+<pre><code class="lang-javascript">(function(window){
+
+})(window);
+</code></pre>
+<h1 id="-">继承</h1>
+<blockquote>
+<p>继承：子承父业</p>
+</blockquote>
+<p>在js中的继承概念非常简单，拿来主义：一个对象自己没有的属性和方法，另一个对象有，拿过来使用，就实现了继承。</p>
+<p>继承的目的：让一个对象可以使用另一个对象的属性和方法。</p>
+<p>JS常见的几种继承模式：</p>
+<h2 id="-mixin-">混入式继承（mixin）</h2>
+<blockquote>
+<p>把一个对象中的属性和方法拷贝到另一个对象中。</p>
+</blockquote>
+<pre><code class="lang-javascript">var ff = {
+    name:&quot;飞飞&quot;,
+    extend: function(obj) {
+        for(var k in obj) {
+            this[k] = obj[k];
+        }
+    }
+}
+</code></pre>
+<h2 id="-">原型链继承</h2>
+<p>一个对象可以访问构造函数的原型中的属性和方法，那么如果想要让一个对象增加某些属性和方法，</p>
+<p>只需要把这些属性和方法放到原型对象中即可。这样就实现了继承, 称之为原型链继承</p>
+<ul>
+<li><p>直接给原型增加属性和方法</p>
+</li>
+<li><p>原型替换（注意：constructor）</p>
+</li>
+<li><p>mixin+原型替换</p>
+</li>
+</ul>
+<h2 id="object-create">Object.create</h2>
+<blockquote>
+<p>最初是由道格拉斯丶克罗克福德发布的一篇文章提出的，ECMAScript5新增了Object.create()方法来规范化了这种继承。</p>
+</blockquote>
+<p>ES5中新增了一个方法<code>Object.create()</code>,方法会使用指定的原型对象及其属性去创建一个新的对象。</p>
+<pre><code class="lang-javascript">//参数：proto 一个对象
+//返回值：obj 新对象，新对象的原型就是proto
+var obj = Object.create(proto);
+console.log(obj);
+</code></pre>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  function Game() {
+
+  }
+
+
+  //原型替换：以后如果想要给原型增加很多很多的方法的时候，我们考虑直接使用一个对象把原来的原型替换即可。注意：要给这个对象指点给一个属性：constructor
+  Game.prototype = {
+    constructor: Game,
+    render:function () {
+
+    },
+    start:function () {
+
+    },
+    addEvent:function () {
+
+    }
+  }
+
+  var g = new Game();
+  console.log(g);
+
+
+</script>
+
+</body>
+</html>

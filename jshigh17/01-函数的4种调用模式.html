@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //4种调用模式：
+  //1. 函数调用模式
+  //2. 方法调用模式
+  //3. 构造函数调用模式
+  //4. 上下文调用模式（方法借调模式， call apply bind）
+
+  //在函数内部都可以使用一个 this,这个this是动态，他跟函数的调用模式有关系。
+
+  //函数和方法的区别
+    //方法： 对象内部的函数，我们就叫方法，
+    //函数： 不在一个对象内的函数，就函数
+
+
+  //1. 函数调用模式下，this指向的是window
+  //  var fn = function() {
+  //    console.log(this);
+  //  }
+  //
+  //  //函数名():  函数调用调用模式，this指的是window
+  //  fn();
+  //
+  //
+  //  var obj = {
+  //    sayHi: function() {
+  //      console.log(this);
+  //    }
+  //  }
+  //
+  //  //对象名.方法名() :方法调用模式， this执行当前对象。
+  //  obj.sayHi();
+
+
+
+//  var fn = function () {
+//    console.log(this);
+//  }
+//
+//  var obj = {
+//    sayHi: fn
+//  }
+//
+//  //对象.方法名() : 方法调用模式
+//  obj.sayHi();
+
+
+
+//  var obj = {
+//    sayHi: function () {
+//      console.log(this)
+//    }
+//  }
+//
+//  var fn = obj.sayHi;
+//
+//  //函数调用模式，this指向window
+//  fn();
+
+
+  //构造函数调用模式
+  // new 函数名()  : this指向新创建的那个对象
+  //  function fn() {
+  //    console.log(this);
+  //  }
+  //
+  //  var f = new fn();
+
+
+  //  var name = "zs";
+  //  var age = "18"
+  //  function fn(name, age) {
+  //    this.name = name;
+  //    this.age = age;
+  //  }
+  //
+  //  //构造函数调用模式
+  //  var p = fn("ls", 20);
+  //
+  //  console.log(p);// {name:ls, age:20}    undefined
+  //  console.log(name);//zs
+  //  console.log(age);//18
+
+  var name = "zs";
+  var age = 18;
+  function Student(name, age) {
+    obj.name = name;
+    obj.age = age;
+  }
+  var obj = {
+    name: "ls",
+    age: 20,
+    sayHi: Student
+  }
+
+  obj.sayHi("ww", 22);
+  console.log(obj.name);
+  console.log(obj.age);
+  console.log(name);
+  console.log(age);
+
+
+</script>
+
+</body>
+</html>

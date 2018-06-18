@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  function Person() {
+
+  }
+
+  //给Person.的原型增加一个extend方法
+  Person.prototype.extend = function (obj) {
+    for(var k in obj) {
+      this[k] = obj[k];
+    }
+  }
+
+
+
+
+  //不停的给Person的原型增加属性和方法
+  //创建出来的所有的Person实例全部都能访问。
+
+  var lw = {
+    car: '玛莎拉蒂'
+  }
+
+  var ll = {
+    money: 1000,
+  }
+
+  var ff = {
+    sayHi: function () {
+      console.log("大家好");
+    }
+  }
+  Person.prototype.extend(lw);
+  Person.prototype.extend(ll);
+  Person.prototype.extend(ff);
+
+  Person.prototype.extend( {
+    house:"大别墅"
+  })
+
+  //需求：我希望创建出来的p能够使用lw ll ff所有的内容
+
+
+  var p = new Person();
+  console.log(p);
+
+
+  var p2 = new Person();
+  console.log(p2);
+
+
+  //p ==> Person.prototype ==> Object.prototype
+  //      toString                toString
+</script>
+
+</body>
+</html>

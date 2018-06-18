@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //实例对象可以继承字他的原型，，只需要给原型增加属性和方法，如果增加的属性和方法很多，可以考虑把原来的原型替换掉。
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  var lw = {
+    //原型替换的时候，注意给对象加上constructor属性
+    constructor: Person,
+    car: "玛莎拉蒂",
+    money: 1000000,
+    house: "独栋大别墅"
+  }
+
+
+  //原型替换
+  //把Person.prototype改成了lw这个对象
+  Person.prototype = lw;
+
+  var p = new Person("zs", 18);
+
+  //p继承自 Person.prototype的所有的东西
+
+  console.log(p.car);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  var ff = {
+    name: "飞飞",
+    extend: function (obj) {
+      for(var k in obj) {
+        if(obj.hasOwnProperty(k)) {
+           this[k] = obj[k];
+        }
+      }
+    }
+  }
+
+
+  var cc = {
+    money: 100,
+    car: "forever"
+  }
+
+  var qq = {
+    house: "新疆的海景房"
+  }
+
+
+  ff.extend(cc);
+  ff.extend(qq);
+  ff.extend({
+    dog: "拉布拉多"
+  });
+
+  console.log(ff);
+
+
+</script>
+
+</body>
+</html>

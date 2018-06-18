@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //参数：一个对象
+  //返回值：一个对象
+  //结果是：  返回的这个对象的原型直接就是参数
+
+
+  //快速的让一个对象继承自另一个对象
+  var lw = {
+    name:"zs",
+    age:18
+  }
+
+
+
+
+  //高程：  寄生式继承   寄生式组合继承 （不用去了解）
+
+
+  //ES6 ：  class  extends :
+  //o.__proto__ == lw
+  var o = Object.create(lw);
+  console.log(o);
+  console.log(o.__proto__ == lw);
+
+</script>
+
+</body>
+</html>
