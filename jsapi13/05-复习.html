@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //1. 复习缓动函数的封装(尽力，最好能够封装出来，如果封装不出来，肯定会用)
+      //1.1 能够让一个盒子左右跑
+      //1.2 希望封装成一个函数   element.timeId
+      //1.3 希望可以让带px的样式都做动画 animate(element, attr, target)
+      //1.4 同时能够对多个样式做动画   animate(element, obj);   obj= {width:300, height:300}
+      //1.5 只要有一个动画结束了，定时器就清除了，  假设成立法， 当所有的动画都结束了，才清除定时器
+      //1.6 希望动画结束的时候，可以做一些事情。 增加了一个fn的参数 animate(element, obj, [fn]) fn&& fn();
+      //1.7 希望函数可以支持opacity，比较特殊，值比较小，不带px  current和target扩大1000倍
+      //1.8 对zIndex支持，  zIndex不需要动画。
+
+
+  //2. 手风琴-问道    核心： 当前元素以及之前的元素： left: 100 * i  116 * i
+            //              后面的元素： left: 100 * i + 额外显示的值
+
+  //3. 旋转木马：
+      //固定好几个位置，  一开始给每一个li分配一个位置
+      //点击左右箭头，只需要修改数组的位置（数组最后一个放第一个   数组第一个放最后一个）,重新分配位置。
+
+      //节流阀：  定义一个标记     开门关门
+</script>
+
+</body>
+</html>

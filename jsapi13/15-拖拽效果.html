@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      cursor: move;
+      margin: 100px;
+    }
+  </style>
+</head>
+<body>
+<div></div>
+
+
+<script>
+  //onmousedown: 鼠标按下事件
+  //onmouseup:鼠标弹起事件
+  //onclick:鼠标点击事件
+
+  //思路：
+    //鼠标按下，注册鼠标移动事件
+    //鼠标弹起，把移动事件给清除了
+
+  var div = document.querySelector("div");
+
+  //注册鼠标按下事件
+  div.onmousedown = function () {
+
+    console.log("按下了");
+    //给document注册鼠标移动事件
+    document.onmousemove = function (e) {
+
+      //设置div的left与top值
+      div.style.position = "absolute";
+      div.style.left = e.pageX - 20 + "px";
+      div.style.top = e.pageY - 20 + "px";
+
+    }
+
+  };
+
+
+  //注册鼠标弹起事件
+  document.onmouseup = function () {
+    //清除document的onmousemove
+    console.log("谈起了")
+    document.onmousemove = null;
+  }
+
+
+
+
+</script>
+</body>
+</html>

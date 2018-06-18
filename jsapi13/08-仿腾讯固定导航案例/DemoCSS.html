@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      margin-top: 10px;
+      
+    }
+    
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="top" id="topPart">
+  <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+  <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+  <img src="images/main.png" alt=""/>
+</div>
+
+
+<script>
+
+  //思路：
+  //1. 给整个页面注册一个滚动事件
+  //2. 获取到整个页面的scrollTop(window.pageYOffset)， 当scrollTop超过top的高度的时候，需要让nav固定定位。
+  var topPart = document.querySelector("#topPart");
+  var navBar = document.querySelector("#navBar");
+  var mainPart = document.querySelector("#mainPart");
+
+  window.onscroll = function () {
+    //获取scrollTop
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    //判断scrollTop是否超过topPart的高度
+    if(scrollTop >= topPart.offsetHeight) {
+      //给navBar添加固定定位， navBar脱离了标准流，不占位置，需要给mainPart设置一个margin-top值。
+      navBar.className = "nav fixed";
+      mainPart.style.marginTop = navBar.offsetHeight + 10 + "px";
+
+    }else {
+      navBar.className = "nav";
+      mainPart.style.marginTop = 10 + "px";
+    }
+
+  };
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //获取页面可视区的大小
+  //老的浏览器：  html或者body的clientWidth/ clientHeight
+  //现代浏览器：  window.innerWidth 或者是window.innerHeight
+  //console.log(document.documentElement.clientWidth || document.body.clientWidth);
+  //console.log(document.documentElement.clientHeight || document.body.clientHeight);
+
+
+
+
+  //onresize: 当窗口的大小发生改变的时候，会触发
+  window.onresize = function () {
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+  }
+
+</script>
+
+</body>
+</html>

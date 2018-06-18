@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">缓动框架</h1>
+<h2 id="-">缓动函数初体验</h2>
+<p>动画公式：</p>
+<pre><code class="lang-javascript">var step = (target - leader)/10;
+leader = leader + step;
+</code></pre>
+<p>【演示：01-缓动动画初体验.html】</p>
+<p>缺点：</p>
+<p>​    打开控制台，查看盒子的left值，会发现并没有跑到400px，只能跑到396.4px的地方</p>
+<p>原因：</p>
+<p>​    offsetLeft获取值的时候，只会获取整数，会对小数部分会四舍五入处理</p>
+<p>解决：</p>
+<p>​    对step向上取整处理，保证每一次都至少跑1px的距离</p>
+<p>【演示：02-缓动动画优化.html】</p>
+<h2 id="-">缓动函数封装</h2>
+<p>【演示：03-缓动函数封装.html】</p>
+<p>缺点：</p>
+<p>​    往回走的时候，到达不了终点</p>
+<p>原因：</p>
+<p>​    往回走的时候，step是负数，不应该向上取整，而应该向下取整</p>
+<p>解决：</p>
+<p>​    判断step的正负</p>
+<p>【演示：04-缓动函数优化.html】</p>
+<p>【案例：筋斗云案例.html】</p>
+<h2 id="-">获取计算后的样式</h2>
+<blockquote>
+<p>通过element.style.xxx只能获取到行内样式</p>
+<p>通过offset系列只能获取到特殊的一些样式</p>
+</blockquote>
+<p>获取元素计算后的样式指的是元素经过层叠后真正生效的样式，不管样式写在哪，计算后的样式指的就是最终的样式。</p>
+<p>现代浏览器：</p>
+<pre><code class="lang-javascript">return window.getComputedStyle(element, null)[attr];
+</code></pre>
+<p>IE678:</p>
+<pre><code class="lang-javascript2w">return element.currentStyle[attr];
+</code></pre>
+<p>【演示：05-获取元素计算后的样式.html】</p>
+<h2 id="-px-">缓动框架封装-任意样式(带px)</h2>
+<p>【演示：06-缓动框架封装-任意样式(带px).html】</p>
+<p>注意点：</p>
+<ol>
+<li>获取到的样式是字符串格式,需要取整</li>
+<li>如果是auto，取整是NaN，需要进行处理</li>
+<li>设置的时候，需要设置对应的值</li>
+</ol>
+<p>缺点：</p>
+<p>​    一次只能修改一个样式，不能同时修改多个样式</p>
+<h2 id="-">缓动框架封装-同时修改多个样式</h2>
+<p>【演示：07-缓动框架封装-同时修改多个样式.html】</p>
+<p>注意点：</p>
+<pre><code>1. 需要遍历对象
+2. attr就是k，target就是json[k]
+</code></pre><p>缺点：</p>
+<p>​    修改多个样式的时候，并不能所有的样式都到达终点。</p>
+<h2 id="-bug">缓动框架封装-修复定时器bug</h2>
+<p>【演示：08-缓动框架封装-修复定时器bug.html】</p>
+<p>假设成立法的三个步骤</p>
+<ol>
+<li>假设成立</li>
+<li>想办法推翻假设</li>
+<li>如果推翻不了，说明假设成立</li>
+</ol>
+<h2 id="-">缓动框架优化-添加回调函数</h2>
+<p>【演示：09-缓动框架优化-添加回调.html】</p>
+<p>注意点：</p>
+<ol>
+<li>在清除定时器之后，调用回调函数</li>
+<li>只有当传递了回调函数的时候才去调用</li>
+</ol>
+<h2 id="-">缓动框架优化-支持透明度和层级</h2>
+<p>【演示：10-缓动框架优化-支持不透明度和层级.html】</p>
+<p>注意点：</p>
+<ol>
+<li>将parseInt改成parseFloat</li>
+<li>将target和leader都扩大100进行动画</li>
+<li>设置值的时候，需要设置leader的100分之1，还需要去掉px</li>
+</ol>
+<h2 id="-">手风琴特效</h2>
+<blockquote>
+<p>手风琴是很常见的特效，希望大家都能掌握</p>
+</blockquote>
+<p>【案例-11-手风琴特效（浮动版）】</p>
+<p>缺点：</p>
+<p>​    动画速度不一致，导致在动画执行过程中，总宽度不会等于1200px，因此能看到手风琴的末尾在抖动。</p>
+<p>【案例-12-手风琴特效（定位版本）】</p>
+<p>优点：</p>
+<p>​    不会出现末尾抖动的情况</p>
+<blockquote>
+<p>两种手风琴效果都非常的常见</p>
+</blockquote>
+<h2 id="-">旋转木马特效</h2>
+<p>【案例-14-旋转木马特效】</p>
+<p>节流阀步骤：</p>
+<pre><code>1. 定义节流阀开关
+2. 判断阀门是否打开，只有打开了才能执行
+3. 关闭阀门，不让其他人执行
+4. 执行完动画之后，打开阀门
+</code></pre><h1 id="-">三大家族</h1>
+<h2 id="offset-">offset家族</h2>
+<blockquote>
+<p>offset系列用于用于获取元素自身的大小和位置，在网页特效中有广泛应用</p>
+<p>offset系列主要有：offsetHeight、offsetWidth、offsetParent、offsetLeft、offsetTop</p>
+</blockquote>
+<p>offsetHeight与offsetWidth</p>
+<ol>
+<li>获取的是元素真实的高度和宽度</li>
+<li>获取到的是数值类型，方便计算</li>
+<li>offsetHeight与offsetWidth是只读属性，不能设置。</li>
+</ol>
+<p>style.height与style.width</p>
+<ol>
+<li>只能获取行内样式</li>
+<li>获取到的是字符串类型，需要转换</li>
+</ol>
+<p>offsetHeight与offsetWidth的构成</p>
+<p>​    offsetHeight = height + paddnig + border</p>
+<p>​    offsetWidth = width + padding + border</p>
+<p> <img src="images\offset.png" alt="offset"></p>
+<h2 id="scroll-">scroll家族</h2>
+<blockquote>
+<p>scroll家族用来获取盒子内容的大小和位置</p>
+<p>scroll家族有：scrollWidth、scrollHeight、scrollLeft、scrollTop</p>
+</blockquote>
+<ol>
+<li>scrollWidth与scrollHeight是盒子内容的真实的宽度和高度。与和盒子大小无关，仅仅与盒子的内容有关系。</li>
+<li><p>scrollTop用于获取内容垂直滚动的像素数。如果没有滚动条，那么scrollTop值是0</p>
+<p><img src="images\scroll.png" alt="scroll"></p>
+</li>
+</ol>
+<p>onscroll事件，对于有滚动条的盒子，可以使用onscroll注册滚动事件，每滚动一像素，就会触发该事件。</p>
+<pre><code class="lang-javascript">var box = doucment.getElementById(“box”);
+box.onscroll = function(){
+    //事件处理程序
+}
+</code></pre>
+<p>获取页面被卷去的高度和宽度</p>
+<blockquote>
+<p>通常来说，scroll家族用的最多的地方就是用来获取页面被卷去的宽度和高度，非常的常用</p>
+</blockquote>
+<ul>
+<li>对于老式的浏览器，需要获取html或者body的scrollTop</li>
+<li>对于现在浏览器，使用window.pageYOffset进行获取</li>
+</ul>
+<p>页面被卷去的高度和宽度的兼容性封装</p>
+<pre><code class="lang-javascript">window.onscroll = function() {
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+ var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+}
+</code></pre>
+<p>【仿腾讯固定导航案例.html】</p>
+<h2 id="client-">client家族</h2>
+<blockquote>
+<p>client家族用于获取盒子可视区的大小</p>
+<p>client家族有clientWidth、clientHeight、clientLeft、clientTop</p>
+</blockquote>
+<p><strong>如果内容没有超出盒子范围：clientWidth与scrollWidth相同</strong></p>
+<p> <img src="images\client1.png" alt="client1"></p>
+<blockquote>
+<p>三大家族对比</p>
+</blockquote>
+<p> <img src="images\client.png" alt="client"></p>
+<blockquote>
+<p>clientTop与clientLeft</p>
+</blockquote>
+<p><strong>clientTop</strong>与<strong>clientLeft</strong> 完全没有用，他们就是borderTop与borderLeft</p>
+<p>但是：如果有滚动条，还会包含滚动条的宽度，但是见过滚动条在上边或者左边的？</p>
+<blockquote>
+<p>onresize事件：onresize事件会在窗口被调整大小的时候发生。</p>
+</blockquote>
+<pre><code class="lang-javascript">window.onresize = function(){
+    //事件处理程序
+}
+</code></pre>
+<blockquote>
+<p>client系列一般用来获取页面的可视区宽高</p>
+</blockquote>
+<pre><code class="lang-javascript">function client() {
+    return {
+        width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+        height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+    };
+}
+
+</code></pre>
+<p>【案例-16-获取页面可视区域的宽度和高度.html】</p>
+<h1 id="-">事件对象</h1>
+<h2 id="-">事件对象的概述</h2>
+<blockquote>
+<p>在触发某个事件的时候，都会产生一个事件对象Event，这个对象中包含所有与事件相关的一些信息，包括触发事件的元素，事件的类型以及其他与事件相关的信息。</p>
+</blockquote>
+<p>鼠标事件触发时，事件对象中会包含鼠标的位置信息。</p>
+<p>键盘事件触发时，事件对象中会包含按下的键相关的信息。</p>
+<pre><code class="lang-javascript">每一个事件在触发时，都会产生一个事件对象。
+你见或者不见，我就在那里，不悲不喜。
+你爱或者不爱，爱就在那里，不增不减。
+你用或者不用，我都会给你，不离不弃。 
+</code></pre>
+<h2 id="-">获取事件对象</h2>
+<blockquote>
+<p>既然事件对象中存储了这么多的信息，我们首先需要做的就是获取到这个事件对象。获取事件对象的时候，存在浏览器的兼容问题。</p>
+</blockquote>
+<p>【演示：01-获取事件对象.html】</p>
+<p>对于现代浏览器，获取事件对象非常的简单，只需要在注册事件的时候，指定一个形参即可。这个形参就是我们想要获取到的事件对象。</p>
+<pre><code class="lang-javascript">btn.onclick = function(event){
+    //event就是事件对象，里面包含了事件触发时的一些信息。
+    console.log(event);
+}
+</code></pre>
+<p>对于IE678来说，获取事件对象则是另一种方式，在事件里面，通过window.event来获取事件对象</p>
+<pre><code class="lang-javascript">btn.onclick = function(){
+    //IE678通过window.event获取事件对象
+    var event = window.event;
+    console.log(event);
+}
+</code></pre>
+<p>兼容性封装</p>
+<pre><code class="lang-javascript">btn.onclick = function(event){
+      //只要用到了事件对象，就要记得处理浏览器兼容性
+    event = event || window.event;
+}
+</code></pre>
+<h2 id="-">事件对象的常用属性</h2>
+<blockquote>
+<p>事件对象中有很多很多的属性，但是很多属性并不常用。我们经常用到的是<strong><em>鼠标位置信息</em></strong> 和<strong><em>键盘码</em></strong>  相关的信息。</p>
+</blockquote>
+<p>【演示-02-事件对象的常用属性.html】</p>
+<p>记录了鼠标位置信息的相关属性</p>
+<pre><code class="lang-javascript">screenX与screenY：光标相对于屏幕左上角的水平位置与垂直位置。
+clientX与clientY：光标相对于可视区左上角的水平位置和垂直位置。
+pageX与pageY：光标相对于网页（文档document）左上角的水平位置与垂直位置（推荐使用）
+</code></pre>
+<p>记录了键盘码的属性</p>
+<pre><code class="lang-javascript">event.keyCode:键盘按下的那个键的键盘码
+</code></pre>
+<p>【案例-03-让小天使飞.html】</p>
+<h2 id="-">放大镜效果（案例）</h2>
+<blockquote>
+<p>放大镜在开发中是一个很常见的特效，但是所有的放大镜的实现效果都是一样。</p>
+</blockquote>
+<p>【案例-07-放大镜特效】</p>
+<p>mousemove事件：鼠标移动时会触发这个事件。</p>
+<pre><code class="lang-javascript">document.onmousemove = function(){
+    console.log(&quot;鼠标移动事件在触发&quot;);  
+};
+</code></pre>
+<p>获取鼠标在盒子中的位置：</p>
+<pre><code class="lang-javascript">var spaceX = event.pageX - box.offsetLeft;
+var spaceY = event.paegY - box.offsetTop;
+</code></pre>
+<h2 id="-">拖拽特效</h2>
+<p>【案例-08-可拖拽的盒子.html】</p>
+<p>【案例-09-拖拽效果(登录框).html】</p>
+<p>清除选中的文字（不用记）</p>
+<pre><code class="lang-javascript">window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+</code></pre>
+<h1 id="-">注册事件的两种方式</h1>
+<h2 id="on-">on+事件名称</h2>
+<blockquote>
+<p>onclick、onmouseover这种on+事件名称的方式注册事件几乎所有的浏览器都支持。</p>
+</blockquote>
+<p>注册事件：</p>
+<pre><code class="lang-javascript">box.onclick = function(){
+    //事件处理程序    
+}
+</code></pre>
+<p>移除事件：</p>
+<pre><code class="lang-javascript">box.onclick = null;    
+</code></pre>
+<p>on+事件名称注册事件的缺点：</p>
+<p>同一个元素同一类型的事件，只能注册一个，如果注册了多个，会出现覆盖问题。</p>
+<h2 id="-">注册事件的新方式</h2>
+<p><strong>addEventListener与removeEventListener</strong></p>
+<blockquote>
+<p>现代浏览器支持的注册事件的新方式，这种方式注册的事件不会出现覆盖问题。</p>
+</blockquote>
+<p>【演示-10-addEventListener与removeEventListener的用法.html】</p>
+<p>addEventListener的语法</p>
+<pre><code class="lang-javascript">//第一个参数：事件的类型：click mouseover
+//第二个参数：函数，监听者，每次点击，这个函数就执行。
+//第三个参数：false
+addEventListener(type, func, useCapture);
+</code></pre>
+<font color="red">tips：如果想要让你注册的事件能够移除，不能使用匿名函数。</font>
+
+<pre><code class="lang-javascript">function fn1() {
+    alert(&quot;hehe&quot;);
+}
+//如果想让注册的事件能移除，不能用匿名函数。
+box.addEventListener(&quot;click&quot;, fn1, false);
+</code></pre>
+<p>removeEventListen的语法</p>
+<pre><code class="lang-javascript">//第一个参数：参数类型
+//第二个参数：要移除的那个函数
+//第三个参数：false
+removeEventListener(type, func, useCapture);
+</code></pre>
+<p><strong>attachEvent与detachEvent</strong></p>
+<blockquote>
+<p>IE678不支持addEventListener与removeEventListen两个方法，但是支持attachEvent与detachEvnet</p>
+</blockquote>
+<p>【演示-11-attachEvent与detachEvent的用法.html】</p>
+<p>attachEvent的用法：</p>
+<pre><code class="lang-javascript">//type:事件类型   需要加上on   onclick  onmouseenter
+//func:需要执行的那个事件
+attachEvent(type, func)
+</code></pre>
+<p>detachEvent的用法</p>
+<pre><code class="lang-javascript">//type:事件类型   需要加上on   onclick  onmouseenter
+//func:需要执行的那个事件
+detachEvent(type, func)
+</code></pre>
+<h2 id="-">兼容性封装（了解）</h2>
+<blockquote>
+<p>注册事件的新方式的解决了事件覆盖的问题，但是存在浏览器兼容性问题，因此可以进行兼容性封装。</p>
+</blockquote>
+<p>【演示-12-注册事件的兼容性封装.html】</p>
+<pre><code class="lang-javascript">//添加事件
+function addEvent(element, type, fn){
+    //能力检测
+    if(element.addEventListener){
+        element.addEventListener(type, fn, false);
+    }else if(element.attachEvent){
+        element.attachEvent(&quot;on&quot;+type, fn);
+    }else {
+        //如果都不行，那就用on方式
+        element[&quot;on&quot;+type] = fn;
+    }
+}
+
+
+//移除事件
+function removeEvent(element, type, fn) {
+    if(element.removeEventListener){
+        element.removeEventListener(type, fn, false);
+    }else if(element.detachEvent){
+        element.detachEvent(&quot;on&quot;+type, fn);
+    }else {
+        element[&quot;on&quot;+type] = null;
+    }
+}
+</code></pre>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>

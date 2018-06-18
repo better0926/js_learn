@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+
+<script>
+  var div = document.querySelector("div");
+
+
+  //现代浏览器，直接设置一个形参
+  //ie678:通过window.event来获取
+  div.onclick = function (e) {
+    e = e || window.event;
+  }
+
+  //事件对象： 任何事件，在触发的时候，都会产生一个事件对象。
+  //  //通过事件对象可以获取到鼠标的位置，还可以获取到键盘按下的哪个键
+  //  div.onclick = function (event) {
+  //    console.log("呵呵");
+  //    console.log(event);
+  //  }
+  //
+  //  document.onkeyup = function (e) {
+  //    console.log(e);
+  //  }
+
+</script>
+
+</body>
+</html>

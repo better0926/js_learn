@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 4000px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+
+  document.onclick = function (e) {
+    //获取事件对象
+
+    //clientX  clientY  :获取的是鼠标在可视区的位置
+    //pageX    pageY    :获取的是鼠标在整个页面中的位置： 包括scrollTop
+    //screenX scrennY   ：获取在屏幕中的位置
+    console.log(e.clientX, e.clientY);
+    console.log(e.pageX, e.pageY);
+    console.log(e.screenX, e.screenY);
+  }
+
+</script>
+
+</body>
+</html>

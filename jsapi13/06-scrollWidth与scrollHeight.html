@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      padding: 10px;
+      border: 10px solid #000;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  好多的文字
+  好多的文字
+  好多的文字
+  好多的文字好多的文字
+  好多的文字
+  好多的文字
+  好多的文字
+  好多的文字
+</div>
+
+
+<script>
+
+  var div = document.querySelector("div");
+
+  //获取的是div的真实高度（height + padding + border）
+  //console.log(div.offsetHeight);
+
+  //获取的是div的内容的高度。当有内容的时候
+  //console.log(div.scrollHeight);
+
+
+  //scrollTop  scrollLeft
+
+
+
+  //滚动事件  onscroll: 当滚动的时候触发
+  //scrollTop:用于获取滚动条在垂直方向滚动的像素。
+  //scrollLeft:用于获取水平滚动条在水平方向滚动的像素数。
+  div.onscroll = function () {
+    console.log("嘿嘿");
+    console.log(div.scrollTop);
+  }
+
+</script>
+</body>
+</html>

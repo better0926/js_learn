@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //需求：当屏幕大小>= 960的时候，背景色粉色，给body一个内容，电脑
+  //需求：当屏幕大小>= 640的时候，背景色绿色，给body一个内容，平板
+  //需求：当屏幕大小 < 640的时候，背景色蓝色，给body一个内容，手机
+
+  //思路：
+  //1. 给window注册一个onresize事件
+  //2. 获取页面可视区的宽度( window.innerWidth  )
+  //3 判断
+  //获取可视区宽度
+
+  function reponsive() {
+    var pageWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+
+    if (pageWidth >= 960) {
+      document.body.style.backgroundColor = "pink";
+      document.body.innerText = "电脑";
+    } else if (pageWidth >= 640) {
+      document.body.style.backgroundColor = "green";
+      document.body.innerText = "平板";
+    } else {
+      document.body.style.backgroundColor = "blue";
+      document.body.innerText = "手机";
+    }
+  }
+
+
+  reponsive();
+
+
+  window.onresize = function () {
+
+    reponsive();
+
+  }
+
+</script>
+
+</body>
+</html>

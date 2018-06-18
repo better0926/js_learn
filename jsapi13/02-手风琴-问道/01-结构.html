@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .box {
+      width: 1090px;
+      height: 230px;
+      border: 1px solid #000;
+      margin: 200px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .box li {
+      width: 626px;
+      height: 230px;
+      /*border: 1px solid red;*/
+      position: absolute;
+    }
+
+    .box .title {
+      width: 116px;
+      height: 230px;
+      float: left;
+    }
+
+    .box .content {
+      width: 510px;
+      height: 230px;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <ul>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+  </ul>
+</div>
+
+
+<script src="animate.js"></script>
+<script>
+
+  //1. 给每一个li下的title和content设置背景图片
+  //2. 给每一个li设置left值
+  //3. 给每一个li注册onmouseover事件，修改left值
+
+  var lis = document.querySelectorAll(".box li");
+  for (var i = 0; i < lis.length; i++) {
+
+    //设置背景图
+    lis[i].firstElementChild.style.backgroundImage = "url(images/img" + (i + 1) + ".jpg)";
+    lis[i].lastElementChild.style.backgroundImage = "url(images/pic" + (i + 1) + ".jpg)";
+
+
+    //设置left值
+    if(i != 0) {
+      lis[i].style.left = 116 * i + 510 + "px";
+    }
+
+    //给每一个li存储一个下标
+    lis[i].index = i;
+    //注册onmouseover
+    lis[i].onmouseover = function () {
+      //设置每一个li的left值
+      for(var i = 0; i < lis.length; i++) {
+        if(i <= this.index){
+          //lis[i].style.left = 116 * i + "px";
+          animate(lis[i], {left: 116 * i});
+        }else {
+          animate(lis[i], {left: 116 * i + 510})
+        }
+      }
+    }
+
+
+  }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+<div></div>
+
+
+<script>
+
+  //1. 给div注册鼠标按下事件
+      //1.1 记录按下时的鼠标在div中的位置
+      //1.2 给document注册onmousemove事件
+  //2. 给div(document)注册鼠标弹起事件
+      //2.1 清除document的onmousemove事件
+
+
+  var div = document.querySelector("div");
+  div.onmousedown = function (e) {
+
+    //1. 记录位置
+    var spaceX = e.pageX - div.offsetLeft;
+    var spaceY = e.pageY - div.offsetTop;
+    //2. 给document注册onmousemove事件
+    document.onmousemove = function (e) {
+      //获取到鼠标的位置，让div跟着跑
+      div.style.position = "absolute";
+      div.style.left = e.pageX - spaceX + "px";
+      div.style.top = e.pageY - spaceY + "px";
+    }
+
+  }
+
+  document.onmouseup = function () {
+    document.onmousemove = null;
+  }
+
+
+</script>
+</body>
+</html>

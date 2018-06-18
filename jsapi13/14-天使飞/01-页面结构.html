@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 4000px;
+      width: 4000px;
+    }
+  </style>
+</head>
+<body>
+<img src="images/tianshi.gif" alt="">
+
+
+<script>
+  //思路：
+  //onclick
+  //ondblclick
+  //onmouseover
+  //onmouseout
+  //onfocus
+  //onblur
+  //onkeydown
+  //onkeyup
+  //onload
+  //onresize
+  //onscroll
+
+  //onmousemove:鼠标移动时触发
+  var ts = document.querySelector("img");
+  document.onmousemove = function (e) {
+    //设置小天使的left与top
+    ts.style.position = "absolute";
+    ts.style.left = e.clientX + "px";
+    ts.style.top = e.clientY + "px";
+  }
+
+</script>
+</body>
+</html>

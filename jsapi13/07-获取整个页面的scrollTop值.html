@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 4000px;
+      width: 4000px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+
+  //scrollWidth scrollHeight scrollTop scrollLeft
+
+  //window.pageYOffset  window.pageXOffset
+
+  //window.onscroll:给页面注册了一个滚动事件，当滚动条滚动的时候就会触发。
+
+
+  //在窗口滚动的时候，获取整个页面的scrollTop值
+  window.onscroll = function () {
+
+    //如何获取scrollTop
+    //对于老式的浏览器： 获取html的scrollTop ，如果获取不到，就获取body的scrollTop
+    //对于现代浏览器：   window.pageYOffset
+    //console.log(document.documentElement.scrollTop || document.body.scrollTop);
+
+    //既然document.documentElement.scrollTop能获取到，为什么还要使用window.pageYOffset
+    console.log(window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0);
+
+    console.log(window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0);
+
+
+  }
+
+</script>
+
+</body>
+</html>
