@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      cursor: move;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+
+<script>
+
+  //思路：
+  //1. 需要给div注册鼠标按下事件
+  //1.1 记录鼠标按下时在div中的位置
+  //1.2 给document注册onmousemove事件
+
+  //2. 给document注册onmouseup事件
+  //2.1 清除document的onmousemove事件
+
+  var div = document.querySelector("div");
+  div.onmousedown = function (e) {
+
+    //1. 记录位置
+    var spaceX = e.clientX - div.offsetLeft;
+    var spaceY = e.clientY - div.offsetTop;
+
+    //2. 注册onmousemove事件
+    document.onmousemove = function (e) {
+      //让div跟着鼠标移动
+      div.style.left = e.clientX - spaceX + "px";
+      div.style.top = e.clientY - spaceY + "px";
+
+    }
+
+  }
+
+  document.onmouseup = function () {
+    document.onmousemove = null;
+  }
+
+
+</script>
+
+</body>
+</html>

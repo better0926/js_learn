@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //注意：ie678使用attacheEvent的时候，事件的type需要加上on
+  //  document.attachEvent("onclick", function () {
+  //    console.log("嘿嘿");
+  //  })
+  //
+  //  function fn() {
+  //    console.log("哈哈")
+  //  }
+  //
+  //  document.attachEvent("onclick", fn);
+  //
+  //
+  //  document.detachEvent("onclick", fn);
+
+
+  //注册事件：
+  //onclick: 所有的浏览器都支持, 缺点：会覆盖
+  //addEventListener: 注册事件不会覆盖，IE678不支持  （重点）
+  //attachEvent:  注册事件也不会覆盖，只有IE678支持。
+
+
+  function addEvent(element, type, fn) {
+    if ("addEventListener" in element) {
+      element.addEventListener(type, fn);
+    } else {
+      element.attachEvent("on" + type, fn);
+    }
+  }
+
+  addEvent(document, "click", function() {
+    console.log("呵呵")
+  })
+
+</script>
+
+</body>
+</html>

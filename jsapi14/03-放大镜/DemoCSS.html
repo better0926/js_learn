@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 350px;
+      height: 350px;
+      margin: 100px;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .big {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 0;
+      left: 360px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      display: none;
+    }
+
+    .mask {
+      width: 175px;
+      height: 175px;
+      background: rgba(255, 255, 0, 0.4);
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      cursor: move;
+      display: none;
+    }
+
+    .small {
+      position: relative;
+    }
+
+    .box img {
+      vertical-align: top;
+    }
+
+    #bigBox img {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div class="box" id="box">
+  <div id="smallBox" class="small">
+    <img src="images/001.jpg" width="350" alt=""/>
+    <div id="mask" class="mask"></div>
+  </div>
+  <div id="bigBox" class="big">
+    <img src="images/0001.jpg" width="800" alt=""/>
+  </div>
+</div>
+
+<script>
+  //1. 给smallbox注册onmouseover事件, 显示mask和bigBox
+  //2. 给smallbox注册onmouseout事件， 隐藏mask和bigBox
+  //3. 给smallbox注册onmousemove事件，让mask和bigImg跟着动
+  var box = document.getElementById("box");
+  var smallBox = document.getElementById("smallBox");
+  var mask = document.getElementById("mask");
+  var bigBox = document.getElementById("bigBox");
+  var bigImg = document.querySelector(".big img");
+
+  smallBox.onmouseover = function () {
+    mask.style.display = "block";
+    bigBox.style.display = "block";
+  }
+
+  smallBox.onmouseout = function () {
+    mask.style.display = "none";
+    bigBox.style.display = "none";
+  }
+
+  //给smallbox注册移动事件， 只要smallbox中移动，才会触发
+  smallBox.onmousemove = function (e) {
+    //1. 移动mask
+    //1.1 获取鼠标在smallbox中的位置
+    var spaceX = e.clientX - box.offsetLeft;
+    var spaceY = e.clientY - box.offsetTop;
+    //给mask设置
+    var x = spaceX - mask.offsetWidth/2;
+    var y = spaceY - mask.offsetHeight/2;
+    console.log(x, y);
+    //限制x和y的取值
+    if(x < 0) {
+      x = 0;
+    }
+    if(y < 0) {
+      y = 0;
+    }
+    if(x > smallBox.offsetWidth - mask.offsetWidth) {
+      x = smallBox.offsetWidth - mask.offsetWidth;
+    }
+
+    if(y > smallBox.offsetHeight - mask.offsetHeight) {
+      y = smallBox.offsetHeight - mask.offsetHeight;
+    }
+
+    mask.style.left = x + "px";
+    mask.style.top = y + "px";
+
+    //2. 移动bigImg
+    //我10分钟能吃10个小笼包   东芹10分钟能吃100个小笼包
+    // 我吃完第5个的时候，     东芹要吃完多少个
+    // 我现在吃的包子数/我能吃的总包子数 = 东芹吃的包子数/东芹能吃的总得包子数
+    // mask当前移动的值 / mask能移动的总值 = 大图片当前移动的值 / 大图片能移动的总值。
+    bigImg.style.left = - x / (smallBox.offsetWidth - mask.offsetWidth) * (bigImg.offsetWidth - bigBox.offsetWidth) + "px";
+    bigImg.style.top = - y / (smallBox.offsetHeight - mask.offsetHeight) * (bigImg.offsetHeight - bigBox.offsetHeight) + "px";
+
+
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

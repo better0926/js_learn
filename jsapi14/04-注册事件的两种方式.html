@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+
+<script>
+
+
+
+  //on+时间名字：注册事件有一个缺点，如果注册多个事件，会发生覆盖的问题。
+  //  document.onclick = function () {
+  //    console.log("呜呜");
+  //  }
+  //
+  //
+  //  document.onclick = function () {
+  //    console.log("哈哈");
+  //  }
+
+  //js提供了另外两个方法：  addEventListener  removeEventListener
+  //添加 事件 监听：注册事件，不会覆盖
+  //参数1：事件的类型（事件的名字）  onclick: click  onmouseover: mouseover
+  //参数2：事件处理程序，  事件触发的时候会执行。  这个函数可以是匿名函数，也可以是有名字的函数。如果是匿名函数，没法移除。
+
+//  var fn = function () {
+//    console.log("呵呵");
+//  }
+//
+//  document.addEventListener("click",  fn);
+//
+//  document.addEventListener("click", function() {
+//    console.log("呜呜");
+//  });
+//
+//
+//  //怎么移除一个事件
+//  //参数1：移除的事件类型
+//  //参数2：移除哪个function
+//  //注意事项： 如果希望注册的事件能够被移除，需要给function起一个名字
+//  document.removeEventListener("click", fn);
+
+
+
+  var div = document.querySelector("div");
+  div.addEventListener("click", function () {
+    console.log("Hehe ");
+  });
+
+  function fn() {
+    console.log("嘿嘿")
+  }
+  div.addEventListener("mouseover", fn);
+
+
+  div.removeEventListener("mouseover", fn);
+
+</script>
+
+</body>
+</html>

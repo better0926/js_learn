@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>捐赠管理</title>
+  <style type="text/css">
+    * {
+      font-family: 微软雅黑;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    div {
+      width: 940px;
+      padding: 5px;
+      margin: 2px auto;
+      border: 1px solid #0094ff;
+    }
+
+    #tbData {
+      border: 1px solid #0094ff;
+      border-collapse: collapse;
+      width: 950px;
+      margin: 2px auto;
+    }
+
+    #tbData th {
+      color: #fff;
+      background-color: #0094ff;
+    }
+
+    #tbData th, td {
+      border: 1px solid #000;
+      padding: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<h1>捐赠管理</h1>
+<div>
+  受捐单位：
+  <!--查询用的下拉框-->
+  <select id="selSearchOrg">
+    <option value="-1">请选择</option>
+  </select>
+  <!--查询的按钮-->
+  <input type="button" id="btnSearch" value="查询"/>
+</div>
+<div>
+  捐赠人：<input type="text" id="txtName"/>
+
+  <!--增加用的select框-->
+  受捐单位：<select id="selAddOrg"></select>
+  金额：<input type="text" id="txtMoney"/>
+  受捐日期：<input type="text" id="txtDate"/>
+  <input type="button" id="btnAdd" value="新增"/>
+</div>
+<table id="tbData">
+  <thead>
+  <tr>
+    <th>序号</th>
+    <th>捐赠人</th>
+    <th>受捐单位</th>
+    <th>金额</th>
+    <th>受捐日期</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody id="tbody">
+
+  </tbody>
+</table>
+
+
+<script>
+
+  //功能一：获取元素
+  var selSearchOrg = document.getElementById("selSearchOrg");//查询用的下拉框
+  var selAddOrg = document.getElementById("selAddOrg");//增加用的下拉框
+  var tbody = document.querySelector("tbody");
+  var btnSearch = document.getElementById("btnSearch");
+
+
+  //功能二：初始化下拉框
+  var listOrgs = [
+    {id: 1, name: "红十字会2"},
+    {id: 2, name: "传智播客2"},
+    {id: 3, name: "黑马程序员2"},
+    {id: 4, name: "前端22期"},
+  ];
+  //初始化查询的下拉框
+  initSelect(selSearchOrg);
+  //初始化增加的下拉框
+  initSelect(selAddOrg);
+
+
+  //功能三：列表显示
+  var listMoney = [
+    {id: 1, username: "张三", orgId: 1, money: 10000, date: '2018-02-04'},
+    {id: 2, username: "李四", orgId: 2, money: 20000, date: '2018-03-02'},
+    {id: 3, username: "王五", orgId: 1, money: 30000, date: '2018-04-02'},
+    {id: 4, username: "王五1", orgId: 3, money: 40000, date: '2018-04-03'},
+    {id: 5, username: "王五2", orgId: 1, money: 50000, date: '2018-04-04'},
+    {id: 6, username: "王五3", orgId: 1, money: 60000, date: '2018-04-05'},
+    {id: 7, username: "王五4", orgId: 3, money: 70000, date: '2018-04-06'},
+    {id: 8, username: "王五5", orgId: 4, money: 80000, date: '2018-04-07'}
+  ];
+
+  //根据listMoney数组，动态创建tr,添加到tbody
+  render(listMoney);
+
+
+  //功能四：查询功能
+  btnSearch.addEventListener("click", function () {
+
+    var newArr = [];
+    //根据用户选择的下拉框的值， 去数组中筛选
+    var val = selSearchOrg.value;
+
+    //根据val值，把listMoney中所有的orgId 等于val的对象都存储到newArr中
+    for (var i = 0; i < listMoney.length; i++) {
+      if(listMoney[i].orgId == val || val == "-1") {
+        newArr.push(listMoney[i]);
+      }
+    }
+
+    render(newArr);
+
+  });
+
+
+  //封装一个函数，用于渲染
+  function render(datas) {
+    //把tbody所有的内容清空
+    tbody.innerHTML = "";
+    for (var i = 0; i < datas.length; i++) {
+      //1. 动态创建tr
+      var tr = document.createElement("tr");
+      //2. 添加到tbody
+      tbody.appendChild(tr);
+      //3. 动态创建td， 遍历listMoney[i]
+
+      var obj = datas[i];
+      for (var k in obj) {
+        var td = document.createElement("td");
+        tr.appendChild(td);
+        if (k == "orgId") {
+          td.innerText = getOrgNameById(obj[k]);
+        } else {
+          td.innerText = obj[k];
+        }
+
+      }
+      //4. 额外创建一个td，内容是删除按钮
+      var td = document.createElement("td");
+      tr.appendChild(td);
+
+    }
+  }
+
+
+  //初始化select框
+  //参数：初始化哪个select
+  function initSelect(element) {
+    for (var i = 0; i < listOrgs.length; i++) {
+      //1. 动态生成option
+      var option = document.createElement("option");
+      //2. 设置option的内容
+      option.innerText = listOrgs[i].name;
+      //3. 设置option的value值
+      option.value = listOrgs[i].id;
+      //4. 把option添加到selSearchOrg
+      element.appendChild(option);
+    }
+  }
+
+
+  //通过orgId获取orgName
+  //参数：对应orgId
+  function getOrgNameById(orgId) {
+
+    //思路： 遍历listOrgs,根据id查找到对应的那个对象，返回那个对象的name属性
+    for (var i = 0; i < listOrgs.length; i++) {
+      if (orgId == listOrgs[i].id) {
+        //找到对应的对象
+        return listOrgs[i].name;
+      }
+    }
+
+    return "查无此组织";
+
+  }
+
+
+</script>
+
+</body>
+</html>

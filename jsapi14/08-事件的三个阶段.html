@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .father {
+      width: 400px;
+      height: 400px;
+      background-color: green;
+    }
+
+    .son {
+      width: 300px;
+      height: 300px;
+      background-color: yellow;
+    }
+
+    .sun {
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+
+<div class="father">
+  <div class="son">
+    <div class="sun"></div>
+  </div>
+</div>
+
+<script>
+  var father = document.querySelector(".father");
+  var son = document.querySelector(".son");
+  var sun = document.querySelector(".sun")
+
+
+  //addEventListener: 第三个参数指定这个事件在哪个阶段触发。
+  //true：捕获阶段
+  document.addEventListener("click", function (e) {
+    console.log("document的点击事件触发了");
+  }, true);
+
+  document.body.addEventListener("click", function (e) {
+    console.log("body的点击事件触发了");
+  }, false);
+
+  father.addEventListener("click", function () {
+    console.log("father的点击事件触发了");
+  }, true);
+
+  son.onclick = function () {
+    console.log("son的点击事件触发了");
+  }
+
+  sun.addEventListener("click", function (e) {
+    console.log("sun的点击事件触发了");
+    e.stopPropagation();
+  }, false);
+
+
+</script>
+
+</body>
+</html>

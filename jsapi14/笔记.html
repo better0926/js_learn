@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>笔记</title>
+  <!-- <link rel="stylesheet" href="lib/css/monokai-sublime.css"> -->
+  <link rel="stylesheet" href="lib/css/default.min.css">
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+  <link rel="stylesheet" href="lib/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="lib/css/base.css">
+  <link rel="stylesheet" href="lib/css/index.css">
+</head>
+
+<body>
+  <div style='width:25%;'>
+    <ul id="tree" class="ztree" style='width:100%'>
+
+    </ul>
+  </div>
+  <div id='readme' style='width:70%;margin-left:20%;'>
+    <article class='markdown-body'><h1 id="-">事件对象</h1>
+<h2 id="-">事件对象的概述</h2>
+<blockquote>
+<p>在触发某个事件的时候，都会产生一个事件对象Event，这个对象中包含所有与事件相关的一些信息，包括触发事件的元素，事件的类型以及其他与事件相关的信息。</p>
+</blockquote>
+<p>鼠标事件触发时，事件对象中会包含鼠标的位置信息。</p>
+<p>键盘事件触发时，事件对象中会包含按下的键相关的信息。</p>
+<pre><code class="lang-javascript">每一个事件在触发时，都会产生一个事件对象。
+你见或者不见，我就在那里，不悲不喜。
+你爱或者不爱，爱就在那里，不增不减。
+你用或者不用，我都会给你，不离不弃。 
+</code></pre>
+<h2 id="-">获取事件对象</h2>
+<blockquote>
+<p>既然事件对象中存储了这么多的信息，我们首先需要做的就是获取到这个事件对象。获取事件对象的时候，存在浏览器的兼容问题。</p>
+</blockquote>
+<p>【01-获取事件对象.html】</p>
+<p>对于现代浏览器，获取事件对象非常的简单，只需要在注册事件的时候，指定一个形参即可。这个形参就是我们想要获取到的事件对象。</p>
+<pre><code class="lang-javascript">btn.onclick = function(event){
+    //event就是事件对象，里面包含了事件触发时的一些信息。
+    console.log(event);
+}
+</code></pre>
+<p>对于IE678来说，获取事件对象则是另一种方式，在事件里面，通过window.event来获取事件对象</p>
+<pre><code class="lang-javascript">btn.onclick = function(){
+    //IE678通过window.event获取事件对象
+    var event = window.event;
+    console.log(event);
+}
+</code></pre>
+<p>兼容性封装</p>
+<pre><code class="lang-javascript">btn.onclick = function(event){
+      //只要用到了事件对象，就要记得处理浏览器兼容性
+    event = event || window.event;
+}
+</code></pre>
+<h2 id="-">事件对象的常用属性</h2>
+<blockquote>
+<p>事件对象中有很多很多的属性，但是很多属性并不常用。我们经常用到的是<strong><em>鼠标位置信息</em></strong> 和<strong><em>键盘码</em></strong>  相关的信息。</p>
+</blockquote>
+<p>【事件对象的常用属性.html】</p>
+<p>记录了鼠标位置信息的相关属性</p>
+<pre><code class="lang-javascript">screenX与screenY：光标相对于屏幕左上角的水平位置与垂直位置。
+clientX与clientY：光标相对于可视区左上角的水平位置和垂直位置。
+pageX与pageY：光标相对于网页（文档document）左上角的水平位置与垂直位置（推荐使用）
+</code></pre>
+<p>记录了键盘码的属性</p>
+<pre><code class="lang-javascript">event.keyCode:键盘按下的那个键的键盘码
+</code></pre>
+<p>【案例:让小天使飞.html】</p>
+<h2 id="-">拖拽特效</h2>
+<p>【可拖拽的盒子.html】</p>
+<p>【拖拽效果(登录框).html】</p>
+<p>清除选中的文字（不用记）</p>
+<pre><code class="lang-javascript">window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+</code></pre>
+<h2 id="-">放大镜效果（案例）</h2>
+<blockquote>
+<p>放大镜在开发中是一个很常见的特效，但是所有的放大镜的实现效果都是一样。</p>
+</blockquote>
+<p>【案例-07-放大镜特效】</p>
+<p>实现思路：</p>
+<pre><code class="lang-javascript">1. 给box注册onmouseover事件，让big和mask显示
+2. 给box注册onmouseout事件，让big和mask隐藏
+3. 给box注册onmousemove事件，获取鼠标在box中的位置，让mask跟着移动
+4. 限定mask的移动范围
+5. 根据比例让bigImg跟着移动
+</code></pre>
+<h1 id="-">注册事件的两种方式</h1>
+<h2 id="on-">on+事件名称</h2>
+<blockquote>
+<p>onclick、onmouseover这种on+事件名称的方式注册事件几乎所有的浏览器都支持。</p>
+</blockquote>
+<p>注册事件：</p>
+<pre><code class="lang-javascript">box.onclick = function(){
+    //事件处理程序    
+}
+</code></pre>
+<p>移除事件：</p>
+<pre><code class="lang-javascript">box.onclick = null;    
+</code></pre>
+<p>on+事件名称注册事件的缺点：</p>
+<p>同一个元素同一类型的事件，只能注册一个，如果注册了多个，会出现覆盖问题。</p>
+<h2 id="-">注册事件的新方式</h2>
+<p><strong>addEventListener与removeEventListener</strong></p>
+<blockquote>
+<p>现代浏览器支持的注册事件的新方式，这种方式注册的事件不会出现覆盖问题。</p>
+</blockquote>
+<p>【演示-10-addEventListener与removeEventListener的用法.html】</p>
+<p>addEventListener的语法</p>
+<pre><code class="lang-javascript">//第一个参数：事件的类型：click mouseover
+//第二个参数：函数，监听者，每次点击，这个函数就执行。
+//第三个参数：是否使用捕获，默认为false，表示冒泡
+addEventListener(type, func, useCapture);
+</code></pre>
+<p><strong>tips：如果想要让你注册的事件能够移除，不能使用匿名函数。</strong> </p>
+<pre><code class="lang-javascript">function fn1() {
+    alert(&quot;hehe&quot;);
+}
+//如果想让注册的事件能移除，不能用匿名函数。
+box.addEventListener(&quot;click&quot;, fn1, false);
+</code></pre>
+<p>removeEventListen的语法</p>
+<pre><code class="lang-javascript">//第一个参数：参数类型
+//第二个参数：要移除的那个函数
+//第三个参数：false
+removeEventListener(type, func, useCapture);
+</code></pre>
+<p><strong>attachEvent与detachEvent（了解）</strong></p>
+<blockquote>
+<p>IE678不支持addEventListener与removeEventListen两个方法，但是支持attachEvent与detachEvnet</p>
+</blockquote>
+<p>【演示-11-attachEvent与detachEvent的用法.html】</p>
+<p>attachEvent的用法：</p>
+<pre><code class="lang-javascript">//type:事件类型   需要加上on   onclick  onmouseenter
+//func:需要执行的那个事件
+attachEvent(type, func)
+</code></pre>
+<p>detachEvent的用法</p>
+<pre><code class="lang-javascript">//type:事件类型   需要加上on   onclick  onmouseenter
+//func:需要执行的那个事件
+detachEvent(type, func)
+</code></pre>
+<h1 id="-">事件流</h1>
+<h2 id="-">事件冒泡</h2>
+<blockquote>
+<p>当一个元素的事件被触发时，同样的事件将会在该元素的所有祖先元素中依次被触发。这一过程被称为事件冒泡。</p>
+</blockquote>
+<p>说白了就是：当我们触发了子元素的某个事件后，父元素对应的事件也会触发。 <img src="images\bubble.png" alt="bubble"></p>
+<p>通常情况，事件冒泡对于我们来说是没有问题的，我们直接不管就行了，但是如果当事件冒泡给我们带来影响的时候，我们需要阻止事件冒泡。</p>
+<p>【03-弹出框案例.html】</p>
+<blockquote>
+<p>阻止事件冒泡有浏览器兼容性问题</p>
+</blockquote>
+<p>正常浏览器：</p>
+<pre><code class="lang-javascript">link.onclick = function (event) {
+    event = event || window.event;
+    //stop :停止  propagation：传播
+    event.stopPropagation();
+}
+</code></pre>
+<h2 id="-">事件捕获（了解）</h2>
+<blockquote>
+<p>事件捕获是火狐浏览器提出来的，IE678不支持事件捕获（基本上，我们都是用事件冒泡）
+事件的处理将从DOM层次的根开始，而不是从触发事件的目标元素开始，事件被从目标元素的所有祖先元素依次往下传递</p>
+</blockquote>
+<p>【04-事件捕获.html】</p>
+<p> <img src="images\capture.png" alt="capture"></p>
+<pre><code class="lang-javascript">//当addEventListener第三个参数为true时，表示事件捕获
+arr[i].addEventListener(&quot;click&quot;, function () {
+    console.log(this);
+},true);
+</code></pre>
+<h2 id="-">事件的三个阶段</h2>
+<ol>
+<li>事件的捕获阶段</li>
+<li>事件的目标阶段（触发自己的事件）</li>
+<li><p>事件的冒泡阶段</p>
+<p><img src="images\three.png" alt="three"></p>
+</li>
+</ol>
+<p>事件有三个阶段，首先发生的是捕获阶段，然后是目标阶段，最后才是冒泡阶段，让<code>addEventLinstener</code>第三个参数为true时，表示该事件在捕获阶段发生，如果第三个参数为false，表示该事件在冒泡阶段发生。</p>
+<h2 id="-">常见的事件</h2>
+<blockquote>
+<p>常见的鼠标事件</p>
+</blockquote>
+<p>onmousedown:鼠标按下事件</p>
+<p>onmouseup:鼠标弹起事件</p>
+<p>onclick:单击事件</p>
+<p>ondblclick：双击事件</p>
+<p>onmouseover：鼠标经过事件</p>
+<p>onmouseout：鼠标离开事件</p>
+<p>onmousemove：鼠标移动事件</p>
+<p>onfocus：鼠标获得焦点事件</p>
+<p>onblur：鼠标失去焦点事件</p>
+<blockquote>
+<p>常见的键盘事件</p>
+</blockquote>
+<p>onkeydown:键盘按下时触发</p>
+<p>onkeyup:键盘弹起时触发</p>
+<blockquote>
+<p>对于鼠标事件，事件对象中有一系列的XY记录了鼠标的位置信息。而键盘事件中，事件对象有一个event.keyCode属性，记录了按下去的键的键盘码</p>
+</blockquote>
+<p>【按esc隐藏弹出框.html】</p>
+<p>【弹幕效果-回车发送.html】</p>
+<h1 id="-">综合案例-捐款系统</h1>
+<h2 id="-">获取元素</h2>
+<pre><code class="lang-javascript">//功能一：获取元素
+var selSearchOrg = document.getElementById(&quot;selSearchOrg&quot;);//查询下拉框
+var btnSearch = document.getElementById(&quot;btnSearch&quot;);//查询按钮
+var txtName = document.getElementById(&quot;txtName&quot;);//捐款人
+var selAddOrg = document.getElementById(&quot;selAddOrg&quot;);//添加下拉框
+var txtMoney = document.getElementById(&quot;txtMoney&quot;);//捐款金额
+var txtDate = document.getElementById(&quot;txtDate&quot;);//捐款日期
+var btnAdd = document.getElementById(&quot;btnAdd&quot;);//新增按钮
+var tbody = document.getElementById(&quot;tbody&quot;);//tbody
+</code></pre>
+<h2 id="-">初始化下拉框</h2>
+<pre><code class="lang-javascript">var listOrgs = [
+  {id: 0, name: &quot;红十字会&quot;},
+  {id: 1, name: &quot;传智播客&quot;},
+  {id: 2, name: &quot;黑马程序员&quot;},
+];
+//初始化查询下拉框
+initSelect(selSearchOrg);
+//初始化新增的下拉框
+initSelect(selAddOrg);
+
+//初始化下拉框
+function initSelect(element) {
+  //1. 遍历listOrgs,增加option
+  for (var i = 0; i &lt; listOrgs.length; i++) {
+    //2. 创建option
+    var option = document.createElement(&quot;option&quot;);
+    //3. 设置option的内容
+    option.innerText = listOrgs[i].name;
+    //4. 设置option的value
+    option.value = listOrgs[i].id;
+    //将option增加到select中
+    element.appendChild(option);
+  }
+}
+</code></pre>
+<h2 id="-">准备捐款数据</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>数据的唯一标识</td>
+<td>自增</td>
+</tr>
+<tr>
+<td>username</td>
+<td>捐款人</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>orgId</td>
+<td>受捐单位</td>
+<td>受捐单位列表中的ID</td>
+</tr>
+<tr>
+<td>money</td>
+<td>捐款金额</td>
+<td>无</td>
+</tr>
+<tr>
+<td>date</td>
+<td>捐款日期</td>
+</tr>
+</tbody>
+</table>
+<p>数据例子：</p>
+<pre><code class="lang-javascript">[
+    {id:1, username:&quot;张三&quot;, orgId: 1, money: 10000, date: &#39;2018-02-04&#39;},
+    {id:2, username:&quot;李四&quot;, orgId: 2, money: 20000, date: &#39;2018-03-04&#39;},
+    {id:3, username:&quot;王五&quot;, orgId: 0, money: 30000, date: &#39;2018-04-04&#39;},
+]
+</code></pre>
+<pre><code class="lang-javascript">//功能二：准备捐款数据
+//定义一个方法，可以往数组中增加一条数据
+function addOne(username, orgId, money, date) {
+  var obj = {};
+  obj.id = ++count;//id每次自增即可
+  obj.username = username;
+  obj.orgId = orgId;
+  obj.money = money;
+  obj.date = date;
+  //将捐款数据添加到数组中
+  listMoney.push(obj);
+}
+
+var listMoney = new Array();
+var count = 0;
+//往数组中增加一部分数据
+addOne(&quot;张三&quot;, 0, 1000, &quot;2018-02-14&quot;);
+addOne(&quot;李四&quot;, 1, 2000, &quot;2018-02-15&quot;);
+addOne(&quot;王五&quot;, 2, 3000, &quot;2018-02-16&quot;);
+addOne(&quot;赵六&quot;, 0, 4000, &quot;2018-02-17&quot;);
+addOne(&quot;田七&quot;, 1, 5000, &quot;2018-02-18&quot;);
+addOne(&quot;王八&quot;, 0, 6000, &quot;2018-02-19&quot;);
+addOne(&quot;廖九&quot;, 0, 7000, &quot;2018-02-20&quot;);
+console.log(listMoney);
+</code></pre>
+<h2 id="-">渲染表格数据</h2>
+<pre><code class="lang-javascript">//2. 渲染表格数据
+function render(datas) {
+  tbody.innerHTML = &quot;&quot;;
+  for (var i = 0; i &lt; datas.length; i++) {
+    var tr = document.createElement(&quot;tr&quot;);
+    tbody.appendChild(tr);
+
+    for(var k in datas[i]) {
+      var td = document.createElement(&quot;td&quot;);
+      td.innerText = datas[i][k];
+      tr.appendChild(td);
+    }
+    //额外增加一个删除的功能
+    var td = document.createElement(&quot;td&quot;);
+    tr.appendChild(td);
+    var button = document.createElement(&quot;button&quot;);
+    button.innerText = &quot;删除&quot;;
+    td.appendChild(button);
+  }
+}
+
+//渲染表格数据
+render(listMoney);
+</code></pre>
+<h2 id="-orgid-">解决orgId的显示问题</h2>
+<pre><code class="lang-javascript">//根据orgId获取orgName
+function getOrgNameById(orgId) {
+  for (var i = 0; i &lt; listOrgs.length; i++) {
+    if (listOrgs[i].id === orgId) {
+      return listOrgs[i].name;
+    }
+  }
+  return &quot;不存在&quot;;
+}
+
+//解决捐款管理的显示问题
+if(k == &quot;orgId&quot;) {
+  td.innerText = getOrgNameById(datas[i][k]);
+}else {
+  td.innerText = datas[i][k];
+}
+</code></pre>
+<h2 id="-">查询功能</h2>
+<pre><code class="lang-javascript">//4. 根据orgId进行过滤，返回包含对应orgId的数据
+function filter(orgId) {
+  //如果值是-1，说明需要返回整个数组
+  if (orgId == -1) {
+    return listMoney;
+  }
+  var newArr = [];
+  for (var i = 0; i &lt; listMoney.length; i++) {
+    if (listMoney[i].orgId == orgId) {
+      newArr.push(listMoney[i]);
+    }
+  }
+  return newArr;
+
+}
+
+//功能五：查询功能
+btnSearch.addEventListener(&quot;click&quot;, function () {
+  var ret = filter(selSearchOrg.value);
+  render(ret);
+});
+</code></pre>
+<h2 id="-">新增功能</h2>
+<pre><code class="lang-javascript">//功能六：新增功能
+btnAdd.addEventListener(&quot;click&quot;, function () {
+  var username = txtName.value;
+  txtName.value = &quot;&quot;;
+  var orgId = +selAddOrg.value;
+  selAddOrg.value = 0;
+  var money = txtMoney.value;
+  txtMoney.value = &quot;&quot;;
+  var date = txtDate.value;
+  txtDate.value = &quot;&quot;;
+  addOne(username, orgId, money, date);
+
+  //重新搜索
+  selSearchOrg.value = -1;
+  btnSearch.click();
+});
+</code></pre>
+<h2 id="-">删除功能</h2>
+<pre><code class="lang-javascript">button.onclick = function () {
+  if (confirm(&quot;确定要删除这项数据么?&quot;)) {
+    //获取需要删除的Id
+    var id = this.title;
+    //删除数组中对应id的数据
+    var index = -1;
+    for (var i = 0; i &lt; listMoney.length; i++) {
+      if (listMoney[i].id == id) {
+        index = i;
+        break;
+      }
+    }
+
+    //重新渲染
+    listMoney.splice(index, 1);
+    btnSearch.click();
+  }
+}
+</code></pre>
+</article>
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="lib/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="lib/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/js/ztree_toc.min.js"></script>
+<script type="text/javascript" src="lib/js/toc_conf.js"></script>
+<script src="lib/js/highlight.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // 代码高亮的js代码
+    hljs.initHighlightingOnLoad();
+
+    //生成侧边栏的代码
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+
+    var conf = eval(jquery_ztree_toc_opts);
+    $('#tree').ztree_toc(conf);
+  });
+</script>
