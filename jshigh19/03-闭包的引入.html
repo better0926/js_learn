@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //闭包：
+
+  function fn() {
+    var num = 12;//局部变量
+
+    //发现inner是可以修改fn的变量的，因为inner在fn里面声明的
+    function inner() {
+      console.log(num);
+    }
+
+    return inner;
+
+  }
+
+  var result = fn();
+  result();
+
+
+</script>
+
+</body>
+</html>

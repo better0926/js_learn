@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //统计一个函数的调用次数
+
+
+  //闭包模型：
+/*
+  function outer() {
+    var count = 0;//count就被我们保护起来了，count现在只有通过add能修改。
+    function fn() {
+      count++;
+      console.log("这个函数调用了"+count+"次");
+    }
+    return fn;
+
+  }
+
+  var add = outer();
+  add();
+*/
+  (function (win,doc) {
+      var event = {
+          fo :function (a) {
+              a = doc
+              console.log(a)
+          }
+      }
+      event.fo();
+  })(window,document)
+
+  
+
+
+
+
+
+</script>
+
+</body>
+</html>

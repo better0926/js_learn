@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //闭包：  当内函数访问了外函数的变量的时候，就会产生闭包
+  //闭包：  内函数 + 内函数访问的变量
+
+
+  //闭包的模型
+  //  var ret = (function () {
+  //    var num = 11;
+  //    return function () {
+  //      console.log(num);
+  //    }
+  //  })();
+  //
+  //  ret();
+
+  //闭包的作用：保护数据，变量， 实现私有变量
+  //计数器  私有变量  优化兔子数  娃娃机
+
+  //闭包的问题： 闭包占用的内存不会释放。 想要内存释放，需要ret = null
+  //js的垃圾回收机制：  引用记数（循环引用）   标记清除
+
+
+</script>
+
+</body>
+</html>

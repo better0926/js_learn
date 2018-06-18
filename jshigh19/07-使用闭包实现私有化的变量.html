@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  function outer () {
+    var money = 0;
+
+    function save (num) {
+      money += num;
+      console.log("你存了"+num+"块钱,余额是"+money);
+    }
+
+    function get(num) {
+      money -= num;
+      console.log("你取了"+num+"块钱,余额是"+money);
+    }
+
+    return {
+      save:save,
+      get:get
+    }
+  }
+
+  var xm = outer();
+
+  xm.save(1000);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //正则的普通字符
+  //var reg = /aa/;
+  //console.log(reg.test("add"));
+  //console.log(reg.test("aabd"));
+  //console.log(reg.test("aaadadad"));
+
+
+  //正则的元字符：有特殊意义的字符串
+  //\d : 匹配数字 [0-9]
+  //console.log(/\d/.test('aaaa'));
+  //console.log(/\d/.test('aa11'));
+  //console.log(/\d/.test('...'));
+
+  //\D: 匹配非数字
+  //console.log(/\D/.test("a123"));//true
+  //console.log(/\D/.test("123"));//false
+  //console.log(/\D/.test("aaa"));//true
+  //console.log(/\D/.test("11 111"));//true
+
+
+  //\w: 匹配字符 word   [a-z][A-Z][0-9]_
+  //console.log(/\w/.test("aa1111"));//true
+  //console.log(/\w/.test("      "));//false
+  //console.log(/\w/.test("......1"));//true
+
+
+  //\W: 匹配非字符   .   - +
+  //console.log(/\W/.test("......."));//true
+  //console.log(/\W/.test("...1..."));//true
+  //console.log(/\W/.test("111111"));//false
+
+
+  //\s :  匹配空字符的（不可见字符) \n \t
+  //  console.log(/\s/.test("aaaaaa"));//false
+  //  console.log(/\s/.test("aaa aaa"));//true
+  //  console.log(/\s/.test("aaa\naaa"));//true
+
+  //\S : 匹配看得到的字符
+  //console.log(/\S/.test("aaaaaa"));//true
+  //console.log(/\S/.test("aaaaaa   "));//true
+  //console.log(/\S/.test("   "));//fasle
+
+
+  //.: 匹配任意字符
+  //console.log(/./.test("111"));
+  //console.log(/./.test("   "));
+  //console.log(/./.test("bcd"));
+  //console.log(/\./.test("bcd"));
+  //console.log(/\./.test("bcd."));
+
+
+
+  //\d: 数字    \D：非数字   \w: 字符 [a-z][A-Z][0-9]_   \W   \s:空字符  \S:可见字符  .:任意字符
+
+</script>
+
+
+</body>
+</html>

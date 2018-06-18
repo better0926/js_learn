@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //手机号：规律
+  //1开头
+  //11位
+  //第二位： 3456789
+
+
+  //var mobileReg = /^1[3-9]\d{9}$/;
+  //console.log(mobileReg.test("13838384381"));
+  //console.log(mobileReg.test("18888888888"));
+  //console.log(mobileReg.test("18511249258"));
+
+
+  //var mobile = /^[1][34578][0-9]{9}$/
+  var reg = /^1[34578]\d{9}$/;
+  console.log(reg.test("1|112345678"));
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //量词用来控制出现次数的
+
+  //console.log(/a/.test("abc"));
+  //console.log(/^a/.test("abc"));
+  //console.log(/^a$/.test("abc"));
+
+
+  //只匹配a
+  // * : 表示可以出现0次或者多次 >=0           {0,}
+  // + : 表示出现1次或者多次   最少都要1次      {1,}
+  // ? : 表示出现0次或者1次                    {0,1}
+  // {m,n} : 出现的次数：m-m
+  // {m,}  : 出现次数>=m
+  // {m}   : 只能出现m次
+  //表示匹配： 0个a  1个aa
+//  console.log(/^a*$/.test(""));//true
+//  console.log(/^a*$/.test("a"));//true
+//  console.log(/^a*$/.test("aa"));//true
+//  console.log(/^a*$/.test("aaa"));//true
+//  console.log(/^a*$/.test("abb"));//false
+//  console.log(/^a*$/.test("bb"));//false
+
+//  console.log(/^a+$/.test(""));//false
+//  console.log(/^a+$/.test("a"));//true
+//  console.log(/^a+$/.test("aa"));//true
+//  console.log(/^a+$/.test("aaa"));//true
+//  console.log(/^a+$/.test("abb"));//false
+//  console.log(/^a+$/.test("bb"));//false
+
+//  console.log(/^a?$/.test(""));//true
+//  console.log(/^a?$/.test("a"));//true
+//  console.log(/^a?$/.test("aa"));//false
+//  console.log(/^a?$/.test("aaa"));//false
+//  console.log(/^a?$/.test("abb"));//false
+//  console.log(/^a?$/.test("bb"));//false
+
+
+  //console.log(/^a{2,5}$/.test("a"));
+  //console.log(/^a{2,5}$/.test("aa"));
+  //console.log(/^a{2,5}$/.test("aaa"));
+  //console.log(/^a{2,5}$/.test("aaaaaaaaa"));
+
+
+
+  //基本元字符:\d  \D   \w \W  \s   \S    .
+  //优先级： |   ()
+  //字符类： [adg]   [a-c]   [A-Z]  [1-8]  [a-zA-Z]   [^]:非
+  //边界类： ^:开始   $：结束   ^$:精确匹配
+  //量词类： * + ? {m,n} {m,} {m}
+
+
+  //console.log(/^(chuan){2}$/.test("chuanchuan"));
+
+
+</script>
+
+</body>
+</html>

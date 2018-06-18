@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+  //发生闭包的前提条件：
+  //一个（内）函数访问了一个外部函数的变量，发生闭包
+  function outer (){
+
+    var num = 11;
+
+
+    function inner() {
+      num++;
+      console.log(num);
+    }
+
+    return inner;
+
+  }
+
+  var result = outer();
+  result();
+
+</script>
+
+</body>
+</html>

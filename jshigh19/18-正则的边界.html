@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //^:如果是在[]  [^]表示非   ^:如果写在[]外面，表示开始
+  //$: 表示结束
+
+  //console.log(/chuan/.test("dachuan"));
+  //console.log(/chuan/.test("chuang"));
+  //console.log(/chuan/.test("chuanchuan"));
+
+
+  //^表示开始
+  //console.log(/^chuan/.test("dachuan"));//false
+  //console.log(/^chuan/.test("chuang"));//true
+  //console.log(/^chuan/.test("chuanchuan"));//true
+
+  //$:表示结束
+  //console.log(/chuan$/.test("dachuan"));//true
+  //console.log(/chuan$/.test("chuang"));//false
+  //console.log(/chuan$/.test("chuanchuan"));//true
+
+
+  //^$一起使用表示精确匹配，既要以它开头，还要以她结尾
+  //console.log(/^chuan$/.test("dachuan"));//false
+  //console.log(/^chuan$/.test("chuang"));//false
+  console.log(/^chuan$/.test("chuan"));//true false
+
+
+  //console.log(/^\d\d$/.test("12"));
+  //console.log(/^\d$/.test("2"));
+</script>
+
+</body>
+</html>

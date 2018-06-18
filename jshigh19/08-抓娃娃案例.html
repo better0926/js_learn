@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      height: 100px;
+      background-color: pink;
+      padding-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <input type="text" id="txt">
+  <button id="cz">充钱</button>
+  <button id="play">小明抓娃娃</button>
+</div>
+
+<div>
+  <input type="text" id="txt1">
+  <button id="cz1">充钱</button>
+  <button id="play1">小红抓娃娃</button>
+</div>
+
+
+<script>
+
+
+  //空间换时间  时间换空间
+
+  function outer () {
+    var icons = 0;
+
+    function cz(num) {
+      icons += num;
+      console.log("尊敬的土豪，你充值了"+num+"如人民币,余额是"+icons);
+    }
+
+    function play() {
+      icons--;
+      console.log("没抓到，余额是"+icons);
+    }
+
+    return {
+      play:play,
+      cz:cz
+    }
+  }
+
+
+  var txt = document.getElementById("txt");
+  var cz = document.getElementById("cz");
+  var play = document.getElementById("play");
+
+  var xm = outer();
+  cz.onclick = function () {
+    xm.cz( +txt.value );
+  }
+
+  play.onclick = function () {
+    xm.play();
+  }
+
+
+  var txt1 = document.getElementById("txt1");
+  var cz1 = document.getElementById("cz1");
+  var play1 = document.getElementById("play1");
+
+  var xh = outer();
+  cz1.onclick = function () {
+    xh.cz( +txt1.value );
+  }
+
+  play1.onclick = function () {
+    xh.play();
+  }
+
+
+</script>
+
+</body>
+</html>

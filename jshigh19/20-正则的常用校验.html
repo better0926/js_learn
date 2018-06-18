@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //校验座机
+  // 010-12345677
+  // {3,4} - {7,8}
+
+
+  //规律和规则
+  //电话号码的正则
+    var reg = /^\d{3,4}-\d{7,8}$/;
+
+    console.log(reg.test("010-123456"));
+    console.log(reg.test("bbbbb010-1234567aaaaaa"));
+    console.log(reg.test("021-1234567ddd"));
+    console.log(reg.test("0999-123456711111111"));
+    console.log(reg.test("9999-9999999"));
+
+
+  //匹配qq号
+  //规则
+
+  //不能0开头
+  //5-13
+  var qqReg = /^[1-9]\d{4,12}$/;
+
+  console.log(qqReg.test("11111"));
+  console.log(qqReg.test("01111"));
+  console.log(qqReg.test("a1111"));
+
+
+
+  //校验邮箱
+</script>
+
+</body>
+</html>

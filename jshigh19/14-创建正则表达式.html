@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+  //创建正则： 构造函数：  RegExp
+  //var reg = new RegExp(/\d/);// \d:digit  数字
+
+  //正则表达式的使用：
+  //test: 测试某个字符串，是否符合我正则的规律
+  //测试这个字符串是否有数字， true false
+  //var result = reg.test("aaaa");
+  //var result = reg.test("aaaa111");
+  //var result = reg.test("111");
+  //console.log(result);
+
+
+  //创建正则： 正则的字面量：11 "abc" /abc/  []  {}
+  var reg = /\d/;
+  console.log(reg.test("abc"));
+  console.log(reg.test("abc111"));
+
+  console.log(/\d/.test("1111"));
+
+
+  //1. var reg = new RegExp(/\d/);
+  //2. var reg = /\d/;
+
+</script>
+
+
+</body>
+</html>

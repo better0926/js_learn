@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //正则表达式只有：2个：    test:测试   exec:提取
+
+  //字符串有两个方法： replace  match: 支持参数传正则
+
+
+  //正则的替换： 字符串.replace方法
+  //  var str = "aa bb cc dd ee bb";
+  //  str = str.replace(/bb/g, "gg");// g: global: 找到所有bb
+  //  console.log(str);
+
+
+  //var str = "   123AD  asadf   asadfasf  adf aD Ad ";
+  //1  替换掉字符串中的所有空白
+  //2. 将所有的ad替换成xx
+  //3. 将所有的ad/AD替换成xx
+  //str = str.replace(/\s/g, "");
+  //str = str.replace(/ad/g, "xx");
+  //str = str.replace(/ad/gi, "xx");//  g:global:全局查找   i:ignore:忽视大小写
+  //console.log(str);
+
+  //var str = abc,efg,123,abc,123,a
+  //4. 所有的逗号替换成句号
+
+
+  //  var jsonStr = '[{"name":"张三",score:80},{"name":"张三",score:9},{"name":"张三",score:81}]';
+  //  //5. 把所有成绩都修改成100分
+  //  jsonStr = jsonStr.replace(/\d{1,2}/g, "100");
+  //  console.log(jsonStr);
+
+
+  var str = "a-b-c-d";//a,b,c,d
+
+</script>
+
+</body>
+</html>

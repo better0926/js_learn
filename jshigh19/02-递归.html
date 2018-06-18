@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  //递归函数：  在函数的内部调用函数自己，
+  //递归函数是一定要有结束条件（不能一直调用下去，不然就是死递归）
+
+  //递归：主要用的思想就是化归思想  （分而治之 贪心算法）
+  //  把一个复杂的问题，转化成一个简单的问题。
+
+  //使用递归的思路：
+  //1. 把未知的问题转换成已知的问题
+  //2. 考虑什么时候结束递归
+
+
+  //求1-100的所有数的和：
+  //getSum(n) = getSum(n -1 ) + n;
+  //getSum(100)
+  //getSum(100) = getSum(99) + 100
+  //getSum(99) = getSum(98) + 99;
+  //getSum(3) = getSum(2) + 3;
+  //getSum(2) = 3
+  //getSum(1) = 1;
+
+  //  function getSum(n) {
+  //    if(n === 1){
+  //      return 1;
+  //    }
+  //    return getSum(n-1) + n;
+  //  }
+  //
+  //  console.log(getSum(100));
+
+
+  //兔子数：
+  // 0 1 2 3 4 5 6
+  // 1 1 2 3 5 8 13 21 34  55 89 144
+
+  //getTu(n) = getTu(n-1) + getTu(n-2)
+
+
+  //缓存解决：  getTu(12) getTu(11)
+
+  var arr = [];
+
+  var count = 0;
+  function getTu(n) {
+    count++;
+    if (n == 0 || n == 1) {
+      return 1;
+    }
+
+    //每次计算兔子数的时候，考虑一下，如果把结果算出来，把计算结果存储到数组中
+    //下次计算的时候，先看下数组中有没有值，如果有，直接用，如果没有，计算，算完存到数组中
+    if (arr[n]) {
+      //数组中已经存在了这个数
+      return arr[n];
+    } else {
+      //如果没有，计算这个月的兔子数，把结果存储到数组，方便下次使用
+      var result = getTu(n - 1) + getTu(n - 2);
+      arr[n] = result;
+      return result;
+    }
+
+
+  }
+
+
+  console.log(getTu(100));
+  console.log(count);
+  console.log(arr);
+
+
+</script>
+
+
+</body>
+</html>

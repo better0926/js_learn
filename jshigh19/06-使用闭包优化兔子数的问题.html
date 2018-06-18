@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //缓存： 我要获取某个月的兔子数，优先从缓存（数组）中，如果没有，就计算，算完存到缓存中。
+
+
+  //递归（）   闭包（把数组给保护起来）
+  function outer() {
+    var arr = [1,1];
+    function getTu(n) {
+      if (arr[n]) {
+        return arr[n];
+      } else {
+        var temp = getTu(n - 1) + getTu(n - 2);
+        arr[n] = temp;
+        return temp;
+      }
+    }
+    return getTu;
+  }
+
+  var fib = outer();
+  console.log(fib(100));
+  console.log(fib(10));
+  console.log(fib(20));
+
+</script>
+
+</body>
+</html>

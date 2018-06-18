@@ -1,0 +1,71 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  body {
+    background: #ccc;
+  }
+  
+  label {
+    width: 40px;
+    display: inline-block;
+  }
+
+  
+  .container {
+    margin: 100px auto;
+    width: 400px;
+    padding: 50px;
+    line-height: 40px;
+    border: 1px solid #999;
+    background: #efefef;
+  }
+  
+  span {
+    margin-left: 30px;
+    font-size: 12px;
+  }
+
+</style>
+<body>
+<div class="container">
+  <label>Q Q</label><input type="text" id="inp1"><span></span><br/>
+  <label>手机</label><input type="text" id="inp2"><span></span><br/>
+  <label>邮箱</label><input type="text" id="inp3"><span></span><br/>
+  <label>座机</label><input type="text" id="inp4"><span></span><br/>
+  <label>姓名</label><input type="text" id="inp5"><span></span><br/>
+</div>
+
+<script>
+
+  function checkReg(element, reg) {
+    element.addEventListener("blur", function () {
+
+      if(reg.test( this.value )) {
+        this.nextElementSibling.innerText = "合法";
+        this.nextElementSibling.style.color = "green";
+      }else {
+        this.nextElementSibling.innerText = "不合法";
+        this.nextElementSibling.style.color = "red";
+      }
+    });
+  }
+
+  //dry dont repeat yourself
+
+  checkReg(document.getElementById("inp1"), /^[1-9]\d{4,12}$/);
+  checkReg(document.getElementById("inp2"), /^1[3-9]\d{9}$/);
+  checkReg(document.getElementById("inp3"), /^\w+@\w+(\.\w+)+$/);
+  checkReg(document.getElementById("inp4"), /^\d{3,4}-\d{7,8}$/);
+  checkReg(document.getElementById("inp5"), /^[\u4e00-\u9fa5]{2,6}$/);
+
+</script>
+
+</body>
+</html>

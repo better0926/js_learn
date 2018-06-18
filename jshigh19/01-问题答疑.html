@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+
+  //toString():  Object.prototype.toString():  返回值： "[object type]"
+
+
+  //Array.prototype.toString():   [1,2,3,4,5]     1,2,3,4,5
+  //Date.prototype.toString():    时间格式
+
+  //想要获取一个复杂类型的具体的类型
+
+  var arr = [1,2,3,4];
+  arr.toString();
+
+
+  //封装一个函数，可以获取一个对象的具体的类型
+  function getType(obj) {
+    var ret = Object.prototype.toString.call(obj);
+    ret = ret.slice(8, -1);
+    return ret;
+  }
+
+  console.log(getType([]));
+  console.log(getType({}));
+  console.log(getType(new Date()));
+  console.log(getType(11));
+  console.log(getType(window));
+
+
+
+  //2. 伪数组： 是一个对象，跟数组一样有下标和长度，所以可以跟数组一样遍历
+  //伪数组的目的不在于将来需要自己创建一个伪数组，，，接触到了很多的伪数组：arguments NodeList  HTMLCollection  document.querySelectorAll()  document.getElementsByTagName()
+  //伪数组不是数组，不能使用数组的方法，一定要用的话，可以用call和apply进行借用
+  var obj = {
+    0: "张飞",
+    1: "赵云",
+    length: 2
+  }
+
+  for(var i = 0; i < obj.length; i++ ){
+    console.log(obj[i]);
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  //姓名校验：
+  //1. 必须是简体中文
+  //2. 长度2-6位
+
+  //   [\u4e00-\u9fa5]   [a-z]
+  var reg = /^[\u4e00-\u9fa5]{2,6}$/;
+  console.log(reg.test("飞飞"));
+
+
+
+  //邮箱：规则
+
+  //  @   .
+  // 11111@qq.com
+  //  sdkfjsldk@163.com
+
+  //   \w @  \w \.
+  //  东西@东西.字母
+
+  var email = /^\w+@\w+(\.\w+)+$/;
+  console.log(email.test("flycc258@163.com"));
+  console.log(email.test("111222333@qq.com"));
+  console.log(email.test("111222333@qq.org"));
+  console.log(email.test("111222333@qq.com.cn.org"));
+
+
+</script>
+</body>
+</html>

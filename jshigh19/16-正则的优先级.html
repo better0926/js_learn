@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //|或者  ()表示优先级最高，
+
+  //foot
+  //console.log(/foot/.test("footaaaaa"));
+  //console.log(/foot/.test("aaaaafoot"));
+  //console.log(/foot/.test("aaaaafot"));
+
+  //foot 或者是 boot   | 或者
+  //console.log(/foot|boot/.test("footaaaa"));
+  //console.log(/foot|boot/.test("bootaaaa"));
+  //console.log(/foot|boot/.test("ootaaaa"));
+
+  //匹配字符f 或者是 boot
+  //  console.log(/f|boot/.test("ftaaaa"));
+  //  console.log(/f|boot/.test("bootaaaa"));
+  //  console.log(/f|boot/.test("ootaaaa"));
+
+
+  //():  分组， 优先级最高
+  console.log(/(f|b)oot/.test("ftaaaa"));
+  console.log(/(f|b)oot/.test("bootaaaa"));
+  console.log(/(f|b)oot/.test("ootaaaa"));
+
+
+
+</script>
+
+</body>
+</html>

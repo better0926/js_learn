@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //[]: 表示一个字符的位置
+
+  //需求： 匹配a或者b或者c
+  //console.log(/a|b|c/.test("a1111"));
+  //console.log(/a|b|c/.test("b1111"));
+  //console.log(/a|b|c/.test("c1111"));
+
+  //[]表示的一个字符， 里面表示这个位置可以出现的字符
+  //[abcdef]
+  //[a-z]  [A-Z]  [A-C]  [5-9]  [0-9]
+  //[a-zA-Z0-9_] :a-zA-Z0-9
+  //console.log(/[abcde]oot/.test("aoot11"));
+  //console.log(/[a-z]/.test("1111"));
+  //console.log(/[a-z]/.test("111a"));
+  //console.log(/[0-9]/.test("11b"));  //
+
+  //[^0]:除了0以外的字符
+  console.log(/[^0]/.test("1aaa000"));
+  console.log(/[^0]/.test("a"));
+
+
+
+  //\d \D \s \S \w \W . | () []
+</script>
+
+</body>
+</html>
