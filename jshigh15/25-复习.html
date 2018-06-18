@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //通过构造函数来创建对象
+
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+
+  //1. 什么叫原型：
+    //任何一个函数，都有一个属性，prototype,值是一个对象
+    //把函数的prototype指向的这个对象就叫做原型。
+    //原型内所有的属性和方法都可以被这个构造函数new出来的实例访问。
+
+    //原型的作用： 存储一些所有实例需要共享的内容，比如方法。
+
+
+  //2. __proto__： 属性
+    //任何一个对象都有__proto__属性，通过这个属性可以访问到 构造函数的原型。
+    // p.__proto__ == Person.prototype  正常情况
+    //如果想要修改原型对象的内容，使用Person.prototype修改，不要用__proto__
+
+
+  //3. constructor:属性
+    //所有的原型对象，都有一个constructor属性，这个属性指向了构造函数
+
+
+  //要求：能够画出原型的三角关系图  妈妈 爸爸  孩子
+
+
+
+  //原型链：  每一个对象都会有自己的__proto__, 它的原型也会有自己的原型。最终到达了Object.prototype
+
+
+  //属性搜索原则：
+    //自己有，就用自己的，没有就找自己爸爸的，还有没，就找爷爷的，还没有，一直找到祖宗Object.prototype
+
+    //如果自己有这个属性，直接用
+    //如果没有，就访问p.__proto__这个对象
+    //如果还没有，就访问p.__proto__.___proto__，知道Object.prototype
+    //如果还没有，就undefined。
+
+  var p = new Person();
+
+
+</script>
+
+</body>
+</html>

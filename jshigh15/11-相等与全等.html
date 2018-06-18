@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //相等： ==
+  //全等： ===   严谨(推荐)
+
+
+  //==
+  //1. NaN不等于任何值
+  //2. null不等于任何值，除了undefined
+  //3. undefined不等于任何值，除了null   null == undefined
+
+  //4. 如果操作数中有数字或者布尔类型，都会把两边转换成数字进行比较。 false=0   true=1
+  //5. 如果操作数中有字符串，会把两边都转换成字符串比较
+  //6. 如果都是复杂类型，比地址
+
+  //  console.log(NaN == 1);
+  //  console.log(NaN == NaN);
+  //  console.log(null == 1);
+  //  console.log(null == undefined);
+  //
+  //  console.log(false == "0");// 0   "0":0
+  //  console.log(true == "2");//1   2
+
+  //  console.log("2" == [2]);//2   2
+  //  console.log(2 == [2]);//2  "2"
+
+  //console.log([] == []);
+
+  console.log([] == false);// 0    0
+</script>
+
+</body>
+</html>

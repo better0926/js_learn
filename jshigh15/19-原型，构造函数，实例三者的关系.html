@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Person.prototype.sayHi = function () {
+    console.log("大家好");
+  }
+
+  Person.prototype.sleep = function () {
+    console.log("睡觉");
+  }
+
+  Person.prototype.money = 1000000;
+
+  //Person.prototype: 原型中会存放所有对象共享的一些数据。
+
+  var p = new Person("张三", 18);
+
+  console.log(p.money);
+  p.sayHi();
+
+  var p2 = new Person("李四", 20);
+
+</script>
+
+</body>
+</html>

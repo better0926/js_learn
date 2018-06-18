@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //创建了一个空对象
+  //  var obj = new Object();
+  //
+  //  obj.name = "飞飞";
+  //  obj.age = 18;
+  //
+  //  obj.sayHi = function (name) {
+  //    console.log("你好"+name);
+  //  }
+  //
+  //
+  //  obj.sayHi("哈哈");
+
+
+  //对象字面量
+  //  var obj = {
+  //    name:"飞飞",
+  //    age:18,
+  //    sayHi:function (name) {
+  //      console.log("你好"+name);
+  //    }
+  //  }
+
+
+  //创建多个对象
+  //  var obj = {
+  //    name: "飞飞",
+  //    age: 18,
+  //    sayHi: function (name) {
+  //      console.log("你好" + name);
+  //    }
+  //  }
+
+  function createObj(name, age) {
+    var obj = {
+      name:name,
+      age:age,
+      sayHi: function (name) {
+        console.log("你好" + name);
+      }
+    }
+    return obj;
+  }
+
+  var ff = createObj("飞飞", 18);
+  var qq = createObj("芹芹", 20);
+  console.log(ff);
+  console.log(qq);
+
+
+</script>
+
+</body>
+</html>

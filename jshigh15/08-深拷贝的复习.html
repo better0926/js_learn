@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  function deepCopy(obj) {
+
+    //1. 新建一个对象
+    var newObj = {};
+
+    //2. 遍历obj把obj中所有的属性添加到newObj中
+    for (var k in obj) {
+      //如果是简单类型，直接赋值，如果是复杂类型，需要拷贝一份，在赋值
+      //      if (typeof obj[k] === "object") {
+      //        newObj[k] = deepCopy(obj[k]);
+      //      } else {
+      //        newObj[k] = obj[k];
+      //      }
+
+      newObj[k] = typeof obj[k] === "object" ? deepCopy(obj[k]) : obj[k];
+
+    }
+
+    return newObj;
+  }
+  var ff = {
+    name: "灰灰",
+    age: 38,
+    color: "lime",
+    car: {
+      name: "玛莎拉蒂",
+      color: "green"
+    }
+  }
+
+  var ff2 = deepCopy(ff)
+  console.log(ff2);
+
+</script>
+
+</body>
+</html>

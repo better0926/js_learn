@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+1. 变量
+  1.1 定义一个变量：  var num; num = 11;   var num = 12;  如果一个变量没有声明，会报错。
+  1.2 命名的规则：
+      1. 数字、字母、下划线、$， 不能以数字开头
+      2. 区分大小写
+      3. 不能使用关键字和保留字  var break continue typeof name top
+
+
+2. 数据类型
+  简单数据类型（值类型）：  number string boolean undefined null
+  复杂数据类型（引用类型）: object function
+
+3. 类型转换
+  转换成字符串：String() toString()                    + ""
+  转换成数值：  Number()  parseInt()  parseFloat()    +num  num - 0
+  转换成布尔类型： Boolean()                              !!num
+
+
+4. 操作符
+  算术操作符：+ - * / %
+  赋值操作符：= += -= *= /= %=
+  一元运算符： ++ --
+  比较运算符： > < >= <= == === != !==
+  逻辑运算符：&& || !
+
+5. 语句
+  5.1 顺序结构
+  5.2 分支结构
+    if..else   switch..case  三元运算符
+  5.3 循环结构
+    while do..while for  for..in
+    break continue
+
+6. 数组
+  6.1 定义属性：var arr = []  var arr = new Array()
+  6.2 下标（索引）: 从0开始， arr.length-1
+  6.3 长度：      arr.length: 表示的数组元素的个数
+  6.4 遍历：   for(var i = 0; i < arr.length; i++) {}
+
+7. 函数
+  7.1 定义函数2中   function fn() {}    var fn = function(){}
+  7.2 函数调用： 函数名()
+  7.3 函数的参数：
+    形参：函数声明的时候，设置的参数，叫做形参,作用是占位置。
+    实参：函数调用的时候，设置的参数，叫做实参，作用把值赋值给形参。
+    函数一定需要参数吗？ 看有没有哪些值需要调用的时候才能确定的。
+  7.4 返回值
+    函数如果需要返回一个结果，那么就需要使用返回值，return 返回值;
+    函数一定需要返回值吗？  函数什么时候需要返回值。 需要访问函数内部的某个变量的时候，就需要返回值。
+
+  7.5 匿名函数：没有名字的函数，没办直接使用  给变量  自调用
+  7.6 函数是一种数据类型，可以作为参数，也可以作为返回值。
+
+8. 对象
+  8.1 如果定义一个对象
+        var obj = new Object();
+        var obj = {}
+        createStudent();工厂函数
+        new Student():构造函数
+
+  8.2 操作对象的属性
+      obj.name
+      obj["name"]
+      obj[key]
+    for(var k in obj){}
+
+
+9. 内置：
+  Math
+  Date
+  Array
+  String
+  Number
+  Boolean
+<script>
+
+  function getSum (n) {
+    var sum = 0;
+    for(var i = 1; i <= n; i++) {
+      sum += i;
+    }
+    return sum;
+  }
+
+
+  //需求：
+  var ret = getSum(100);
+  console.log(ret + 100);
+
+
+</script>
+
+</body>
+</html>

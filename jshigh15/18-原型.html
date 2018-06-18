@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 在js中，任何一个函数，都会自带一个属性， prototype
+  //2. 这个prototype属性，我们叫做原型，   这个prototype属性是一个对象
+  //3. 通过构造函数创建的对象，可以直接访问 这个构造函数的原型中的所有的内容
+
+  //1. 构造函数
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  //2. 原型： Person.prototype
+  Person.prototype.gender = "男";
+  Person.prototype.sayHi = function () {
+    console.log("大家好，我是" + this.name);
+  }
+
+
+  //3. 构造函数可以创建实例
+  var p = new Person("飞飞", 18);
+
+  p.sayHi();
+
+  var p2 = new Person("芹芹", 20);
+  p2.sayHi();
+
+
+  console.log(p.sayHi == p2.sayHi);//Person.prototype.sayHi
+
+
+</script>
+
+</body>
+</html>

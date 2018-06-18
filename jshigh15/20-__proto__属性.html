@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  //任意一个对象，都会有__proto__属性， 这个属性指向了构造函数的prototype属性。
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+
+  Person.prototype.money = 1000000;
+
+  var p = new Person("zs", 18);
+
+
+  //不推荐
+  p.__proto__.gender = "男";
+
+
+  var p2 = new Person("ls", 20);
+  console.log(p2.gender);
+
+
+</script>
+</body>
+</html>

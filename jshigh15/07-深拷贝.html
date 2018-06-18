@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //拷贝一个对象的时候，拷贝多层，如果发现属性是对象的时候，需要继续拷贝。
+
+  //给我一个对象，我拷贝出来一个一样的对象
+  function copy(obj) {
+    //新建一个空的对象
+    var newObj = {};
+    //把obj中所有的属性全部添加到newObj中
+    for (var k in obj) {
+      //判断，obj[k]的类型是简单的还是复杂的。
+      if (typeof  obj[k] === "object") {
+        //继续拷贝
+        newObj[k] = copy(obj[k]);
+      } else {
+        newObj[k] = obj[k];
+      }
+
+    }
+    //返回的是新的对象
+    return newObj;
+
+  }
+
+  var ff = {
+    name: "灰灰",
+    age: 38,
+    color: "lime",
+    car: {
+      name: "玛莎拉蒂",
+      color: "green"
+    }
+  }
+
+  var ff2 = copy(ff);
+
+  ff.car.color = "red";
+  console.log(ff);
+  console.log(ff2);
+
+</script>
+
+</body>
+</html>

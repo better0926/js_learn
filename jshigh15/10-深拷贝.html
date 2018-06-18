@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //浅拷贝：拷贝对象的时候，只拷贝一层，把对象所有的属性和值都拷贝。问题：如果这个对象的值是引用类型，拷贝的仅仅是地址，所以还是会出现相互影响的问题。
+  //深拷贝：拷贝对象的时候，拷贝多层，如果某个属性值是复杂类型，还需要继续拷贝.
+
+  //作用：传递一个对象，返回一个新的对象，值相同
+  function copy(obj) {
+
+    var newObj = {};
+
+    for (var k in obj) {
+
+      newObj[k] = typeof obj[k] == "object" ? copy(obj[k]) : obj[k];
+
+    }
+
+    return newObj;
+  }
+
+  var aa = {
+    name: "zs",
+    age: 18,
+    car: {
+      name: "mobile",
+      price: 1000
+    }
+  }
+
+  var bb = copy(aa);
+
+  aa.car.price = 2;
+  console.log(bb);
+
+
+
+
+</script>
+
+</body>
+</html>

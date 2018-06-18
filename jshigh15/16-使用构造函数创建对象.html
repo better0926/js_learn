@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 定义一个构造函数
+  //构造函数其实就是一个函数
+  //1. 首字母大写
+  //2. 构造函数和new一起使用
+  function Student(name) {
+    this.name = name;
+    this.sayHi = function () {
+      console.log("大家好,我是"+this.name);
+    }
+  }
+
+
+  //new的作用：
+    //1. 在内存开辟一块空间，创建了一个新的对象
+    //2. 把this指向新创建的对象
+    //3. 执行构造函数
+    //4. 返回新的对象
+
+  //构造函数：给新增加的对象添加属性和方法：   实例化：
+  //实例： stu是Student构造函数new出来，stu是Student构造函数的一个实例，实例对象。
+  var stu = new Student("飞飞");
+  //console.log(stu);
+  stu.sayHi();
+
+  var stu2 = new Student("芹芹");
+  stu2.sayHi();
+
+  //两个对象的sayHi是否是同一个function
+  console.log(stu.sayHi === stu2.sayHi);
+
+
+</script>
+
+</body>
+</html>

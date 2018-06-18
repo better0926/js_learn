@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  var smdx = {
+    sayHi:function () {
+      console.log("大家好，我是" + this.name);
+    },
+    sleep: function () {
+      console.log("睡觉")
+    }
+  }
+
+
+  function Student(name, age) {
+    this.name = name;
+    this.age = age;
+    this.sayHi = smdx.sayHi;
+    this.sleep = smdx.sleep;
+  }
+
+
+  var stu1 = new Student("张三", 18);
+  var stu2 = new Student("李四", 20);
+
+  //解决问题： 希望所有的对象，sayHi都指向同一个函数
+  console.log(stu1.sayHi == stu2.sayHi);
+  console.log(stu1.sleep == stu2.sleep)
+
+</script>
+
+</body>
+</html>

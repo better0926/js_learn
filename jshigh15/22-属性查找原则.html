@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //1. 当我们访问某个对象的属性的时候
+  //2. 优先访问自己的属性，如果有，直接返回
+  //3. 如果自己没有，就会访问原型中的属性，如果有就返回
+  //4. 如果原型没有呢？返回undefined
+
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Person.prototype.name = 'ls';
+  Person.prototype.gender = "那那";
+
+  var p = new Person("zs", 18);
+
+
+
+  console.log(p.name);
+  console.log(p.gender);
+
+  console.log(p.aaa);
+
+
+</script>
+
+</body>
+</html>
