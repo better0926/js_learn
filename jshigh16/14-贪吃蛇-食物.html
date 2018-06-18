@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<button>开始游戏</button>
+<div id="map"></div>
+
+
+<script>
+
+  //分析：  蛇对象  食物对象
+
+  //食物对象：
+  //属性：
+  //width: 宽度
+  //height: 高度
+  //bgColor: 背景色
+  //x:     x的坐标
+  //y:     y的坐标
+  //方法：
+  //render:
+
+
+
+
+  //var f = new Food(20, 20, "blue", 0, 0);
+  //console.log(f);
+
+  //  var f = new Food(null, null, "green");
+  //  console.log(f);
+
+  //var f = new Food();
+  //var f = new Food({bgColro:"green"});
+
+  var map = document.getElementById("map");
+
+  for(var i = 0; i < 500; i++) {
+    var f = new Food();
+    f.render(map);
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

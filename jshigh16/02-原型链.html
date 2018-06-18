@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //任何一个函数，都会有prototype属性。 任何一个对象，都会有(原型)__proto__，这个原型又是一个对象，所以原型也会原型(__proto__),一环扣一环，就形成了一个链式的结构，我们把这个链式结构就叫做原型链。
+
+  //一个对象会有爸爸__proto__，他爸爸也会有爸爸，形成了一个链式结构。
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+
+  Person.prototype.gender = "男";
+  var p = new Person("zs", 18);
+
+
+  console.log(p.gender);
+  console.log(p.toString());
+
+
+
+  //var date = new Date();
+  //date == > date.__proto__(Date.prototype) ==> ????
+</script>
+
+</body>
+</html>

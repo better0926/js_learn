@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+  //valueOf(): 作用： 不需要我们自己去调用，当一个对象需要被当成简单类型来使用的时候，会自动的调用valueOf方法
+  //Object.prototype提供了valueOf(), 所有的对象都有valueOf方法，只会返回对象本身。
+  //很多的内置对象，会自己提供valueOf()  date对象：valueOf返回的就是事件戳
+
+//  var date = new Date();
+//
+//  //Object.prototype.valueOf()
+//
+//  var obj = {
+//    name: "zs"
+//  }
+//
+//  //每一个内置对象，也会提供一个valueOf方法, valueOf的目的：能够把一个对象转成原始值（简单类型）
+//
+//  var date = new Date();
+//  console.log(date.valueOf());
+//
+//  var arr = [1,2,3];
+//  console.log(arr.valueOf());
+
+
+  //var date = new Date();
+  //console.log(+date); //valueOf
+  //console.log(date.valueOf());
+
+
+
+  //console.log([1,2,3] + "哈哈");
+
+
+
+  //Object.prototype.toString()
+  var obj = {
+    name: "zs",
+    age: 18
+  }
+
+  //Object.prototype.toString()可以把对象转换成字符串：  [Object objct]
+  //console.log(obj + "哈哈");
+
+  //每一个内置对象会重写toString()方法
+  //var date = new Date();
+  //console.log(date.toString());
+
+  //var arr = [1,2,3];
+  //console.log(arr.toString());
+
+
+  //console.log([1,2,3].toString() - 0);//1,2
+
+
+  //如果一个复杂类型，想要转换成简单类型，先调用valueOf方法，如果valueOf方法返回的是一个对象，会继续调用toString方法
+
+  //var arr = [1,2,3];
+  //1. 先调用数组的valueOf方法
+  //2. 在次调用toString方法，   1,2,3
+  //console.log(arr + 1);
+
+
+
+  var obj = {
+    name: "zs",
+    age: 18
+  }
+
+  //[Object object]
+
+
+  //valueOf
+  console.log(obj + 11);
+
+
+
+</script>
+
+</body>
+</html>

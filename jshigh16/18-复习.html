@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //1. 原型的三角关系：  任何一个对象，都有构造函数和原型， 对象可以直接访问原型上的方法和属性
+  //2. 原型链： 一个对象可以有原型(__proto__)，他的原型可以有原型，形成了一个链式结构，原型链.
+  //3. 原型链的作用： 属性的搜索原则：
+  //4. 如果获取一个属性，自己有就用自己的，自己没有，就沿着原型链一直搜索到Object.prototype
+
+  //5. Obejct.prototype是所有的对象的原型链的尽头。所有对象都可以访问Object.prototype中所有的方法
+
+
+  //Object.prototype中的方法
+    //1. hasOwnProperty(): 判断某个属性是否是对象自己的。
+    //2. propertyIsEnumerable(): 判断某个属性是自身可枚举的（可以被for..in遍历）
+    //3. A.isPrototypeOf(B):   判断A是否在B的原型链上
+    //4. 对象 instanceof 构造函数：  判断的是构造函数的prototype是否在对象的原型连上。
+
+    // p instanceof Person：  相当于  Person.prototype.isPrototypeof(p)
+
+    //5. valueOf/toString():  Object.prototype提供的vlaueOf和toString功能并不强。
+        //valueOf：返回一个原对象   toString(): "[object Object]"
+
+      //valueOf和toString()不需要我们手动调用，自动在隐式转换的时候调用
+      // 先调用valueOf，如果返回的不是原始值，调用toString();
+      //toLocaleString()
+
+  //6. 贪吃蛇
+    //蛇对象
+    //食物对象
+
+
+  //蛇怎么动?
+  //蛇怎么吃食物?
+  //蛇怎么撞墙?
+  //蛇怎么撞身体?
+
+</script>
+
+</body>
+</html>

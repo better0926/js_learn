@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+//  //作用： A.isPrototypeof(B): 判断A是不是在B的原型链，  A是不是B的祖先
+//
+//  function Person() {
+//  }
+//
+//  var p = new Person();
+//
+//  //p ==>  Person.prototype == > Object.prototype
+//
+//
+//  console.log(Person.isPrototypeOf(p));
+//  console.log(Person.prototype.isPrototypeOf(p));
+//  console.log(Object.prototype.isPrototypeOf(p));
+//
+//  console.log(Object.prototype.isPrototypeOf([]));
+
+
+
+
+  //1. hasOwnProperty: 判断某个属性是否是自己的  （不包括继承的）
+  //2. propertyIsEnumerable: 判断某个属性是否是自身并且可枚举的， definedProperty:可以定义一个不可枚举的属性。
+
+  //3. valueOf():  把对象转换成原始值， 这个方法不需要自己去调用，当需要原始值的时候，valueOf方法会自动的调用
+
+  //4. toString(): 把对象转换成字符串， 这个方法也是不需要自己调用， 当需要字符串的时候，toString会自动的调用
+
+  //5. 先调用valueOf，在调用toString()
+
+
+
+  //var date = new Date();
+  //console.log(date + "111");
+
+
+  //  var arr = [1,2,3];
+  //  arr.valueOf = function () {
+  //    console.log("调用了ValueOf方法");
+  //    return arr;
+  //  }
+  //
+  //  arr.toString = function () {
+  //    console.log("调用了toString方法");
+  //    return "2222";
+  //  }
+  //  console.log(arr + "111");
+
+
+  //toLocalString():  默认跟toString()一样，除非和date一样自己提供两个对象。本地化：
+
+
+  //A.isPrototypeOf(B):  判断A是不是B的原型链上。
+
+</script>
+
+</body>
+</html>

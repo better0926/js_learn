@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //获取某个属性
+  //1. 当我们访问某个对象的属性的时候， 先找自己的属性，如果有，直接返回
+  //2. 如果没有，沿着原型链一直找到Object.prototype，如果还没有，就会返回undefined。
+
+
+  //设置某个对象的属性
+  // 如果对象自己有，就覆盖原来的值。
+  // 如果对象没有，就增加一个值。
+
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Person.prototype.name = "ls";
+  Person.prototype.gender = "男";
+  Object.prototype.gender = "女";
+
+
+  var p = new Person("zs", 20);
+
+  p.gender = "不详";
+
+  console.log(p.gender);
+
+
+
+  //获取的时候： 自己有，用自己的，自己没有，沿着原型链查找
+  //设置的时候： 自己有，覆盖，  自己没有，就增加
+</script>
+
+</body>
+</html>

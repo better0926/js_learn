@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18
+  //  }
+
+  //  obj.valueOf = function () {
+  //    console.log("调用了valueOf方法");
+  //    return [1,2,3];
+  //  }
+  //
+  //  obj.toString = function () {
+  //    console.log("调用了toString方法");
+  //    return {};
+  //  }
+
+  //valueOf..toString: 把一个对象隐式转换成简单类型的时候，会被调用
+  //valueOf()  toSting()
+  //console.log(obj + "111"); //[object Object]
+
+
+  //  var date = new Date();
+  //  console.log(date + "111");
+  //
+  //  //直接调用valueOf
+  //  console.log(date * 1);
+
+
+  //Object.prototype
+  //  var obj = {name: "zs", age: 18};
+  //  var arr = [1, 2, 3];
+  //
+  //  //console.log( obj - 0 );//valueOf toString  [object Object] - 0
+  //  console.log( obj + 0 );//valueOf toString  [object Object] + 0
+  //
+  //  //valueOf()  toString()
+  //  console.log(arr + "哈哈哈");
+  //
+  //  var date = new Date();
+  //  console.log(date + "111");
+
+
+  //false:0        {}:转换成数字：  valueOf   toString()  [obj]
+  console.log(false == {});
+
+</script>
+
+</body>
+</html>

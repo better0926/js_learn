@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //构造函数：其实就一个函数,通常来说，构造函数的首字母要大写。
+    // 构造函数要通过new来使用。构造函数的作用：实例化对象。
+
+
+  //实例(对象)： 任何一个对象都是由构造函数new出来。
+  //var obj = {};  // var obj = new Object();
+  //var arr = [];  // var arr = new Array();
+
+
+  //原型：任何一个构造函数，都会有一个prototype属性， 原型可以理解为构造函数的配偶，或者是实例的父亲。
+  //原型就是一个对象。 默认的原型对象只有一个属性： constructor的属性，指向了构造函数。
+  //Person.prototype == 实例.__proto__
+
+
+
+  //研究原型的目的：   实例是直接访问原型上所有的成员（属性和方法）的
+                    //实例不可以使用构造函数的属性和方法。
+
+
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Person.prototype.gender = "男";
+
+
+  Person.prototype.sayHi = function () {
+    console.log("嘿嘿")
+  }
+
+  var p = new Person("zs", 18);
+
+
+  console.log(p.name);
+  console.log(p.age);
+  console.log(p.gender);
+  p.sayHi();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //Object: 构造函数， 创建obj对象
+  //Object.prototype:Object构造函数的原型， 是所有原型链的顶端，Object.prototype中的所有的内容是所有对象都可以访问的。
+
+
+  //1. obj.hasOwnProperty("属性名"): 所有对象都可以访问，作用：判断属性名是不是对象自身的。
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18
+  //  }
+  //
+  //  console.log(obj.hasOwnProperty("name"));
+  //  console.log(obj.hasOwnProperty("toString"))
+  //  console.log(obj.hasOwnProperty("gender"))
+  //
+  //  //区分in:  in只要对象能用这个属性，就会返回true
+  //  console.log("name" in obj);
+  //  console.log("toString" in obj);
+
+
+
+  //Object.prototype.propertyIsEnumerable()
+  //2. 对象.propertyIsEnumerable("属性名")
+    //判断某个属性是否是自身的可枚举的（for..in）
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18
+  //  }
+  //
+  //  console.log(obj.propertyIsEnumerable("name"));
+  //
+  //
+  //  //definedProperty定义的属性，默认是不可枚举，并且不可修改的
+  //  Object.defineProperty(obj, "gender", {
+  //    value: "男",
+  //    enumerable: true
+  //  });
+  //
+  //  console.log(obj.propertyIsEnumerable("gender"));
+
+
+  //3. A.isPrototypeOf(B)： 判断A是否在B的原型链上
+  //  var obj = new Object();
+  //  console.log(Object.isPrototypeOf(obj));
+  //
+  //  //obj ==>  Object.prototype ==> null
+  //  console.log(Object.prototype.isPrototypeOf(obj));
+
+
+  //4. valueOf()   toString()
+  //Object.prototype
+  // 4.1 valueOf(): 把一个复杂类型转换成原始值（简单类型）  默认的valueOf方法会返回对象本身。
+  // 4.2 toString(): 把一个复杂类型直接转换成字符串类型
+
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18
+  //  }
+  //
+  //
+  //  console.log(obj.valueOf());
+  //  console.log(obj.toString());
+
+
+  //内置对象自己也会提供valueOf()方法和toString()
+  //var arr = [1,2,3];
+  //console.log(arr.valueOf());
+  //console.log(arr.toString());
+
+  //arr ==> Array.prototype ==> Object.prototype ==>
+  //         toString()             toString()
+
+  var date = new Date();
+  //  date ==> Date.prototype == > Object.prototype
+  //            valueOf()               valueOf
+  console.log(date.valueOf());
+
+
+  //valueOf()   toString():  如果对象自己提供了，优先调用自己的，如果没有提供，可以调用Object.prototype的
+
+
+  //valueOf和toString: 我们不需要手动的调用这两个方法。  当一个对象需要隐式的转换成简单类型的时候，就自动的调用valueOf和toString()
+
+
+
+</script>
+
+</body>
+</html>

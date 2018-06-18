@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  var arr = new Array();
+
+  // 判断arr 是否是Array的实例
+
+
+  //A.isPrototypeOf(B)
+  //判断Array这个构造函数的.prototype属性是否在arr的原型链
+
+  //Array.prototype是否在arr的原型链上
+  //判断Object.prototype是否在arr的原型链上。
+  //console.log(arr instanceof Object);
+
+
+  function Person() {
+
+  }
+
+  var p = new Person();
+
+  //Person是否在p的原型链
+  console.log(Person.isPrototypeOf(p));
+
+
+
+  //true  Person.prototype是在p的原型链上
+  //console.log(Person.prototype.isPrototypeOf(p));
+  //Person.prototype在p的原型链上
+  //console.log(p instanceof Person);
+
+
+  //console.log(p instanceof Person.prototype)
+
+
+
+  //任何对象 instanceof Object : 都会是true
+  console.log(p instanceof  Object);
+  console.log(Object.prototype.isPrototypeOf(p));
+
+
+</script>
+
+</body>
+</html>

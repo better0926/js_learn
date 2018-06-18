@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //  function Person(name, age) {
+  //    this.name = name;
+  //    this.age = age;
+  //  }
+  //
+  //
+  //  //Object.prototype的方法
+  //
+  //  var p = new Person("zs", 18);
+  //
+  //  //对象.hasOwnProperty("属性名")
+  //  //作用：判断某个属性是否属性对象自身的，而不是继承来的。
+  //  //只有对象自身拥有这个属性，才会返回true,
+  //  //如果没有就会返回false
+  //  console.log(p.hasOwnProperty("name"));
+  //
+  //  //console.log(p.toString());
+  //  console.log(p.hasOwnProperty("toString"));
+  //
+  //
+  //  console.log(p.hasOwnProperty("hasOwnProperty"));
+  //
+  //
+  //  console.log(p.hasOwnProperty("gender"));
+
+
+
+  //in操作符 与 hasOwnProperty的区别
+  //hasOwnProperty:判断的是这个属性是否不是对象本身的
+  //in操作符：  判断的是这个对象能否使用这个属性， 如果是继承来的属性，in会返回true
+
+  //判断对象是否有某个属性
+
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18
+  //  }
+  //
+  //  console.log("toString" in obj);
+  //
+  //  console.log(obj.hasOwnProperty("toString"));
+
+
+  var obj = {
+    name: "zs",
+    age: 18
+  }
+
+  Object.prototype.gender = "女";
+  Object.prototype.sex = "男"
+
+
+  //需求：只要遍历对象自己的哪些属性！！！怎么办？？？
+  for(var k in obj) {
+    if( obj.hasOwnProperty(k) ) {
+      console.log(k + "=" + obj[k]);
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

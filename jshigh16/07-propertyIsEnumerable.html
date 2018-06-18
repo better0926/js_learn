@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //属性  是否   枚举  ：  属性是否可以遍历
+  //propertyIsEnumerable
+
+  //  console.log(Object.prototype);
+  //
+  //  Object.prototype.name = "zs";
+  //
+  //  for(var k in Object.prototype) {
+  //    console.log(k);
+  //  }
+
+
+
+  //propertyIsEnumerable:
+    //1. 这个属性是否是自己的
+    //2. 这是属性能否被枚举
+
+  //  Object.prototype.gender = "zs";
+  //  var obj = {
+  //    name: "zs",
+  //    age: 18,
+  //    hobby: "哈哈"
+  //  }
+
+
+  //console.log(obj.propertyIsEnumerable("name"));
+  //console.log(obj.propertyIsEnumerable("age"));
+  //console.log(Object.prototype.propertyIsEnumerable("gender"));
+  //console.log(obj.propertyIsEnumerable("hobby"))
+
+
+  //我们通过对象.xxx这种方式增加的属性，其实都是可以被枚举的。
+
+
+
+  //Object.defineProperty
+  var obj = {
+    name: "zs"
+  }
+
+  obj.age = 18;
+
+
+  //参数1: 对象
+  //参数2：属性的名字
+  //参数3：属性的描述
+
+  //默认是不可枚举的
+  Object.defineProperty(obj, "gender", {
+    value:"女",
+    enumerable: false,
+    writable: true
+  });
+
+  //判断某个属性是自身并且可枚举
+  //propertyIsEnumerable();
+
+  console.log(obj.propertyIsEnumerable("gender"));
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  //我不用Obejct.prototype的valueOf
+  //valueOf
+  Person.prototype.valueOf = function () {
+    return this.age;
+  }
+
+
+  //toString:  [object Object]
+  Person.prototype.toString = function () {
+    return "名字:" + this.name + ",年纪:"+this.age;
+  }
+
+
+  //什么时候调用valueOf，什么时候调用toString
+  var p = new Person("zs", 18);
+
+  console.log(p + 11);
+
+</script>
+
+</body>
+</html>

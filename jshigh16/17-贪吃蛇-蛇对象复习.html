@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<button>开始游戏</button>
+<div id="map"></div>
+<script>
+
+
+  //蛇的属性：
+  //宽度
+  //高度
+  //蛇头的颜色
+  //蛇身的颜色
+  //数组： 蛇是由一个一个的小方块组成，使用一个数组，把小方块的位置存储起来。
+  //蛇的方法
+  //渲染
+  //移动
+
+  function Snake(options) {
+    options = options || {};
+
+    this.width = options.width || 20;
+    this.height = options.height || 20;
+    this.headColor = options.headColor || "green";
+    this.bodyColor = options.bodyColor || "red";
+
+    this.body = options.body || [{x: 2, y: 0}, {x: 1, y: 0}, {x: 0, y: 0}];
+  }
+
+  Snake.prototype.render = function (target) {
+    //思路：渲染蛇要做什么？  根据this.body创建span,设置span的样式，添加到target
+
+
+    for(var i = 0; i < this.body.length; i++) {
+      var span = document.createElement("span");
+      target.appendChild(span);
+
+      //给span设置样式
+      span.style.width = this.width + "px";
+      span.style.height = this.height + "px";
+      span.style.backgroundColor = i === 0? this.headColor : this.bodyColor;
+      span.style.position = "absolute";
+      span.style.left = this.body[i].x * this.width + "px";
+      span.style.top = this.body[i].y * this.height + "px";
+    }
+  }
+
+  var map = document.getElementById("map");
+//  var s = new Snake({
+//    headColor: "lime",
+//    bodyColor: "yellow",
+//    body: [
+//      {x:3, y:0},
+//      {x:2, y:0},
+//      {x:1, y:0},
+//      {x:0, y:0}
+//    ]
+//  });
+//
+//  s.render(map);
+
+
+  var s1 = new Snake();
+  s1.render(map);
+
+
+</script>
+
+</body>
+</html>
